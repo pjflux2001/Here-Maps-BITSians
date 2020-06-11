@@ -61,6 +61,8 @@
            tilt: 45
         });
         
+        let imgIcon = new H.map.Icon('robot.png');
+
         function getBrowserPosition(){
             if(navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(position => {
@@ -76,16 +78,22 @@
             }
         }
 
+        
+
+        function clickToMark(){
+            // Add event listener:
+            map.addEventListener('tap', function(evt) {
+                // Log 'tap' and 'mouse' events:
+                console.log(evt);
+                let pointer = evt.currentPointer;
+                let pointerPoistion = map.screenToGeo(pointer.viewportX, pointer.viewportY);
+                let pointerMarker = new H.map.Marker(pointerPoistion,{icon: imgIcon});
+                map.addObject(pointerMarker);
+            });
+        }
+
         getBrowserPosition();
 
-        // Add event listener:
-        map.addEventListener('tap', function(evt) {
-            // Log 'tap' and 'mouse' events:
-            console.log(evt);
-            let pointer = evt.currentPointer;
-            console.log(map.screenToGeo(pointer.viewportX, pointer.viewportY));
-        });
-
-        
+        clickToMark();
     </script>
 </htmml>
