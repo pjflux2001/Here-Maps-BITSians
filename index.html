@@ -13,7 +13,8 @@
         <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
     </head>
     <body>
-        <div id="mapContainer" style="width: 100vw; height: 80vh; align-self: center; background-color: aqua;"></div>
+        <h1 style='text-align: center'>Here Maps : BITSians</h1>
+        <div id="mapContainer" style="width: 99vw; height: 80vh; align-self: center; background-color: aqua;"></div>
     </body>
     <script>
         var platform = new H.service.Platform({
@@ -45,17 +46,19 @@
         mapSettings.setAlignment('top-left');
         scalebar.setAlignment('bottom-right');
 
-        // Create an info bubble object at a specific geographic location:
-        var bubble = new H.ui.InfoBubble({ lng: 18.52571, lat: 74.09815 }, {
-                content: '<b>Pune</b>'
-        });
-
-        // Add info bubble to the UI:
-        ui.addBubble(bubble);
+        
 
         // Enable the event system on the map instance:
         var mapEvents = new H.mapevents.MapEvents(map);
         var behavior = new H.mapevents.Behavior(mapEvents);
+
+        //style to set at load time
+
+        var provider = map.getBaseLayer().getProvider();
+
+        var style = new H.map.Style('map_style.yaml','https://js.api.here.com/v3/3.1/styles/omv/');
+        // set the style on the existing layer
+        provider.setStyle(style); 
 
         map.getViewModel().setLookAtData({
            tilt: 45
@@ -167,6 +170,16 @@
                 }, false);
         }
 
+        function highlightHospital(){
+
+            var hospStyle = provider.getStyle();
+
+            var hospConfig = hospStyle.extractConfig('landuse.hospital');
+
+            hospConfig.layers.landuse.hospital.draw.polygons.color = 'rbga(255,0,0,0.5)';
+
+            hospStyle.mergeConfig(hospConfig);
+        }
 
 
         getBrowserPosition();
