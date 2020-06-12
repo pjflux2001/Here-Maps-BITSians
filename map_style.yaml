@@ -819,7 +819,7 @@ layers:
               sprite: area-icon-day--hospital_complex
               text:
                 font:
-                  fill: global.landuse_hospital_label_color
+                  fill: blue
                   stroke:
                     color: global.landuse_hospital_label_outline_color
         aerodrome:
