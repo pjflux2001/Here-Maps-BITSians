@@ -60,6 +60,14 @@
         map.getViewModel().setLookAtData({
            tilt: 45
         });
+
+        // Define a variable holding SVG mark-up that defines an icon image:
+        /* var svgMarkup = '<svg width="24" height="24" ' +
+            'xmlns="http://www.w3.org/2000/svg">' +
+            '<rect stroke="white" fill="#228B22" x="1" y="1" width="22" ' +
+            'height="22" /><text x="12" y="18" font-size="12pt" ' +
+            'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
+            'fill="white">.</text></svg>'; */
         
         let imgIcon = new H.map.Icon('robot.png');
 
@@ -69,7 +77,8 @@
                     console.log(position.coords);
                     let browserPosition = {lat: position.coords.latitude , lng: position.coords.longitude };
                     // Create a marker:
-                    let marker = new H.map.Marker(browserPosition);
+                    var icon = new H.map.Icon('gps.png');
+                    let marker = new H.map.Marker(browserPosition, {icon: icon});
                     map.addObject(marker);
 
                 });
