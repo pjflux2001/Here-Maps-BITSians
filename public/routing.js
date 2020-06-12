@@ -24,13 +24,15 @@ var onResult = function(result) {
 
       let totalLength = 0; 
       let totalDuration = 0;
+
+      let colors = ["#034f84","black","#d54dce","#f429c3"]
       route.sections.forEach((section) => {
         // Create a linestring to use as a point source for the route line
        let linestring = H.geo.LineString.fromFlexiblePolyline(section.polyline);
 
        // Create a polyline to display the route:
        let routeLine = new H.map.Polyline(linestring, {
-         style: { strokeColor: '#034F84', lineWidth: 3 }
+         style: { strokeColor: colors[result.routes.indexOf(route)], lineWidth: 5 }
        });
 
        // Create a marker for the start point:
