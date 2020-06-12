@@ -6,7 +6,7 @@ var routingParameters = {
   transportMode:'car',
   routingMode: 'fast',
   origin: '18.5,73.5',
-  via:'18.6,73.6',
+  //via:'18.6,73.6',
   destination: '18.7,73.7',
   return:'polyline,summary,actions,instructions', //summary + actions + instr included
   alternatives:3, //alternative route option
@@ -25,14 +25,14 @@ var onResult = function(result) {
       let totalLength = 0; 
       let totalDuration = 0;
 
-      let colors = ["#34f8","black","#df1f","#f429c3"]
+      let colors = ["#9400D3","black","#8B4513","#f461c3"]
       route.sections.forEach((section) => {
         // Create a linestring to use as a point source for the route line
        let linestring = H.geo.LineString.fromFlexiblePolyline(section.polyline);
 
        // Create a polyline to display the route:
        let routeLine = new H.map.Polyline(linestring, {
-         style: { strokeColor: colors[result.routes.indexOf(route)], lineWidth: 5 }
+         style: { strokeColor: colors[result.routes.indexOf(route)], lineWidth: 7 }
        });
 
        // Create a marker for the start point:
