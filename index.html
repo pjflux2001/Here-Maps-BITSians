@@ -79,6 +79,12 @@
                     // Create a marker:
                     var icon = new H.map.Icon('gps.png');
                     let marker = new H.map.Marker(browserPosition, {icon: icon});
+                    // Instantiate a circle object (using the default style):
+                    var circle = new H.map.Circle({lat: position.coords.latitude + 0.015, lng: position.coords.longitude }, 7500);
+                    marker.setData("You're here!");
+                    // Add the circle to the map:
+                    map.addObject(circle);
+
                     map.addObject(marker);
 
                 });
@@ -136,6 +142,8 @@
                 map.addEventListener('dragend', function(ev) {
                     var target = ev.target;
                     if (target instanceof H.map.Marker) {
+                      
+                        
                     behavior.enable();
                     }
                 }, false);
