@@ -6,6 +6,7 @@
         </title>
         <meta name="viewport" charset="utf-8" content="initial-scale=1.0, width=sevice-width" />
         <script src="creds.js"></script>
+        
         <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript"></script>
         <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript"></script>
         <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js" type="text/javascript"></script>
@@ -192,6 +193,9 @@
         
     </script>
     <hr>
-    <button style="vertical-align: middle; position: absolute;" onclick="highlightHospital()"><span>Highlight Hospitals</span></button>
-     </body>
+    <button style="vertical-align: middle; position: relative;" onclick="highlightHospital()"><span>Highlight Hospitals</span></button>
+    <script src="geocoder.js"></script>
+    <button style="vertical-align: middle; position: relative; inline-block;" onclick="geocoderSearch()"><span>Search your location here</span></button>
+
+    </body>
 </htmml>
