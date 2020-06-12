@@ -15,7 +15,8 @@
     <body>
         <h1 style='text-align: center'>Here Maps : BITSians</h1>
         <div id="mapContainer" style="width: 99vw; height: 80vh; align-self: center; background-color: aqua;"></div>
-    </body>
+        
+    
     <script>
         var platform = new H.service.Platform({
         'apikey': window.hereCreds.JSKEY
@@ -176,7 +177,7 @@
 
             var hospConfig = hospStyle.extractConfig('landuse.hospital');
 
-            hospConfig.layers.landuse.hospital.draw.polygons.color = 'rbga(255,0,0,0.5)';
+            hospConfig.layers.landuse.hospital.draw.polygons.color = 'red';
 
             hospStyle.mergeConfig(hospConfig);
         }
@@ -188,5 +189,9 @@
 
         clickDragMarkers();
 
+        
     </script>
+    <hr>
+    <button style="vertical-align: middle; position: absolute;" onclick="highlightHospital()"><span>Highlight Hospitals</span></button>
+     </body>
 </htmml>
