@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1 style='text-align: center'>Here Maps : BITSians</h1>
-        <div id="mapContainer" style="width: 99vw; height: 80vh; align-self: center; background-color: aqua;"></div>
+        <div id="mapContainer" style="width: 98vw; height: 80vh; align-self: center; background-color: aqua;"></div>
         
     
     <script>
@@ -184,6 +184,16 @@
         }
 
 
+            function drawBox(){
+
+            var rect = new H.map.Rect(new H.geo.Rect(52.51647,13.3817,52.50474,13.40432));
+            map.addObject(rect);
+
+
+            }
+
+            drawBox();
+
         getBrowserPosition();
 
         clickToMark();
@@ -200,5 +210,6 @@
     <button style="vertical-align: middle; position: relative; inline-block;" onclick="geocodeBrowse()"><span>Advanced Search</span></button>
     <button style="vertical-align: middle; position: relative; inline-block;" onclick="revGeocode()"><span>Search via (Lat|Lon)</span></button>
     <script type="text/javascript" src="routing.js"></script>
+    <div id="panel" style= "align-self: center; width: 98vw; height: 20vh; text-align: left;"><p style="text-align: center;">Route Details<br></p></div>
     </body>
 </htmml>
