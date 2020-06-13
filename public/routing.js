@@ -5,6 +5,7 @@ var router = platform.getRoutingService(null, 8);
 var routingParameters = {
   transportMode:'car',
   routingMode: 'fast',
+  mode:"balanced;car;traffic:enabled",
   origin: '18.5,73.5',
   //via:'17,75!stopDuration=900',
   destination: '18.7,73.7',
@@ -38,7 +39,7 @@ var onResult = function(result) {
         
        // Create a polyline to display the route:
        let routeLine = new H.map.Polyline(linestring, {
-         style: { strokeColor: colors[result.routes.indexOf(route)], lineWidth: 7 }
+         style: { strokeColor: colors[result.routes.indexOf(route)], lineWidth: 7}
        });
 
        // Create a marker for the start point:
