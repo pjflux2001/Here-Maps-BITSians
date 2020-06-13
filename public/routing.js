@@ -39,7 +39,7 @@ var onResult = function(result) {
         
        // Create a polyline to display the route:
        let routeLine = new H.map.Polyline(linestring, {
-         style: { strokeColor: colors[result.routes.indexOf(route)], lineWidth: 7}
+         style: { strokeColor: colors[result.routes.indexOf(route)], lineWidth: 5}
        });
 
        // Create a marker for the start point:
