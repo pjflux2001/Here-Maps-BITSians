@@ -6,41 +6,48 @@ var routingParameters = {
   transportMode:'car',
   routingMode: 'fast',
   origin: '18.5,73.5',
-  //via:'18.6,73.6',
+  //via:'17,75!stopDuration=900',
   destination: '18.7,73.7',
   return:'polyline,summary,actions,instructions', //summary + actions + instr included
   alternatives:3, //alternative route option
   departureTime:'2020-05-13T09:00:00',  // arrival and departure
-  spans:'speedLimit' //speed limit value
+  spans:'speedLimit,duration,streetAttributes,names' //speed limit value
 };
+
+let startIcon = new H.map.Icon('start.png');
+
+let endIcon = new H.map.Icon('end.png');
+
+let viaIcon = new H.map.Icon('via.png');
   
 // Define a callback function to process the routing response:
 var onResult = function(result) {
   console.log(result);
   if (result.routes.length) {
-    let routeNum = 1;
+    let routeNum = 0;
 
     result.routes.forEach(route =>{
 
       let totalLength = 0; 
       let totalDuration = 0;
 
-      let colors = ["#9400D3","black","#8B4513","#f461c3"]
+      let colors = ["#9400D3","#f461c3","#8B4513","black"]
       route.sections.forEach((section) => {
         // Create a linestring to use as a point source for the route line
        let linestring = H.geo.LineString.fromFlexiblePolyline(section.polyline);
-
+        
        // Create a polyline to display the route:
        let routeLine = new H.map.Polyline(linestring, {
          style: { strokeColor: colors[result.routes.indexOf(route)], lineWidth: 7 }
        });
 
        // Create a marker for the start point:
-       let startMarker = new H.map.Marker(section.departure.place.location);
-
+       
+       let startMarker = new H.map.Marker(section.departure.place.location, {icon: startIcon});
+       startMarker.setData("Routing Starts Here!"); 
        // Create a marker for the end point:
-       let endMarker = new H.map.Marker(section.arrival.place.location);
-
+       let endMarker = new H.map.Marker(section.arrival.place.location, {icon: endIcon});
+       endMarker.setData("Routing Ends Here!"); 
        totalLength += section.summary.length;
        totalDuration += section.summary.duration;
        
