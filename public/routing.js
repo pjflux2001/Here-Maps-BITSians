@@ -45,9 +45,11 @@ var onResult = function(result) {
        // Create a marker for the start point:
        
        let startMarker = new H.map.Marker(section.departure.place.location, {icon: startIcon});
+      
        startMarker.setData("Routing Starts Here!"); 
        // Create a marker for the end point:
        let endMarker = new H.map.Marker(section.arrival.place.location, {icon: endIcon});
+     
        endMarker.setData("Routing Ends Here!"); 
        totalLength += section.summary.length;
        totalDuration += section.summary.duration;
