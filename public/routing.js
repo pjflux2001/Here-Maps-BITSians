@@ -20,7 +20,6 @@ let startIcon = new H.map.Icon('start.png');
 let endIcon = new H.map.Icon('end.png');
 
 let viaIcon = new H.map.Icon('via.png');
-  
 // Define a callback function to process the routing response:
 var onResult = function(result) {
   console.log(result);
