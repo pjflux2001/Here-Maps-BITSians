@@ -26,6 +26,8 @@ app.set("view engine","ejs");
 app.use(express.static(__dirname + '/public'));
 //serving custom resources
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+
 //using bodyparser so recieve req object
 
 //Serving HomePage
@@ -37,7 +39,7 @@ app.post("/",function(req,res){
 	var X = req.body.X;
 	var Y = req.body.Y;
 
-	res.send(req.body);
+	res.send("you sent these co-ordinates "+X+" and "+Y);
 	});
 
 //LISTENER PROCESS
