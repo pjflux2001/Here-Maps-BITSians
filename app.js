@@ -1,7 +1,8 @@
 var express = require("express"),
 	app = express(),
 	mongoose = require("mongoose"),
-	bodyParser = require("body-parser")
+	bodyParser = require("body-parser"),
+	ESRI = require("./models/esri.js")
 
 //==========================
 //SOME OTHER PACKAGES CONFIG
@@ -15,21 +16,27 @@ app.use(bodyParser.urlencoded({extended:true}));
 //using bodyparser so recieve req object
 
 //MONGO CONFIGRATION
-/* var uri = process.env.DATABASEURI || "mongodb://localhost/map_beds_app"
+ var uri = process.env.DATABASEURI || "mongodb+srv://sudhanshumohan:hesoyam@cluster0-3z3hj.mongodb.net/hospital_data?retryWrites=true&w=majority"
 
 mongoose.connect(uri,{
 	useNewUrlParser:true,
 	useCreateIndex:true,
+	useUnifiedTopology:true
 }).then(()=>{
 	console.log("Connected to Database");
 }).catch(err =>{
 	console.log("ERROR:",err.message);
 });
-*/
 
 //Serving HomePage
 app.get('/',function(req,res){
 	res.render("index");
+})
+
+app.post('/',function(req,res){
+	var co-ordinate = req.body;
+
+
 })
 
 //LISTENER PROCESS
