@@ -32,18 +32,11 @@ mongoose.connect(uri,{
 app.get('/',function(req,res){
 	res.render("index");
 })
-/*
-app.post('/',function(req,res){
-	var co_ordinate = req.body.co_ordinate;
-	ESRI.find({"X":co_ordinate[0],"Y":co_ordinate[1]},funtion(err,foundObj){
-		if(err){
-			console.log(err);
-		} else {
-			res.render("index",{foundArr:foundObj})
-		}
-	})
+
+app.post("/",function(req,res){
+	res.send("WORKED");
 });
-*/
+
 //LISTENER PROCESS
 var port = process.env.PORT || 31000
 app.listen(port,process.env.IP,function(){
