@@ -38,7 +38,8 @@ app.get('/',function(req,res){
 app.post("/",function(req,res){
 	var X = req.body.X;
 	var Y = req.body.Y;
-	Esri.find({"X":X,"Y":Y},function(err,foundObj){
+	var fid = req.body.FID;
+	Esri.find({"FID":fid},function(err,foundObj){
 		if(err){
 			console.log(err);
 		} else {
