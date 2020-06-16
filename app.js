@@ -2,7 +2,7 @@ var express = require("express"),
 	app = express(),
 	bodyParser = require("body-parser"),
 	mongoose = require("mongoose"),
-	ESRI = require("./models/esri.js")
+	Esri = require("./models/esri.js")
 
 //MONGO CONFIGRATION
  var uri = process.env.DATABASEURI || "mongodb+srv://sudhanshumohan:hesoyam@cluster0-3z3hj.mongodb.net/hospital_data?retryWrites=true&w=majority"
@@ -38,8 +38,13 @@ app.get('/',function(req,res){
 app.post("/",function(req,res){
 	var X = req.body.X;
 	var Y = req.body.Y;
-
-	res.send("you sent these co-ordinates "+X+" and "+Y);
+	Esri.find({"X":X,"Y":Y},function(err,foundObj){
+		if(err){
+			console.log(err);
+		} else {
+			res.send(foundObj);
+		}
+	})
 	});
 
 //LISTENER PROCESS

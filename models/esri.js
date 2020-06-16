@@ -23,4 +23,4 @@ var esriSchema = new mongoose.Schema({
 	AVG_VENTILATOR_USAGE:Number
 },{collection:"esri"});
 
-module.export = mongoose.model("ESRI",esriSchema);
+module.exports = mongoose.model("Esri",esriSchema)
