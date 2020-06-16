@@ -43,7 +43,8 @@ app.post("/",function(req,res){
 		if(err){
 			console.log(err);
 		} else {
-			res.send(foundObj);
+			res.render("index",{foundArr:foundObj});
+			console.log(foundArr);
 		}
 	})
 	});
