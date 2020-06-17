@@ -1,8 +1,8 @@
 function route(){
 
-  document.getElementById("status").innerHTML = "Last 2 points will be treated as your start and stop point!";
+  document.getElementById("status").innerHTML = "Routing Completed!";
   console.log(str);
-  
+  var alt = prompt("Enter number of routes to be displayed (Max : 4)");
    // Get an instance of the routing service version 8:
 var router = platform.getRoutingService(null, 8);
 // Create the parameters for the routing request:
@@ -14,7 +14,7 @@ var routingParameters = {
   //via:'17,75!stopDuration=900',
   destination: end,
   return:'polyline,summary,actions,instructions', //summary + actions + instr included
-  alternatives:3, //alternative route option
+  alternatives: alt, //alternative route option
   departureTime:'2020-05-13T09:00:00',  // arrival and departure
   spans:'speedLimit,duration,streetAttributes,names' //speed limit value
 };

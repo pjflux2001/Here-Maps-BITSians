@@ -208,24 +208,30 @@
             
             var ans = Pos.lat + ',' + Pos.lng;
             if(cnt==0){
+                document.getElementById("status").innerHTML = "START point selected";
                 str=ans;
                 let strIcon = new H.map.Icon('start.png');
                 let strMarker = new H.map.Marker(Pos, {icon: strIcon});
                 map.addObject(strMarker);
                 strMarker.setData("START for routing!");
+                console.log("START: " +ans);
             }
             if(cnt==1){
+                document.getElementById("status").innerHTML = "END point selected";
                 end=ans;
                 let endIcon = new H.map.Icon('end.png');
                 let endMarker = new H.map.Marker(Pos, {icon: endIcon});
                 map.addObject(endMarker);
                 endMarker.setData("END for routing!");
+                console.log("END: " +ans);
             }
             
             cnt++;
             if(cnt==2){
+                    
                     map.removeEventListener('tap', fnc);
-            console.log(ans);
+                    alert("Use ROUTE button to trace your path.");
+            
             }
             //console.log('Clicked at ' + Math.abs(coord.lat.toFixed(4)) +
                // ((coord.lat > 0) ? 'N' : 'S') +
