@@ -20,7 +20,18 @@
         
     </head>
     <body>
-        
+        <style>
+            .H_ib_body {
+    width: 333px;
+}
+
+.H_ib_content{
+    min-width: 300px;
+    font: 12px "Lucida Grande", Arial, Helvetica, sans-serif;
+    line-height: 15px;
+    margin: 10px 20px 20px 10px;
+}
+        </style>
         <h1 id="status" style='text-align: center'>Here Maps : BITSians</h1>
         <div id="mapContainer" style="width: 98vw; height: 80vh; align-self: center; background-color: aqua;">
             
@@ -256,7 +267,8 @@
                 let Pos = {lat: foundArr[i].Y , lng: foundArr[i].X };
                 let hospitalMarker = new H.map.Marker(Pos, {icon: hosptialIcon});
                 map.addObject(hospitalMarker);
-                hospitalMarker.setData("Point" + i);
+                hospitalMarker.setData("<h3>"+foundArr[i].HOSPITAL_NAME+"</h3><hr><b>Type : </b>"+foundArr[i].HOSPITAL_TYPE+"<br><b>Location</b> : "+foundArr[i].HQ_ADDRESS+", "+foundArr[i].HQ_CITY+", "+foundArr[i].STATE_NAME+" - "+foundArr[i].HQ_ZIP_CODE+"<br><b>No. of Licensed Beds : </b>"+foundArr[i].NUM_LICENSED_BEDS
++"<br><b>No. of Staffed Beds</b> : "+foundArr[i].NUM_STAFFED_BEDS+"<br><b>No. of ICU Beds</b> : "+foundArr[i].NUM_ICU_BEDS+"<br><b>No. of Adult ICU Beds</b> : "+foundArr[i].ADULT_ICU_BEDS+"<br><b>No. of Pediatric ICU Beds</b> : "+foundArr[i].PEDI_ICU_BEDS+"<br><b>Bed Utilization Rate</b> : "+foundArr[i].BED_UTILIZATION+"<br><b>Average Ventilator Usage</b> : "+foundArr[i].AVG_VENTILATOR_USAGE+"<br><b>Potential Increase in Bed Capacity</b> : "+foundArr[i].Potential_Increase_In_Bed_Capac);
                 console.log("Data Pointed Added!");
                 }
             }
@@ -282,6 +294,5 @@
     <button style="vertical-align: middle; position: relative; inline-block;" onclick="setUpClickListener(map);"><span>Select Start and End points on Map</span></button>
     <button style="vertical-align: middle; position: relative; inline-block;" onclick="route()"><span>Route</span></button>
     <div id="panel" style= "align-self: center; width: 98vw; height: 20vh; text-align: left;"><p style="text-align: center;">Route Details<br></p></div>
-    
     </body>
 </html>
