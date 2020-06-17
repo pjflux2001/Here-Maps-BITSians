@@ -76,7 +76,7 @@ var onResult = function(result) {
   
       });
 
-      document.getElementById("panel").innerHTML += `<br>`+'Route '+(result.routes.indexOf(route)+1)+ ' Distance: '+ totalLength/1000 +' Km'+' Duration: '+ totalDuration.toMMSS() + `<br>`;
+      document.getElementById("panel").innerHTML += `<p><b>`+'Route '+(result.routes.indexOf(route)+1) +' | Distance : '+ totalLength/1000 +' Km'+' | Duration : '+ totalDuration.toMMSS() + `</b></p><hr>`;
       
       routeNum++;
     });
