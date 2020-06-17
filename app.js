@@ -31,20 +31,12 @@ app.use(bodyParser.json());
 //using bodyparser so recieve req object
 
 //Serving HomePage
-app.get('/',function(req,res){
-	res.render("index");
-})
-
-app.post("/",function(req,res){
-	var X = req.body.X;
-	var Y = req.body.Y;
-	var fid = req.body.FID;
-	Esri.find({"FID":fid},function(err,foundObj){
+app.get("/",function(req,res){
+	Esri.find({},function(err,foundObj){
 		if(err){
 			console.log(err);
 		} else {
 			res.render("index",{foundArr:foundObj});
-			console.log(foundArr);
 		}
 	})
 	});
