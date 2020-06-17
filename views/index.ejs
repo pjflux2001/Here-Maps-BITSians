@@ -211,13 +211,7 @@
     <button style="vertical-align: middle; position: relative; inline-block;" onclick="geocodeAndSearch()"><span>Discover hospitals</span></button>
     <button style="vertical-align: middle; position: relative; inline-block;" onclick="geocodeBrowse()"><span>Advanced Search</span></button>
     <button style="vertical-align: middle; position: relative; inline-block;" onclick="revGeocode()"><span>Search via (Lat|Lon)</span></button>
-    <div class = "container">
-	    <form action="/" method="post">
-		    <label for="FID">Enter FID Code </label>
-		    <input type="text" id="FID" name="FID">
-		    <input type="submit" value="Search">
-	    </form>
-    </div>
+    <h3> <%= foundArr.length =%> Objects Found </h3>
     <div id="panel" style= "align-self: center; width: 98vw; height: 20vh; text-align: left;"><p style="text-align: center;">Route Details<br></p></div>
     </body>
 </html>
