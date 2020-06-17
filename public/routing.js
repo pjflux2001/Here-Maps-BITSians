@@ -1,20 +1,24 @@
-// Get an instance of the routing service version 8:
+function route(){
+
+  document.getElementById("status").innerHTML = "Last 2 points will be treated as your start and stop point!";
+  console.log(str);
+  
+   // Get an instance of the routing service version 8:
 var router = platform.getRoutingService(null, 8);
-    
 // Create the parameters for the routing request:
 var routingParameters = {
   transportMode:'car',
   routingMode: 'fast',
   mode:"balanced;car;traffic:enabled",
-  origin: '18.5,73.5',
+  origin: str,
   //via:'17,75!stopDuration=900',
-  destination: '18.7,73.7',
+  destination: end,
   return:'polyline,summary,actions,instructions', //summary + actions + instr included
   alternatives:3, //alternative route option
   departureTime:'2020-05-13T09:00:00',  // arrival and departure
   spans:'speedLimit,duration,streetAttributes,names' //speed limit value
 };
-
+  
 let startIcon = new H.map.Icon('start.png');
 
 let endIcon = new H.map.Icon('end.png');
@@ -89,8 +93,11 @@ Number.prototype.toMMSS = function () {
   return  Math.floor(this / 60)  +' minutes '+ (this % 60)  + ' seconds.';
 }
   
-  
+
 // Call calculateRoute() with the routing parameters,
 // the callback and an error callback function (called if a
 // communication error occurs):
+
+
 router.calculateRoute(routingParameters, onResult, onError);
+}
