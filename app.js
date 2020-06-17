@@ -39,14 +39,36 @@ app.post("/",function(req,res){
 	var X = req.body.X;
 	var Y = req.body.Y;
 	var fid = req.body.FID;
-	Esri.find({"FID":fid},function(err,foundObj){
-		if(err){
-			console.log(err);
-		} else {
-			res.render("index",{foundArr:foundObj});
-			console.log(foundArr);
-		}
-	})
+	if(fid !== "ALL"){
+		Esri.find({},function(err,foundObj){
+			if(err){
+				console.log(err);
+			} else {
+				if(!foundArr){
+					res.render("index",{foundArr:foundObj});
+					console.log(foundArr);
+				}
+				else {
+					res.redirect("/");
+				}
+			}
+		})
+	}
+	else {
+		Esri.find({"FID":fid},function(err,foundObj){
+			if(err){
+				console.log(err);
+			} else {
+				if(!foundArr){
+					res.render("index",{foundArr:foundObj});
+					console.log(foundArr);
+				}
+				else {
+					res.redirect("/");
+				}
+			}
+		})
+	}
 	});
 
 //LISTENER PROCESS
