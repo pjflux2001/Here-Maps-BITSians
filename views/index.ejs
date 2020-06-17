@@ -204,15 +204,24 @@
             function fnc (evt) {
             var coord = map.screenToGeo(evt.currentPointer.viewportX,evt.currentPointer.viewportY);
             let Pos = {lat: coord.lat , lng: coord.lng };
-            let viaIcon = new H.map.Icon('via.png');
-            let viaMarker = new H.map.Marker(Pos, {icon: viaIcon});
-            map.addObject(viaMarker);
-            viaMarker.setData("Selected for routing!");
+            
+            
             var ans = Pos.lat + ',' + Pos.lng;
-            if(cnt==0)
+            if(cnt==0){
                 str=ans;
-            if(cnt==1)
+                let strIcon = new H.map.Icon('start.png');
+                let strMarker = new H.map.Marker(Pos, {icon: strIcon});
+                map.addObject(strMarker);
+                strMarker.setData("START for routing!");
+            }
+            if(cnt==1){
                 end=ans;
+                let endIcon = new H.map.Icon('end.png');
+                let endMarker = new H.map.Marker(Pos, {icon: endIcon});
+                map.addObject(endMarker);
+                endMarker.setData("END for routing!");
+            }
+            
             cnt++;
             if(cnt==2){
                     map.removeEventListener('tap', fnc);
