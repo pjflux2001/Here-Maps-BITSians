@@ -267,7 +267,7 @@
                 let Pos = {lat: foundArr[i].Y , lng: foundArr[i].X };
                 let hospitalMarker = new H.map.Marker(Pos, {icon: hosptialIcon});
                 map.addObject(hospitalMarker);
-                hospitalMarker.setData("<h4>"+foundArr[i].HOSPITAL_NAME+"</h4><hr><b>Type : </b>"+foundArr[i].HOSPITAL_TYPE+"<br><b>Location</b> : "+foundArr[i].HQ_ADDRESS+", "+foundArr[i].HQ_CITY+", "+foundArr[i].STATE_NAME+" - "+foundArr[i].HQ_ZIP_CODE+"<br><b>No. of Licensed Beds : </b>"+foundArr[i].NUM_LICENSED_BEDS
+                hospitalMarker.setData("<h2>"+foundArr[i].HOSPITAL_NAME+"</h2><hr><b>Type : </b>"+foundArr[i].HOSPITAL_TYPE+"<br><b>Location</b> : "+foundArr[i].HQ_ADDRESS+", "+foundArr[i].HQ_CITY+", "+foundArr[i].STATE_NAME+" - "+foundArr[i].HQ_ZIP_CODE+"<br><b>No. of Licensed Beds : </b>"+foundArr[i].NUM_LICENSED_BEDS
 +"<br><b>No. of Staffed Beds</b> : "+foundArr[i].NUM_STAFFED_BEDS+"<br><b>No. of ICU Beds</b> : "+foundArr[i].NUM_ICU_BEDS+"<br><b>No. of Adult ICU Beds</b> : "+foundArr[i].ADULT_ICU_BEDS+"<br><b>No. of Pediatric ICU Beds</b> : "+foundArr[i].PEDI_ICU_BEDS+"<br><b>Bed Utilization Rate</b> : "+foundArr[i].BED_UTILIZATION+"<br><b>Average Ventilator Usage</b> : "+foundArr[i].AVG_VENTILATOR_USAGE+"<br><b>Potential Increase in Bed Capacity</b> : "+foundArr[i].Potential_Increase_In_Bed_Capac);
                 console.log("Data Pointed Added!");
                 }
