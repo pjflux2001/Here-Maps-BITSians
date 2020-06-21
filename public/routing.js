@@ -87,7 +87,7 @@ routeLine.addObjects([routeOutline, routeArrows]);
          document.getElementById("route"+cardNum+"").innerHTML += `<br>`+ action.instruction;
 
        });
-
+       document.getElementById("route"+cardNum+"").innerHTML += `<hr>`;
        if(section.postActions){
         document.getElementById("panel").innerHTML += `<br>`+ section.postActions[0].action +' '+ section.postActions[0].duration + ' sec' ;
        }
