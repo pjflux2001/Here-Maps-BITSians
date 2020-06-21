@@ -72,14 +72,11 @@ var onResult = function(result) {
 
        // Set the map's viewport to make the whole route visible:
        map.getViewModel().setLookAtData({bounds: routeLine.getBoundingBox()});
-
-
-
-  
+	 cardNum++;
       });
 
       document.getElementById("panel").innerHTML += `<p><b>`+'Route '+(result.routes.indexOf(route)+1) +' | Distance : '+ totalLength/1000 +' Km'+' | Duration : '+ totalDuration.toMMSS() + `</b></p><hr>`;
-	    cardNum++;
+
       routeNum++;
     });
       
