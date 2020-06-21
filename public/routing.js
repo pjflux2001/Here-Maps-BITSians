@@ -56,10 +56,10 @@ var onResult = function(result) {
        endMarker.setData("Routing Ends Here!"); 
        totalLength += section.summary.length;
        totalDuration += section.summary.duration;
-	      document.getElementById("cards-collector").innerHTML += '<div class="card"> <div class="content"><div class="header" id="summary-route">Cute Dog</div><div class="description"></div> </div></div>'
+	      document.getElementById("cards-collector").innerHTML += '<div class="card"> <div class="content"><div class="header" id="summary-route">Cute Dog</div><div class="description" id="route'+cardNum+'"></div> </div></div>'
 
        section.actions.forEach(action =>{
-         document.getElementsByClassName("description")[cardNum].innerHTML += `<br>`+ action.instruction;
+         document.getElementById("route"+cardNum+"").innerHTML += `<br>`+ action.instruction;
 
        });
 
@@ -73,13 +73,13 @@ var onResult = function(result) {
        // Set the map's viewport to make the whole route visible:
        map.getViewModel().setLookAtData({bounds: routeLine.getBoundingBox()});
 
-	      cardNum++;
+
 
   
       });
 
       document.getElementById("panel").innerHTML += `<p><b>`+'Route '+(result.routes.indexOf(route)+1) +' | Distance : '+ totalLength/1000 +' Km'+' | Duration : '+ totalDuration.toMMSS() + `</b></p><hr>`;
-      
+	    cardNum++;
       routeNum++;
     });
       
