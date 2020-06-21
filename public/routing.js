@@ -57,7 +57,7 @@ var onResult = function(result) {
        endMarker.setData("Routing Ends Here!"); 
        totalLength += section.summary.length;
        totalDuration += section.summary.duration;
-	      document.getElementById("cards-collector").innerHTML += '<div class="card"> <div class="content"><div class="header">Cute Dog</div><div class="description" id="route'+cardNum+'"></div> </div></div>'
+	      document.getElementById("cards-collector").innerHTML += '<div class="card"> <div class="content"><div class="header" id="route-detail'+routeNum+'"></div><div class="description" id="route'+cardNum+'"></div> </div></div>'
 
        section.actions.forEach(action =>{
          document.getElementById("route"+cardNum+"").innerHTML += `<br>`+ action.instruction;
@@ -76,7 +76,7 @@ var onResult = function(result) {
 	 cardNum++;
       });
 
-      document.getElementById("panel").innerHTML += `<p><b>`+'Route '+(result.routes.indexOf(route)+1) +' | Distance : '+ totalLength/1000 +' Km'+' | Duration : '+ totalDuration.toMMSS() + `</b></p><hr>`;
+      document.getElementById("route-detail"+routeNum+"").innerHTML += `<b>`+'Route '+(result.routes.indexOf(route)+1) +' | Distance : '+ totalLength/1000 +' Km'+' | Duration : '+ totalDuration.toMMSS() + `</b><hr>`;
 
       routeNum++;
     });
