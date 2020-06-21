@@ -34,7 +34,7 @@ var onResult = function(result) {
 
       let totalLength = 0; 
       let totalDuration = 0;
-
+	let cardNum = 0;
       let colors = ["#9400D3","#f461c3","#8B4513","black"]
       route.sections.forEach((section) => {
         // Create a linestring to use as a point source for the route line
@@ -57,9 +57,9 @@ var onResult = function(result) {
        totalLength += section.summary.length;
        totalDuration += section.summary.duration;
 	      document.getElementById("cards-collector").innerHTML += '<div class="card"> <div class="content"><div class="header" id="summary-route">Cute Dog</div><div class="description"></div> </div></div>'
-       
+
        section.actions.forEach(action =>{
-         document.getElementsByClassName("description")[routeNum].innerHTML += `<br>`+ action.instruction;
+         document.getElementsByClassName("description")[cardNum].innerHTML += `<br>`+ action.instruction;
 
        });
 
@@ -73,6 +73,7 @@ var onResult = function(result) {
        // Set the map's viewport to make the whole route visible:
        map.getViewModel().setLookAtData({bounds: routeLine.getBoundingBox()});
 
+	      cardNum++;
 
   
       });
