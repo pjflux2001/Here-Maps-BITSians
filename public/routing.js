@@ -29,12 +29,13 @@ var onResult = function(result) {
   console.log(result);
   if (result.routes.length) {
     let routeNum = 0;
+	  let cardNum = 0;
 
     result.routes.forEach(route =>{
 
       let totalLength = 0; 
       let totalDuration = 0;
-	let cardNum = 0;
+
       let colors = ["#9400D3","#f461c3","#8B4513","black"]
       route.sections.forEach((section) => {
         // Create a linestring to use as a point source for the route line
