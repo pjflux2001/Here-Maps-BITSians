@@ -56,9 +56,10 @@ var onResult = function(result) {
        endMarker.setData("Routing Ends Here!"); 
        totalLength += section.summary.length;
        totalDuration += section.summary.duration;
+	      document.getElementById("cards-collector").innerHTML += '<div class="card"> <div class="content"><div class="header" id="summary-route">Cute Dog</div><div class="description id="details"></div> </div></div>"
        
        section.actions.forEach(action =>{
-         document.getElementById("panel").innerHTML += `<br>`+ action.instruction;
+         document.getElementById("details").innerHTML += `<br>`+ action.instruction;
 
        });
 

@@ -11,6 +11,10 @@
         <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0" />
         <script src="creds.js"></script>
          <!-- new css -->
+	 <!-- semantic ui config-->
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+	 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=" crossorigin="anonymous"></script>
          <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
         <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript"></script>
         <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript"></script>
@@ -307,9 +311,8 @@
     <button style="vertical-align: middle; position: relative; inline-block;" onclick="route()"><span>Route</span></button>
     <div id="panel" style= "align-self: center; width: 98vw; height: 20vh; text-align: center;"><h2>Route Details</h2></div>
             
-
-        
-
+<div class="ui cards" id="cards-collector">
+</div>
     
     
     </body>
