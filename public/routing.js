@@ -18,7 +18,8 @@ var routingParameters = {
   departureTime:'2020-05-13T09:00:00',  // arrival and departure
   spans:'speedLimit,duration,streetAttributes,names' //speed limit value
 };
-  
+
+
 let startIcon = new H.map.Icon('start.png');
 
 let endIcon = new H.map.Icon('end.png');
@@ -42,9 +43,33 @@ var onResult = function(result) {
        let linestring = H.geo.LineString.fromFlexiblePolyline(section.polyline);
         
        // Create a polyline to display the route:
-       let routeLine = new H.map.Polyline(linestring, {
+       /* let routeLine = new H.map.Polyline(linestring, {
          style: { strokeColor: colors[result.routes.indexOf(route)], lineWidth: 5}
-       });
+       }); */
+       // Create an outline for the route polyline:
+var routeOutline = new H.map.Polyline(linestring, {
+  style: {
+    lineWidth: 10,
+    strokeColor: colors[result.routes.indexOf(route)],
+    lineTailCap: 'arrow-tail',
+    lineHeadCap: 'arrow-head'
+  }
+});
+// Create a patterned polyline:
+var routeArrows = new H.map.Polyline(linestring, {
+  style: {
+    lineWidth: 10,
+    fillColor: colors[result.routes.indexOf(route)],
+    strokeColor: 'rgba(255, 255, 255, 1)',
+    lineDash: [0, 2],
+    lineTailCap: 'arrow-tail',
+    lineHeadCap: 'arrow-head' }
+  }
+);
+// create a group that represents the route line and contains
+// outline and the pattern
+var routeLine = new H.map.Group();
+routeLine.addObjects([routeOutline, routeArrows]);
 
        // Create a marker for the start point:
        
@@ -83,6 +108,7 @@ var onResult = function(result) {
       
   }
 };
+
 
 
 var onError = function(error) {
