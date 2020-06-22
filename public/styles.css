@@ -9,7 +9,9 @@ body {
 #mapContainer > div > div:nth-child(0) > div > div {
 	width:99% !important;
 }
-
+.button {
+	margin:0.25em 0.25em 0 0;
+}
 @media only screen and (min-width: 1200px){
 body > div.ui.container{
     width: 1250px !important;
