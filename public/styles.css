@@ -12,6 +12,7 @@ body {
 .button {
 	margin:0.25em 0.25em 0 0!important;
 }
+//this is for fixing width of ui container
 @media only screen and (min-width: 1200px){
 body > div.ui.container{
     width: 1250px !important;
@@ -19,4 +20,11 @@ body > div.ui.container{
     margin-right: auto!important;
 }
 }
-
+//This is for maximising the nav bar to same ui container width
+@media only screen and (min-width: 1200px){
+body > div.ui.inverted.menu > div{
+    width: 1250px !important;
+    margin-left: auto!important;
+    margin-right: auto!important;
+}
+}
