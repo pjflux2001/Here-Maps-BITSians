@@ -6,3 +6,15 @@ body {
 	background: linear-gradient(to right, #86fde8, #acb6e5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+#mapContainer > div > div:nth-child(0) > div > div {
+	width:99% !important;
+}
+
+@media only screen and (min-width: 1200px){
+body > div.ui.container{
+    width: 1250px !important;
+    margin-left: auto!important;
+    margin-right: auto!important;
+}
+}
+
