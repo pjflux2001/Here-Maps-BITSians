@@ -14,8 +14,15 @@ function geocoderSearch(){
     }
     function onResult(result){
         console.log(result);
-        if(result.items.length>0)
-            map.addObject(new H.map.Marker(result.items[0].position));
+        if(result.items.length>0){
+            for(var i =0 ; i < result.items.length ; i++){
+            let mrk = new H.map.Marker(result.items[i].position);
+             map.addObject(mrk);
+             mrk.setData(result.items[i].title);
+        }
+        document.getElementById("status").innerHTML = result.items.length + " Results Found";
+    }
+            
         
     }
     if(loc!="")

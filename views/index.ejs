@@ -4,10 +4,6 @@
         <title>
         Here Maps : BITSians
         </title>
-            <script>
-            var foundArr = <%- JSON.stringify(foundArr) %>;
-             console.log(foundArr.length);
-         </script>
         <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0" />
         <script src="creds.js"></script>
          <!-- new css -->
@@ -240,6 +236,8 @@
             hospConfig.layers.landuse.hospital.draw.polygons.color = 'red';
 
             hospStyle.mergeConfig(hospConfig);
+
+            document.getElementById("status").innerHTML = "All Hospital layers highlighted successfully";
         }
         var str = "not set";
         var end = "not set";
@@ -306,6 +304,9 @@
         
         let hosptialIcon = new H.map.Icon('hospital.png');
         function adp(){
+            var foundArr = <%- JSON.stringify(foundArr) %>;
+             console.log(foundArr.length);
+            document.getElementById("status").innerHTML = "Processing Data Points . . .";
             for(i=0;i<331*map.getZoom();i++){
                 if(i!=4281){
                     
@@ -314,9 +315,11 @@
                 map.addObject(hospitalMarker);
                 hospitalMarker.setData("<h2>"+foundArr[i].HOSPITAL_NAME+"</h2><hr><b>Type : </b>"+foundArr[i].HOSPITAL_TYPE+"<br><b>Location</b> : "+foundArr[i].HQ_ADDRESS+", "+foundArr[i].HQ_CITY+", "+foundArr[i].STATE_NAME+" - "+foundArr[i].HQ_ZIP_CODE+"<br><b>No. of Licensed Beds : </b>"+foundArr[i].NUM_LICENSED_BEDS
 +"<br><b>No. of Staffed Beds</b> : "+foundArr[i].NUM_STAFFED_BEDS+"<br><b>No. of ICU Beds</b> : "+foundArr[i].NUM_ICU_BEDS+"<br><b>No. of Adult ICU Beds</b> : "+foundArr[i].ADULT_ICU_BEDS+"<br><b>No. of Pediatric ICU Beds</b> : "+foundArr[i].PEDI_ICU_BEDS+"<br><b>Bed Utilization Rate</b> : "+foundArr[i].BED_UTILIZATION+"<br><b>Average Ventilator Usage</b> : "+foundArr[i].AVG_VENTILATOR_USAGE+"<br><b>Potential Increase in Bed Capacity</b> : "+foundArr[i].Potential_Increase_In_Bed_Capac);
-                console.log("Data Pointed Added!");
+                 
                 }
             }
+            console.log("Data Points Added!");
+            document.getElementById("status").innerHTML = "Data Points added successfully";  
         }
 
         ClickListener(map);
@@ -334,7 +337,7 @@
     <script type="text/javascript" src="routing.js"></script>
     <button class="ui button" style="vertical-align: middle; position: relative;" onclick="highlightHospital()"><span>Highlight Hospitals</span></button>
     <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="adp()"><span>Add Data Points</span></button>
-    <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="geocoderSearch()"><span>Search your location here</span></button>
+    <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="geocoderSearch()"><span>Search</span></button>
     <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="geocodeAndSearch()"><span>Discover hospitals</span></button>
     <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="geocodeBrowse()"><span>Advanced Search</span></button>
     <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="setUpClickListener(map);"><span>Select START and END points of Route</span></button>
