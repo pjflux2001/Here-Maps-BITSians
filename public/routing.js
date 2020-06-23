@@ -1,6 +1,6 @@
 function route(){
-
-  document.getElementById("status").innerHTML = "Routing Completed!";
+  map.addLayer(defaultLayers.vector.normal.traffic);
+  document.getElementById("status").innerHTML = "Routing...";
   console.log(str);
    // Get an instance of the routing service version 8:
 var router = platform.getRoutingService(null, 8);
@@ -123,6 +123,6 @@ Number.prototype.toMMSS = function () {
 // the callback and an error callback function (called if a
 // communication error occurs):
 
-
+document.getElementById("status").innerHTML = "Routing Complete";
 router.calculateRoute(routingParameters, onResult, onError);
 }

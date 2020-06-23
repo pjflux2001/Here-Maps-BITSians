@@ -125,7 +125,7 @@
             'fill="white">.</text></svg>'; */
         
         let imgIcon = new H.map.Icon('robot.png');
-        //map.addLayer(defaultLayers.vector.normal.traffic);
+
         function getBrowserPosition(){
             if(navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(position => {
@@ -246,6 +246,7 @@
         function setUpClickListener(map) {
         // Attach an event listener to map display
         // obtain the coordinates and display in an alert box.
+            document.getElementById("status").innerHTML = "Select START and END points on the map";
             var cnt = 0;
             map.addEventListener('tap', fnc);
             function fnc (evt) {
@@ -277,7 +278,7 @@
             if(cnt==2){
                     
                     map.removeEventListener('tap', fnc);
-                    alert("Use ROUTE button to trace your path.");
+                    alert("Use ROUTE button to trace your path on the map");
             
             }
             //console.log('Clicked at ' + Math.abs(coord.lat.toFixed(4)) +
@@ -323,7 +324,7 @@
     <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="geocoderSearch()"><span>Search your location here</span></button>
     <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="geocodeAndSearch()"><span>Discover hospitals</span></button>
     <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="geocodeBrowse()"><span>Advanced Search</span></button>
-    <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="setUpClickListener(map);"><span>Select Start and End points on Map</span></button>
+    <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="setUpClickListener(map);"><span>Select START and END points of Route</span></button>
     <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="route()"><span>Route</span></button>
     <hr> 
 <div class="ui centered cards" id="cards-collector">

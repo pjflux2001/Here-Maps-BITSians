@@ -199,3 +199,9 @@ body > div > div.ui.fluid.two.column.centered.grid.menu{
     cursor:'hand';
     background: rgba(0,0,0,.95)!important;
 }
+
+#status{
+	text-shadow: 2.5px 2.5px 10px red;
+	letter-spacing: 2.5px;
+	word-spacing: 2.5px;
+}
