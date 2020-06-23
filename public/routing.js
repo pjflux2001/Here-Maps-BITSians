@@ -59,7 +59,7 @@ var routeArrows = new H.map.Polyline(linestring, {
   style: {
     lineWidth: 10,
     fillColor: colors[result.routes.indexOf(route)],
-    strokeColor: 'rgba(255, 255, 255, 1)',
+    strokeColor: 'rgb(255, 255, 255)',
     lineDash: [0, 2],
     lineTailCap: 'arrow-tail',
     lineHeadCap: 'arrow-head' }
@@ -82,7 +82,10 @@ routeLine.addObjects([routeOutline, routeArrows]);
        totalLength += section.summary.length;
        totalDuration += section.summary.duration;
 	      document.getElementById("cards-collector").innerHTML += '<div class="card"> <div class="content"><div class="header" id="route-detail'+routeNum+'"></div><div class="description" id="route'+cardNum+'"></div> </div></div>'
-
+        document.getElementById("route-detail"+routeNum).style.backgroundColor =  colors[routeNum] ;
+       document.getElementById("route-detail"+routeNum).style.color =  "white" ;
+       document.getElementById("route"+routeNum).style.backgroundColor =  colors[routeNum] ;
+       document.getElementById("route"+routeNum).style.color =  "white" ;
        section.actions.forEach(action =>{
          document.getElementById("route"+cardNum+"").innerHTML += `<br>`+ action.instruction;
 
