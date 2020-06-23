@@ -64,7 +64,7 @@ function geocodeAndSearch(){
 }
 
 function geocodeBrowse(){
-    var cat = prompt("Mention category id(s) to be included, seperated by commas : " + '\n' + "800-8000-0000 : Hospital or Health Care Facility" + '\n' + "800-8000-0154 : Dentist-Dental Office" + '\n' +"800-8000-0155 : Family-General Practice Physicians" + '\n' + "800-8000-0156 : Psychiatric Institute" + '\n' + "800-8000-0157 : Nursing Home" + '\n' + "800-8000-0158 : Medical Services-Clinics" + '\n' + "800-8000-0159 : Hospital" + '\n' + "800-8000-0161 : Optical" + '\n' + "800-8000-0162	: Veterinarian" + '\n' + "800-8000-0325 : Hospital Emergency Room" + '\n' + "800-8000-0340 : Therapist" + '\n' + "800-8000-0341 : Chiropractor" + '\n' + "800-8000-0367 : Blood Bank");
+    var cat = prompt("Mention category id(s) to be included, seperated by commas : " + '\n' + "800-8000-0000 : Hospital or Health Care Facility" + '\n' + "800-8000-0154 : Dentist-Dental Office" + '\n' +"800-8000-0155 : Family-General Practice Physicians" + '\n' + "800-8000-0156 : Psychiatric Institute" + '\n' + "800-8000-0157 : Nursing Home" + '\n' + "800-8000-0158 : Medical Services-Clinics" + '\n' + "800-8000-0159 : Hospital" + '\n' + "800-8000-0161 : Optical" + '\n' + "800-8000-0162 : Veterinarian" + '\n' + "800-8000-0325 : Hospital Emergency Room" + '\n' + "800-8000-0340 : Therapist" + '\n' + "800-8000-0341 : Chiropractor" + '\n' + "800-8000-0367 : Blood Bank");
     let geocodeParam ={
         name: 'hospitals',
         at: map.getCenter().lat +',' + map.getCenter().lng, //use this for facilities
