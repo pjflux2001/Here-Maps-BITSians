@@ -100,7 +100,7 @@ routeLine.addObjects([routeOutline, routeArrows]);
 	 cardNum++;
       });
 
-      document.getElementById("route-detail"+routeNum+"").innerHTML += `<b>`+'Route '+(result.routes.indexOf(route)+1) +' | Distance : '+ totalLength/1000 +' Km'+' | Duration : '+ totalDuration.toMMSS() + `</b><hr>`;
+      document.getElementById("route-detail"+routeNum+"").innerHTML += `<b>`+'Route '+(result.routes.indexOf(route)+1) +'<br>Distance : '+ totalLength/1000 +' Km'+'<br>Duration : '+ totalDuration.toMMSS() + `</b><hr>`;
 
       routeNum++;
     });
