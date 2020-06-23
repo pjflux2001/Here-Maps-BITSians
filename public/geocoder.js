@@ -26,33 +26,37 @@ function geocoderSearch(){
         
     }
     if(loc!="")
-        alert("Check console for result!");
-    
-    geocoder.geocode(geocodeParam,onResult, alert);
+        geocoder.geocode(geocodeParam,onResult, alert);
         
         
 }
 
 function geocodeAndSearch(){
-        
+    var rad = prompt("Define Search Radius (in meters) : ");
     let geocodeParam ={
         q: 'hospitals',
-        in: 'circle:18.6,73.7;r=3000' //hard-coded - 3km
+        in: 'circle:'+ map.getCenter().lat +',' + map.getCenter().lng +';r='+rad
                 
     }
     function onResult(result){
         console.log(result);
-        if(result.items.length>0)
-            map.addObject(new H.map.Marker(result.items[0].position));
+        if(result.items.length>0){
+            for(var i =0 ; i < result.items.length ; i++){
+                var mkr = new H.map.Marker(result.items[i].position);
+                map.addObject(mkr);
+                mkr.setData(result.items[i].title + ' (' + result.items[i].distance +' m)');
+            }
+            
+        }
+        ui.addBubble(new H.ui.InfoBubble(result.items[0].position,{
+            content: result.items[0].title + ' (' + result.items[0].distance +' m)'
+        }));
+        document.getElementById("status").innerHTML = result.items.length + " Hospitals Found in " + rad + " meters";        
         //info bubble
-        result.items.forEach(item =>{
-            ui.addBubble(new H.ui.InfoBubble(item.position,{
-                content: item.title + ' (' + item.distance +' m)'
-            }));
-        });
+        
+       
     }
 
-        alert("Check console for result!");
     
     geocoder.discover(geocodeParam,onResult, alert);
         

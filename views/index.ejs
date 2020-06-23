@@ -126,7 +126,7 @@
             if(navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(position => {
                     console.log(position.coords);
-                    let browserPosition = {lat: position.coords.latitude , lng: position.coords.longitude };
+                    var browserPosition = {lat: position.coords.latitude , lng: position.coords.longitude };
                     // Create a marker:
                     var icon = new H.map.Icon('gps.png');
                     let marker = new H.map.Marker(browserPosition, {icon: icon});
