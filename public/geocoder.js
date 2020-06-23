@@ -85,21 +85,22 @@ function geocodeBrowse(){
     geocoder.browse(geocodeParam,onResult, alert);
 }
 
-function revGeocode(){
-    var lat = prompt("Enter your latitude");
-    var lon = prompt("Enter your longiude");
+function revGeocode(lat, lon){
     var sol = lat + "," + lon;
     let geocodeParam ={
         at: sol
                 
     }
+
     function onResult(result){
         console.log(result);
-        
+        if(result.items.length>0){
+            document.getElementById("status").innerHTML = result.items[0].title;
+        }else if(result.items.length==0){
+            document.getElementById("status").innerHTML = "Here Maps : BITSians";
+        }
     }
-
-    alert("Check console for result!");
-    
+   
     geocoder.reverseGeocode(geocodeParam,onResult, alert);
 
 }
