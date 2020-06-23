@@ -64,34 +64,33 @@ function geocodeAndSearch(){
 }
 
 function geocodeBrowse(){
+    var cat = prompt("Mention category id(s) to be included, seperated by commas : " + '\n' + "800-8000-0000 : Hospital or Health Care Facility" + '\n' + "800-8000-0154 : Dentist-Dental Office" + '\n' +"800-8000-0155 : Family-General Practice Physicians" + '\n' + "800-8000-0156 : Psychiatric Institute" + '\n' + "800-8000-0157 : Nursing Home" + '\n' + "800-8000-0158 : Medical Services-Clinics" + '\n' + "800-8000-0159 : Hospital" + '\n' + "800-8000-0161 : Optical" + '\n' + "800-8000-0162	: Veterinarian" + '\n' + "800-8000-0325 : Hospital Emergency Room" + '\n' + "800-8000-0340 : Therapist" + '\n' + "800-8000-0341 : Chiropractor" + '\n' + "800-8000-0367 : Blood Bank");
     let geocodeParam ={
         name: 'hospitals',
-        at: '18.6,73.7', //use this for facilities
-        categories: '800-8000-0000,800-8000-0156,800-8000-0158,800-8000-0159', 
+        at: map.getCenter().lat +',' + map.getCenter().lng, //use this for facilities
+        categories: cat, 
         limit: 5
                 
     }
     function onResult(result){
         console.log(result);
-        if(result.items.length>0)
-            map.addObject(new H.map.Marker(result.items[0].position));
-        
-            //info bubble
-        var i =0;
-        while(result.items[i].distance < 6000){
-            result.items.forEach(item =>{
+        if(result.items.length>0){
+            for(var i =0 ; i < result.items.length ; i++){
+                var mkrk = new H.map.Marker(result.items[i].position);
+                map.addObject(mkrk);
+                mkrk.setData(result.items[i].title + ' (' + result.items[i].distance +' m)');
+            }
             
-                ui.addBubble(new H.ui.InfoBubble(item.position,{
-                    content: item.title + ' (' + item.distance +' m)'
-                }));
-            });
-            i = i+1;
         }
         
+       ui.addBubble(new H.ui.InfoBubble(result.items[0].position,{
+            content: result.items[0].title + ' (' + result.items[0].distance +' m)'
+        }));
+        document.getElementById("status").innerHTML = result.items.length + " Suitable Medical Units Found Around You";
         
     }
 
-        alert("Check console for result!");
+    
     
     geocoder.browse(geocodeParam,onResult, alert);
 }
