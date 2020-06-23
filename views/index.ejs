@@ -13,8 +13,6 @@
          <!-- new css -->
 	 <!-- semantic ui config-->
 	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
-	 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-	 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=" crossorigin="anonymous"></script>
          <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
         <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript"></script>
         <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript"></script>
@@ -26,17 +24,30 @@
     </head>
     <body>
     
-	<div class="ui inverted menu">
-    		<div class="ui container">
-  			<a class="active item">Home</a>
-  			<a class="item">About</a>
-			<a class="item">Technology</a>
-			<a class="item">Contact</a>
-        		<div class="ui inverted fluid two column centered grid menu">
-        		<span class="item fluid" id="status" style="text-align: center">Here Maps : BITSians</span></div>
-        		<a class="item">Dark Mode</a>
-    		</div>
+<div class="ui pointing menu stackable">
+
+  <a class="active item header">
+    Home
+  </a>
+  <a class="item">
+    About
+  </a>
+  <a class="item">
+    Technology
+  </a>
+    <a class="item">
+    Contact
+  </a>
+    <div class="ui fluid two column centered grid menu">
+      <span class="fluid item" id="status">Here Maps : BITSians</span></div>
+    <a class="item">Dark Mode</a>  
+	<div class="hamburger">
+    	    <span class="hamburger-bun"></span>
+	    <span class="hamburger-patty"></span>
+	    <span class="hamburger-bun"></span>
+
 	</div>
+</div>
 	
 	<div class="ui center aligned container">
         <div id="mapContainer" style="width: 100%; height: 80vh; align-self: center; background-color: aqua;">
@@ -328,6 +339,9 @@
     <hr> 
 <div class="ui centered cards" id="cards-collector">
 </div>
+	<script src="design.js"></script>
+	 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=" crossorigin="anonymous"></script>
         </div> 
     </body>
 </html>
