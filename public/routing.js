@@ -37,7 +37,7 @@ var onResult = function(result) {
       let totalDuration = 0;
 
       let colors = ["#9400D3","#f461c3","#8B4513","#000000"]
-      let card_colors = ["#9400D3aa","#f461c3cc","#8B4513aa","#000000aa"]
+      let card_colors = ["#9400D3aa","#f461c3dd","#8B4513aa","#000000aa"]
       route.sections.forEach((section) => {
         // Create a linestring to use as a point source for the route line
        let linestring = H.geo.LineString.fromFlexiblePolyline(section.polyline);
