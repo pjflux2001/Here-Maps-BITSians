@@ -38,8 +38,18 @@ app.get("/",function(req,res){
 		} else {
 			res.render("index",{foundArr:foundObj});
 		}
-	})
+	}).limit(100);
 	});
+
+app.get("/about",function(req,res){
+	res.render("about");
+});
+app.get("/technology",function(req,res){
+	res.render("technology");
+});
+app.get("/contact",function(req,res){
+	res.render("contact");
+});
 
 //LISTENER PROCESS
 var port = process.env.PORT || 31000
