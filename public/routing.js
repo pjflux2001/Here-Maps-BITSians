@@ -36,7 +36,8 @@ var onResult = function(result) {
       let totalLength = 0; 
       let totalDuration = 0;
 
-      let colors = ["#9400D3","#f461c3","#8B4513","black"]
+      let colors = ["#9400D3","#f461c3","#8B4513","#000000"]
+      let card_colors = ["#9400D3aa","#f461c3aa","#8B4513aa","#000000aa"]
       route.sections.forEach((section) => {
         // Create a linestring to use as a point source for the route line
        let linestring = H.geo.LineString.fromFlexiblePolyline(section.polyline);
@@ -82,9 +83,9 @@ routeLine.addObjects([routeOutline, routeArrows]);
        totalLength += section.summary.length;
        totalDuration += section.summary.duration;
 	      document.getElementById("cards-collector").innerHTML += '<div class="card"> <div class="content"><div class="header" id="route-detail'+routeNum+'"></div><div class="description" id="route'+cardNum+'"></div> </div></div>'
-        document.getElementById("route-detail"+routeNum).style.backgroundColor =  colors[routeNum] ;
+        document.getElementById("route-detail"+routeNum).style.backgroundColor =  card_colors[routeNum] ;
        document.getElementById("route-detail"+routeNum).style.color =  "white" ;
-       document.getElementById("route"+routeNum).style.backgroundColor =  colors[routeNum] ;
+       document.getElementById("route"+routeNum).style.backgroundColor =  card_colors[routeNum] ;
        document.getElementById("route"+routeNum).style.color =  "white" ;
        section.actions.forEach(action =>{
          document.getElementById("route"+cardNum+"").innerHTML += `<br>`+ action.instruction;
