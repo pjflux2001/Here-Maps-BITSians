@@ -35,3 +35,4 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme',themeStylesheet.href)  
     })
 })
+
