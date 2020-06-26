@@ -1,0 +1,16 @@
+body {
+    color: white;
+    background-color: black;
+}
+p{
+    color: white;
+}
+body > div.ui.main.text.container > div > div:nth-child(1) > div > a {
+    color:white !important;
+}
+body > div.ui.main.text.container > div > div:nth-child(2) > div > a {
+    color:white !important;
+}
+body > div.ui.main.text.container > h1 {
+    color: white;
+}
