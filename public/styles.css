@@ -206,17 +206,21 @@ body > div > div.ui.fluid.two.column.centered.grid.menu{
 body > div.ui.center.aligned.segment.masthead > div > h1{
 	font-size: 3em;
 	font-weight: 800;
+	color: antiquewhite;
 }
 .pretty {
 	font-family: 'Lato','Helvetica Neue',Arial,Helvetica,sans-serif;
+	color: aliceblue;
 
 }
 .library {
+	color: antiquewhite;
     display: block;
     font-size: 1.75em;
     font-weight: bold;
 }
 .masthead{
+
 	height: 55vh;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -234,3 +238,9 @@ body > div.ui.center.aligned.segment.masthead > div > h1{
     -ms-flex-pack: center;
     justify-content: center;
 }
+#cover{
+	background-image: url('https://wallpaperplay.com/walls/full/9/5/e/13971.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+

@@ -17,3 +17,9 @@ p,hr,h1,h3 {
 .dark {
     color: white !important;
 }
+body > div.ui.text.container > h2 > div > div{
+    color: aliceblue !important;
+}
+.content{
+    color: white !important;
+}
