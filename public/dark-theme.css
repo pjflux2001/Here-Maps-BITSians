@@ -1,9 +1,6 @@
-body {
+body,p,span,hr {
     color: white;
     background-color: black;
-}
-p{
-    color: white;
 }
 body > div.ui.main.text.container > div > div:nth-child(1) > div > a {
     color:white !important;
