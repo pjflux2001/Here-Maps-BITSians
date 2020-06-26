@@ -203,3 +203,34 @@ body > div > div.ui.fluid.two.column.centered.grid.menu{
 	letter-spacing: 2.5px;
 	word-spacing: 2.5px;
 }
+body > div.ui.center.aligned.segment.masthead > div > h1{
+	font-size: 3em;
+	font-weight: 800;
+}
+.pretty {
+	font-family: 'Lato','Helvetica Neue',Arial,Helvetica,sans-serif;
+
+}
+.library {
+    display: block;
+    font-size: 1.75em;
+    font-weight: bold;
+}
+.masthead{
+	height: 55vh;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    min-height: 600px;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
