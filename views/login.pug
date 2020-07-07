@@ -1,3 +1,5 @@
+include ./partials/header.ejs
+
 // Mixins
 mixin input(type, label)
   .input-container
@@ -29,3 +31,4 @@ mixin button(text)
       +input('password', 'Repeat Password')
       +button('Next')
 
+include ./partials/footer.ejs
