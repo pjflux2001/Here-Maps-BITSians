@@ -2,6 +2,7 @@ var express = require("express"),
 	app = express(),
 	bodyParser = require("body-parser"),
 	mongoose = require("mongoose"),
+	pug = require("pug"),
 	Esri = require("./models/esri.js")
 
 //MONGO CONFIGRATION
@@ -22,6 +23,7 @@ mongoose.connect(uri,{
 //==========================
 
 app.set("view engine","ejs");
+app.set("view engine","pug");
 //setting view engine to ejs
 app.use(express.static(__dirname + '/public'));
 //serving custom resources
@@ -32,25 +34,25 @@ app.use(bodyParser.json());
 
 //Serving HomePage
 app.get("/",function(req,res){
-	res.render("about");
+	res.render("about.ejs");
 });
 app.get("/map",function(req,res){
 	Esri.find({},function(err,foundObj){
 		if(err){
 			console.log(err);
 		} else {
-			res.render("index",{foundArr:foundObj});
+			res.render("index.ejs",{foundArr:foundObj});
 		}
 	}).limit(100);
 	});
 app.get("/technology",function(req,res){
-	res.render("technology");
+	res.render("technology.ejs");
 });
 app.get("/contact",function(req,res){
-	res.render("contact");
+	res.render("contact.ejs");
 });
 app.get("/login",function(req,res){
-	res.render("login");
+	res.render("login.pug");
 });
 
 //LISTENER PROCESS
