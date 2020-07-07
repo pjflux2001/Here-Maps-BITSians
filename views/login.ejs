@@ -1,0 +1,68 @@
+<%- include("./partials/header") %>
+
+<head>
+	<title>Login Registration form design</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+    <link rel = "stylesheet" href="loginstyle.css">
+</head>
+	<body>
+       <div  class = "login-page">
+			<div class = "form">
+				<form class = "registration-form">   
+					
+					<input type="text" placeholder="User name"/>
+					
+				
+					<input type="text" placeholder="Password"/>
+				
+				
+					<input type="text" placeholder="Email ID"/>
+				
+					<button class="button">Create</button>
+					<p class="message" id="login-interface">Already Registered? <a href="#"> Login </a></p>
+				</form>
+
+				<form class="login-form">
+				
+					<input type="text" placeholder="User name"/>
+				
+				
+					<input type="text" placeholder="Password"/>
+				
+					<button>Login</button>
+					<p id="forgot-password"><a href="#">Forgot Password</a></p>
+					<p class="message" id="register-interface">Not Registered? <a href="#"> Register </a></p>
+				</form>
+
+				
+				<form class="forgot-interface">   
+					<input type="text" placeholder="Email ID"/>
+					<button class="button">Forgot Password</button>
+					
+				</form>
+			</div>
+			
+			<script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+			<script>
+				$(document).ready(function(){
+					$('.forgot-interface').hide();
+				})
+				$('#register-interface a').click(function(){
+					$('.login-form').hide(1000);
+					$('.registration-form').show(1000);
+					
+				});
+				$('#login-interface a').click(function(){
+					$('.registration-form').hide(1000);
+					$('.login-form').show(1000);
+					
+				});
+				$('#forgot-password a').click(function(){
+					$('.login-form').hide(1000);
+					$('.forgot-interface').show();
+				})
+			</script>
+       </div>
+
+	</body>
+

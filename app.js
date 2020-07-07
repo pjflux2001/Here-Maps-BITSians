@@ -52,7 +52,7 @@ app.get("/contact",function(req,res){
 	res.render("contact.ejs");
 });
 app.get("/login",function(req,res){
-	res.render("login.pug");
+	res.render("login.ejs");
 });
 
 //LISTENER PROCESS

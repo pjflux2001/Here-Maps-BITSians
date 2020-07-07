@@ -254,8 +254,14 @@ body > div.ui.center.aligned.segment.masthead > div > h1{
     justify-content: center;
 }
 #cover{
-	background-image: url('https://wallpaperplay.com/walls/full/9/5/e/13971.jpg');
+	/*background-image:url('https://www.dphealthnow.com/wp-content/uploads/2016/05/blue-medical-background-1.jpg');*/
+	/*background-image: url('https://healthtechmagazine.net/sites/healthtechmagazine.net/files/styles/cdw_hero/public/articles/%5Bcdw_tech_site%3Afield_site_shortname%5D/201810/HET_Q418_EdLetter-HERO.jpg?itok=zSAInqEg');*/
+	/*background-image:url('https://wallpaperplay.com/walls/full/9/5/e/13971.jpg');*/
+	background-image: url('https://images.squarespace-cdn.com/content/v1/592c6821d482e9898c72d7d3/1533773281442-1DHFKHWELY6OROXJJ5OC/ke17ZwdGBToddI8pDm48kCurl7xsCVdN09-BC3yacVoUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKca6EWiN-QmYyWPTJTg79O__5GPghVJDUwaft6EaC2SwI-L1n5dDK_g2cKn1s7GrJc/Background.png?format=2500w');
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
 
+.form .registration-form{
+	display : none;
+}
