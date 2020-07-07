@@ -49,6 +49,9 @@ app.get("/technology",function(req,res){
 app.get("/contact",function(req,res){
 	res.render("contact");
 });
+app.get("/login",function(req,res){
+	res.render("login");
+});
 
 //LISTENER PROCESS
 var port = process.env.PORT || 31000
