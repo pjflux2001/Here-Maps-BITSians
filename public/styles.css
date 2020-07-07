@@ -6,7 +6,15 @@
 .button {
 	margin:0.25em 0.25em 0 0!important;
 }
-
+/*========== Margin fix for navbar ==========*/
+body > div.ui.pointing.menu.stackable {
+	margin-bottom:0;
+}
+#cover {
+	margin-top:0;
+}
+/* end of margin fix */
+/* ======== default semantic container width changed */
 @media only screen and (min-width: 1200px){
 #homepage-container{
     width: 1250px !important;
@@ -22,7 +30,7 @@ src: url("fonts/fontawesome-webfont.eot");
 @media (prefers-color-scheme: dark) {
     /* all your styles for dark mode here */
 }
-/* SOME OTHER CSS */
+/*===========Hamburger Drop Down CSS============= */
 .hamburger{
 	display:none
 }

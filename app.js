@@ -32,6 +32,9 @@ app.use(bodyParser.json());
 
 //Serving HomePage
 app.get("/",function(req,res){
+	res.render("about");
+});
+app.get("/map",function(req,res){
 	Esri.find({},function(err,foundObj){
 		if(err){
 			console.log(err);
@@ -40,10 +43,6 @@ app.get("/",function(req,res){
 		}
 	}).limit(100);
 	});
-
-app.get("/about",function(req,res){
-	res.render("about");
-});
 app.get("/technology",function(req,res){
 	res.render("technology");
 });
