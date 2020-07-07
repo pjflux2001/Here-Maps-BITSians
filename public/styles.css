@@ -14,6 +14,13 @@ body > div.ui.pointing.menu.stackable {
 	margin-top:0;
 }
 /* end of margin fix */
+/* ============Login card margin=============*/
+.login-container{
+	margin:5vh;
+	
+}	
+
+
 /* ======== default semantic container width changed */
 @media only screen and (min-width: 1200px){
 #homepage-container{

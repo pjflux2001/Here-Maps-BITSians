@@ -2,33 +2,43 @@ include ./partials/header.ejs
 
 // Mixins
 mixin input(type, label)
-  .input-container
-    input(type='#{type}' id='#{label}' required)
-    label(for='#{label}')=label
+    label(for='#{label}')=label    
+    input(type='#{type}' id='#{label}' class="ui small input" required)
     .bar
 mixin button(text)
-  .button-container
-    button
+    button(class="ui mini button")
       span=text
   
-.container
-  .card
-  .card
-    h1.title Login
-    form
-      +input('text', 'Username')
-      +input('password', 'Password')
+.ui.container.login-container
+  .ui.card.centered.login-card
+    .content
+      i(class="right floated user md icon")
+      .header Login
+    .content  
+      form(class="ui form")
+        .field
+          +input('text', 'Username')
+        .field
+          +input('password', 'Password')
+        .extra.content
+          a(href='#') Forgot your password?
+
       +button('Go')
-      .footer
-        a(href='#') Forgot your password?
-  .card.alt
-    .toggle
-    h1.title Register
-      .close
-    form
-      +input('text', 'Username')
-      +input('password', 'Password')
-      +input('password', 'Repeat Password')
+        
+.ui.container.login-container  
+  .ui.card.centered.login-card
+    .content
+      .header Register
+    .content  
+      form(class="ui form")
+        .field
+          +input('text', 'Username')
+        .field
+          +input('password', 'Password')
+        .field
+          +input('password', 'Repeat Password')
+        br  
       +button('Next')
+
 
 include ./partials/footer.ejs
