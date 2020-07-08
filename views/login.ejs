@@ -3,41 +3,43 @@
 <head>
 	<title>Login Registration form design</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
-    <link rel = "stylesheet" href="loginstyle.css">
+	<link rel = "stylesheet" href="loginstyle.css">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 	<body>
-       <div  class = "login-page">
+       <div id="login_div" class = "login-page">
 			<div class = "form">
 				<form class = "registration-form">   
 					
-					<input type="text" placeholder="User name"/>
+					<input type="text" placeholder="Email" id="email_field1" />
 					
 				
-					<input type="text" placeholder="Password"/>
+					<input type="text" placeholder="Password" id="password_field1"/>
 				
 				
-					<input type="text" placeholder="Email ID"/>
+					<input type="text" placeholder="Retype Password" id="password_field"/>
 				
-					<button class="button">Create</button>
+					<button class="button" title="Sign Up" onclick="create_account()">Create</button>
 					<p class="message" id="login-interface">Already Registered? <a href="#"> Login </a></p>
 				</form>
 
 				<form class="login-form">
 				
-					<input type="text" placeholder="User name"/>
+					<input type="text" placeholder="Email" id="email_field2"/>
 				
 				
-					<input type="text" placeholder="Password"/>
+					<input type="text" placeholder="Password" id="password_field2"/>
 				
-					<button>Login</button>
+					<button onclick="login()" title="Login">Login</button>
 					<p id="forgot-password"><a href="#">Forgot Password</a></p>
 					<p class="message" id="register-interface">Not Registered? <a href="#"> Register </a></p>
 				</form>
 
 				
 				<form class="forgot-interface">   
-					<input type="text" placeholder="Email ID"/>
-					<button class="button">Forgot Password</button>
+					<input type="text" placeholder="Email ID" id="email_field3"/>
+					<button class="button" title="Reset Password" onclick="forgot_password()">Forgot Password</button>
 					
 				</form>
 			</div>
@@ -62,7 +64,240 @@
 					$('.forgot-interface').show();
 				})
 			</script>
-       </div>
+	   </div>
+	   
+
+	   <!--logout & user div-->
+  <div id="user_div" class="loggedin-div card" style="margin: auto; width: 50%; border: 2px dotted black; padding: 25px;">
+    <h3>Welcome!</h3>
+    <p id="user_para">You're logged in.</p>
+    <button type="button" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="right" title="Logout"  onclick="logout()">Logout</button>
+    <br>
+    <button type="button" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="right" title="Send Verification Email"  id="verify_btn" onclick="send_verification()"> Send Verification Email</button>
+    <br>
+    <button type="button" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="right" title="Change Password" onclick="change_pass()"> Change Password </button>
+    <br>
+    <button type="button" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="right" title="Delete Account"  onclick="deleteacc()">Delete Account</button>
+  </div>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+	 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyChax-RIyl8an4nKJA0XLdIc8CyU3jeGgY",
+    authDomain: "here-maps-bitsians.firebaseapp.com",
+    databaseURL: "https://here-maps-bitsians.firebaseio.com",
+    projectId: "here-maps-bitsians",
+    storageBucket: "here-maps-bitsians.appspot.com",
+    messagingSenderId: "517005193635",
+    appId: "1:517005193635:web:846d53aebc789427b0ea16"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
 
 	</body>
-
+	<script>
+		function writeUserData(user) {
+    firebase.database().ref('users/' + user.uid).set({
+      email: user.email
+    });
+  }
+  
+  
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+  
+      document.getElementById("user_div").style.display = "block";
+      document.getElementById("login_div").style.display = "none";
+      document.getElementById("todo").style.display = "block";
+      document.getElementById("user").style.display = "block";
+          
+      currentUser = user;
+      writeUserData(user);
+  
+  
+      if(user != null){
+  
+        var email_id = user.email;
+        var email_verfied = user.emailVerified;
+  
+        if(email_verfied){
+          document.getElementById("verify_btn").style.display = "none";
+        }else{
+          document.getElementById("verify_btn").style.display = "block";
+        }
+        document.getElementById("user_para").innerHTML = "User : " + email_id + "<br> Verfied : " + email_verfied;
+  
+  
+      }
+  
+    } else {
+      // No user is signed in.
+  
+      document.getElementById("user_div").style.display = "none";
+      document.getElementById("login_div").style.display = "block";
+  
+      document.getElementById("todo").style.display = "none";
+      document.getElementById("user").style.display = "none";
+  
+  
+    }
+  });
+  
+  
+  
+  
+  
+  function login(){
+  
+    var userEmail = document.getElementById("email_field2").value;
+    var userPass = document.getElementById("password_field2").value;
+  
+    firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+  
+      window.alert("Error : " + errorMessage);
+  
+      // ...
+    });
+  
+  }
+  
+  
+function create_account(){
+  
+    var userEmail = document.getElementById("email_field1").value;
+    var userPass = document.getElementById("password_field1").value;
+  
+    firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+  
+      window.alert("Error : " + errorMessage);
+    });
+  
+  }
+  
+  function send_verification(){
+  
+    var user = firebase.auth().currentUser;
+  
+    user.sendEmailVerification().then(function() {
+      // Email sent.
+      window.alert("Verification Sent! Check your email!");
+    }).catch(function(error) {
+      // An error happened.
+      window.alert("Err!");
+    });
+    
+  
+  
+  }
+  
+  function forgot_password(){
+  
+    var userEmail = document.getElementById("email_field3").value;
+    
+    var auth = firebase.auth();
+    
+  var emailAddress = userEmail;
+  
+  auth.sendPasswordResetEmail(emailAddress).then(function() {
+    // Email sent.
+    window.alert("Password reset link has been generated!");
+  }).catch(function(error) {
+    // An error happened.
+    window.alert("Err!");
+  });
+  
+  }
+  
+  
+  function deleteacc(){
+  
+    var rand = Math.round(Math.random()*100000);
+    if(window.prompt("Type the number to confirm \n " + "\t\t" + rand) == rand)
+    {
+      var user = firebase.auth().currentUser;
+      var userProvidedPassword = window.prompt("Re-enter your Password");
+      var credential = firebase.auth.EmailAuthProvider.credential(
+        user.email, 
+        userProvidedPassword
+    );
+  
+  // Prompt the user to re-provide their sign-in credentials
+  
+  user.reauthenticateWithCredential(credential).then(function() {
+    // User re-authenticated.
+  }).catch(function(error) {
+    // An error happened.
+  });
+  
+  user.delete().then(function() {
+    // User deleted.
+    window.alert("User deleted");
+  }).catch(function(error) {
+    // An error happened.
+    window.alert("User NOT deleted!");
+  });
+  
+  
+    }else{
+      window.alert("Err! Please type "+rand);
+    }
+    
+  }
+  
+  function change_pass(){
+  
+  
+  var user = firebase.auth().currentUser;
+      var userProvidedPassword = window.prompt("Enter your old Password : ");
+      var credential = firebase.auth.EmailAuthProvider.credential(
+        user.email, 
+        userProvidedPassword
+    );
+  
+  // Prompt the user to re-provide their sign-in credentials
+  
+  user.reauthenticateWithCredential(credential).then(function() {
+    // User re-authenticated.
+      var user = firebase.auth().currentUser;
+    var newPassword = window.prompt("Enter your new Password : ");
+  
+    user.updatePassword(newPassword).then(function() {
+      // Update successful.
+      window.alert("Password Updated!");
+    }).catch(function(error) {
+      // An error happened.
+      window.alert("Password NOT Updated!");
+    });
+    
+  }).catch(function(error) {
+    // An error happened.
+    window.alert("Password NOT Updated!");
+  });
+  
+  }
+  
+  
+  function logout(){
+    firebase.auth().signOut();
+  }
+  
+  function addcab(h){
+    firebase.database().ref('cabs/' + h.id).set(h);
+  }
+  
+  	</script>
+	<%- include("./partials/footer") %>
