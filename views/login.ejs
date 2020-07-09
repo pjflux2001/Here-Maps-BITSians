@@ -1,35 +1,79 @@
 <%- include("./partials/header") %>
 
 <head>
+  <style>
+    h1 { 
+      color: #FFFFFF;
+     }
+
+     .inputWithIcon input[type=text]{
+      padding-left: 40px;
+    }
+
+       .inputWithIcon{
+        position: relative;
+       }
+
+       .inputWithIcon i{
+        position: absolute;
+        left: 0;
+        top: 8px;
+        padding: 11px 10px;
+        transition: 1s;
+       }
+
+       .inputWithIcon input[type=text]:focus + i{
+        color:blue;
+       }
+
+  </style>
 	<title>Login Registration form design</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
 	<link rel = "stylesheet" href="loginstyle.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet"
+  href= 
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 	<body>
        <div id="login_div" class = "login-page">
 			<div class = "form">
+        
 				<form class = "registration-form">   
+					<h1> REGISTER</h1>
+					<div class="inputWithIcon">
+            <input type="text" placeholder="user name"/> 
+           <i class="fa fa-user fa-lg fa-fu" aria-hidden="true"></i>
+         </div>
 					
-					<input type="text" placeholder="Email" id="email_field1" />
-					
 				
-					<input type="text" placeholder="Password" id="password_field1"/>
+         <div class="inputWithIcon">
+          <input type="text"  placeholder="password" minlength="8" required/> 
+         <i class="fa fa-key fa-lg fa-fu" aria-hidden="true"></i>
+       </div>
 				
-				
-					<input type="text" placeholder="Retype Password" id="password_field"/>
+       <div class="inputWithIcon">
+        <input type="text"  placeholder="Retype password"/> 
+       <i class="fa fa-key fa-lg fa-fu" aria-hidden="true"></i>
+     </div>
 				
 					<button class="button" title="Sign Up" onclick="create_account()">Create</button>
 					<p class="message" id="login-interface">Already Registered? <a href="#"> Login </a></p>
 				</form>
 
 				<form class="login-form">
+          <h1> LOGIN</h1>
+					<div class="inputWithIcon">
+            <input type="text" placeholder="user name"/> 
+           <i class="fa fa-envelope fa-lg fa-fu" aria-hidden="true"></i>
+         </div>
 				
-					<input type="text" placeholder="Email" id="email_field2"/>
 				
-				
-					<input type="text" placeholder="Password" id="password_field2"/>
+          Password: <div class="inputWithIcon">
+            <input type="text"  placeholder="password" minlength="8" required/> 
+           <i class="fa fa-lock fa-lg fa-fu" aria-hidden="true"></i>
+         </div>
 				
 					<button onclick="login()" title="Login">Login</button>
 					<p id="forgot-password"><a href="#">Forgot Password</a></p>
@@ -38,31 +82,50 @@
 
 				
 				<form class="forgot-interface">   
-					<input type="text" placeholder="Email ID" id="email_field3"/>
-					<button class="button" title="Reset Password" onclick="forgot_password()">Forgot Password</button>
-					
+          <div class="inputWithIcon">
+            <input type="text" placeholder="user name"/> 
+           <i class="fa fa-envelope fa-lg fa-fu" aria-hidden="true"></i>
+         </div>
+          <button class="button" title="Reset Password" onclick="forgot_password()">Forgot Password</button>
+          
+					<p class="message"> <a href="#">  </a></p>
 				</form>
 			</div>
 			
 			<script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
 			<script>
+        
+       
+
+
 				$(document).ready(function(){
 					$('.forgot-interface').hide();
 				})
 				$('#register-interface a').click(function(){
-					$('.login-form').hide(1000);
+         
+          $('.login-form').hide(1000);
+          
 					$('.registration-form').show(1000);
 					
 				});
 				$('#login-interface a').click(function(){
+         
 					$('.registration-form').hide(1000);
 					$('.login-form').show(1000);
 					
 				});
 				$('#forgot-password a').click(function(){
+          
 					$('.login-form').hide(1000);
 					$('.forgot-interface').show();
-				})
+        })
+        $('#back-interface a').click(function(){
+          
+					$('.forgot-interface').hide(1000);
+					$('.login-form').show(1000);
+        })
+        
+        
 			</script>
 	   </div>
 	   
