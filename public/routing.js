@@ -82,22 +82,38 @@ routeLine.addObjects([routeOutline, routeArrows]);
        endMarker.setData("Routing Ends Here!"); 
        totalLength += section.summary.length;
        totalDuration += section.summary.duration;
-	      document.getElementById("cards-collector").innerHTML += '<div class="column" id="card'+routeNum+'"+> <div class="content"><button class="ui large button" onclick="displaydetail('+routeNum+')" " id="route-detail'+routeNum+'"></div><div class="description" id="route'+cardNum+'"></div> </div></div>' 
+	      document.getElementById("cards-collector").innerHTML += '<div class="column" id="card'+routeNum+'"+> <div class="content"><div class="ui buttons"><button class="ui compact button" id="closebtn'+routeNum+'" onclick="closebutton('+routeNum+')" >X</button><button class="ui large button" id="route-detail'+routeNum+'"></button><button class="ui compact button" id="openbtn'+routeNum+'" onclick="displaydetail('+routeNum+')" >&gt</button></div><div class="description" id="route'+cardNum+'"></div> </div></div>' 
         document.getElementById("card"+routeNum).style.marginTop = "2vh";
         document.getElementById("card"+routeNum).style.marginBottom = "auto";
+       
+        //document.getElementById("closebtn"+routeNum).style.boxShadow = "-8px 6px 17px -8px rgba(0,0,0,0.75)"; 
+        document.getElementById("closebtn"+routeNum).style.zIndex = "2";
+        document.getElementById("closebtn"+routeNum).style.backgroundColor = card_colors[routeNum];
+        document.getElementById("closebtn"+routeNum).style.color = "white";
+        document.getElementById("closebtn"+routeNum).style.display = "none";
+        
+        //document.getElementById("openbtn"+routeNum).style.boxShadow = "-8px 6px 17px -8px rgba(0,0,0,0.75)"; 
+        document.getElementById("openbtn"+routeNum).style.zIndex = "2";
+        document.getElementById("openbtn"+routeNum).style.backgroundColor = card_colors[routeNum];
+        document.getElementById("openbtn"+routeNum).style.color = "white";
+        document.getElementById("openbtn"+routeNum).style.display = "block";
+        
         document.getElementById("route"+routeNum).style.position = "fixed";
         document.getElementById("route"+routeNum).style.borderRadius = "15px 15px 5px 30px";
         document.getElementById("route"+routeNum).style.top = "10vh";
         document.getElementById("route"+routeNum).style.right = "2vh";
-        document.getElementById("route"+routeNum).style.zIndex = "2";
         document.getElementById("route"+routeNum).style.paddingBottom = "1vh";
         document.getElementById("route"+routeNum).style.display = "none";
         document.getElementById("route"+routeNum).style.backgroundColor =  card_colors[routeNum] ;
         document.getElementById("route"+routeNum).style.color =  "white" ;
+        document.getElementById("route"+routeNum).style.pointerEvents = "none";
+        document.getElementById("route"+routeNum).style.cursor = "default";
+
+        document.getElementById("route-detail"+routeNum).style.zIndex = "2";
         document.getElementById("route-detail"+routeNum).style.fontSize = "small";
         document.getElementById("route-detail"+routeNum).style.backgroundColor =  card_colors[routeNum] ;
        document.getElementById("route-detail"+routeNum).style.color =  "white" ;
-       document.getElementById("route-detail"+routeNum).style.boxShadow = "-8px 6px 17px -8px rgba(0,0,0,0.75)";
+       //document.getElementById("route-detail"+routeNum).style.boxShadow = "-8px 6px 17px -8px rgba(0,0,0,0.75)";
        document.getElementById("route"+routeNum).style.boxShadow = "-8px 6px 17px -8px rgba(0,0,0,0.75)";
        document.getElementById("route"+routeNum).style.backgroundColor =  card_colors[routeNum] ;
        document.getElementById("route"+routeNum).style.color =  "white" ;

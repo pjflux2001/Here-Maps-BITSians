@@ -38,15 +38,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function displaydetail(i){
     var x = document.getElementById("route"+i);
-    if (x.style.display === "none") {
-        x.style.display = "block";
-      } else {
-        x.style.display = "none";
-      }
+    
+    x.style.display = "block";
+    document.getElementById("closebtn"+i).style.display = "block";
+    document.getElementById("openbtn"+i).style.display = "none";    
     var j ;
     for(j=0;j<4;j++){
         if(j!=i){
             document.getElementById("route"+j).style.display = "none";
+            document.getElementById("openbtn"+j).style.display = "none";
+        }
+    }
+}
+
+function closebutton(i){
+    //document.getElementById("route-detail"+i).style.display = "none";
+    document.getElementById("route"+i).style.display = "none";
+    document.getElementById("closebtn"+i).style.display = "none";
+    document.getElementById("openbtn"+i).style.display = "block";
+    for(j=0;j<4;j++){
+        if(j!=i){
+            
+            document.getElementById("openbtn"+j).style.display = "block";
         }
     }
 }
