@@ -46,7 +46,7 @@ function displaydetail(i){
     for(j=0;j<4;j++){
         if(j!=i){
             document.getElementById("route"+j).style.display = "none";
-            document.getElementById("openbtn"+j).style.display = "none";
+            document.getElementById("openbtn"+j).classList.add("disabled");
         }
     }
 }
@@ -58,8 +58,7 @@ function closebutton(i){
     document.getElementById("openbtn"+i).style.display = "block";
     for(j=0;j<4;j++){
         if(j!=i){
-            
-            document.getElementById("openbtn"+j).style.display = "block";
+            document.getElementById("openbtn"+j).classList.remove("disabled");
         }
     }
 }

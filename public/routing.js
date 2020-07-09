@@ -87,17 +87,18 @@ routeLine.addObjects([routeOutline, routeArrows]);
         document.getElementById("card"+routeNum).style.marginBottom = "auto";
        
         //document.getElementById("closebtn"+routeNum).style.boxShadow = "-8px 6px 17px -8px rgba(0,0,0,0.75)"; 
-        document.getElementById("closebtn"+routeNum).style.zIndex = "2";
+        //document.getElementById("closebtn"+routeNum).style.zIndex = "2";
         document.getElementById("closebtn"+routeNum).style.backgroundColor = card_colors[routeNum];
         document.getElementById("closebtn"+routeNum).style.color = "white";
         document.getElementById("closebtn"+routeNum).style.display = "none";
         
         //document.getElementById("openbtn"+routeNum).style.boxShadow = "-8px 6px 17px -8px rgba(0,0,0,0.75)"; 
-        document.getElementById("openbtn"+routeNum).style.zIndex = "2";
+       // document.getElementById("openbtn"+routeNum).style.zIndex = "2";
         document.getElementById("openbtn"+routeNum).style.backgroundColor = card_colors[routeNum];
         document.getElementById("openbtn"+routeNum).style.color = "white";
         document.getElementById("openbtn"+routeNum).style.display = "block";
         
+        document.getElementById("route"+routeNum).style.zIndex = "3";
         document.getElementById("route"+routeNum).style.position = "fixed";
         document.getElementById("route"+routeNum).style.borderRadius = "15px 15px 5px 30px";
         document.getElementById("route"+routeNum).style.top = "10vh";
@@ -109,7 +110,7 @@ routeLine.addObjects([routeOutline, routeArrows]);
         document.getElementById("route"+routeNum).style.pointerEvents = "none";
         document.getElementById("route"+routeNum).style.cursor = "default";
 
-        document.getElementById("route-detail"+routeNum).style.zIndex = "2";
+      //document.getElementById("route-detail"+routeNum).style.zIndex = "2";
         document.getElementById("route-detail"+routeNum).style.fontSize = "small";
         document.getElementById("route-detail"+routeNum).style.backgroundColor =  card_colors[routeNum] ;
        document.getElementById("route-detail"+routeNum).style.color =  "white" ;
@@ -131,7 +132,7 @@ routeLine.addObjects([routeOutline, routeArrows]);
 	 cardNum++;
       });
 
-      document.getElementById("route-detail"+routeNum+"").innerHTML += `<b>`+'Route '+(result.routes.indexOf(route)+1) +'<br>Distance : '+ totalLength/1000 +' Km'+'<br>Duration : '+ totalDuration.toMMSS() + `</b>`;
+      document.getElementById("route-detail"+routeNum+"").innerHTML += `<b>`+'Route '+(result.routes.indexOf(route)+1) +`<br>`+ totalLength/1000 +' Km'+`<br>`+ totalDuration.toMMSS() + `</b>`;
 
       routeNum++;
     });
