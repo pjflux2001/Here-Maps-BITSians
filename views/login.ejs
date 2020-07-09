@@ -9,6 +9,9 @@
      .inputWithIcon input[type=text]{
       padding-left: 40px;
     }
+    .inputWithIcon input[type=password]{
+      padding-left: 40px;
+    }
 
        .inputWithIcon{
         position: relative;
@@ -71,8 +74,9 @@
 				
 				
           Password: <div class="inputWithIcon">
-            <input type="text"  placeholder="password" minlength="8" id="password_field2" required/> 
-           <i class="fa fa-lock fa-lg fa-fu" aria-hidden="true"></i>
+            <input type="text" class="active" placeholder="Password" minlength="8" id="password_field2" required/> 
+           <i id="icon" class="fa fa-lock fa-lg fa-fu" aria-hidden="true"></i>
+           
          </div>
 				
 					<button onclick="login()" title="Login">Login</button>
@@ -166,6 +170,24 @@
 
 	</body>
 	<script>
+    var inputPass2 = document.getElementById('password_field2'),
+    icon = document.getElementById('icon');
+ 
+   icon.onclick = function () {
+ 
+     if(inputPass2.className == 'active') {
+        inputPass2.setAttribute('type', 'password');
+        icon.className = 'fa fa-lock fa-lg fa-fu';
+       inputPass2.className = 'inactive';
+ 
+     } else {
+        inputPass2.setAttribute('type', 'text');
+        icon.className = 'fa fa-unlock fa-lg fa-fu';
+       inputPass2.className = 'active';
+    }
+ 
+
+   }
 		function writeUserData(user) {
     firebase.database().ref('users/' + user.uid).set({
       email: user.email
