@@ -36,3 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
+function displaydetail(i){
+    var x = document.getElementById("route"+i);
+    if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    var j ;
+    for(j=0;j<4;j++){
+        if(j!=i){
+            document.getElementById("route"+j).style.display = "none";
+        }
+    }
+}

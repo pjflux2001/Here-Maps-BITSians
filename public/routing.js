@@ -82,16 +82,30 @@ routeLine.addObjects([routeOutline, routeArrows]);
        endMarker.setData("Routing Ends Here!"); 
        totalLength += section.summary.length;
        totalDuration += section.summary.duration;
-	      document.getElementById("cards-collector").innerHTML += '<div class="card"> <div class="content"><div class="header" id="route-detail'+routeNum+'"></div><div class="description" id="route'+cardNum+'"></div> </div></div>'
+	      document.getElementById("cards-collector").innerHTML += '<div class="column" id="card'+routeNum+'"+> <div class="content"><button class="ui large button" onclick="displaydetail('+routeNum+')" " id="route-detail'+routeNum+'"></div><div class="description" id="route'+cardNum+'"></div> </div></div>' 
+        document.getElementById("card"+routeNum).style.marginTop = "2vh";
+        document.getElementById("card"+routeNum).style.marginBottom = "auto";
+        document.getElementById("route"+routeNum).style.position = "fixed";
+        document.getElementById("route"+routeNum).style.borderRadius = "15px 15px 5px 30px";
+        document.getElementById("route"+routeNum).style.top = "10vh";
+        document.getElementById("route"+routeNum).style.right = "2vh";
+        document.getElementById("route"+routeNum).style.zIndex = "2";
+        document.getElementById("route"+routeNum).style.paddingBottom = "1vh";
+        document.getElementById("route"+routeNum).style.display = "none";
+        document.getElementById("route"+routeNum).style.backgroundColor =  card_colors[routeNum] ;
+        document.getElementById("route"+routeNum).style.color =  "white" ;
+        document.getElementById("route-detail"+routeNum).style.fontSize = "small";
         document.getElementById("route-detail"+routeNum).style.backgroundColor =  card_colors[routeNum] ;
        document.getElementById("route-detail"+routeNum).style.color =  "white" ;
+       document.getElementById("route-detail"+routeNum).style.boxShadow = "-8px 6px 17px -8px rgba(0,0,0,0.75)";
+       document.getElementById("route"+routeNum).style.boxShadow = "-8px 6px 17px -8px rgba(0,0,0,0.75)";
        document.getElementById("route"+routeNum).style.backgroundColor =  card_colors[routeNum] ;
        document.getElementById("route"+routeNum).style.color =  "white" ;
        section.actions.forEach(action =>{
          document.getElementById("route"+cardNum+"").innerHTML += `<br>`+ action.instruction;
 
        });
-       document.getElementById("route"+cardNum+"").innerHTML += `<hr>`;
+       //document.getElementById("route"+cardNum+"").innerHTML += `<hr>`;
  
        // Add the route polyline and the two markers to the map:
        map.addObjects([routeLine, startMarker, endMarker]);
@@ -101,7 +115,7 @@ routeLine.addObjects([routeOutline, routeArrows]);
 	 cardNum++;
       });
 
-      document.getElementById("route-detail"+routeNum+"").innerHTML += `<b>`+'Route '+(result.routes.indexOf(route)+1) +'<br>Distance : '+ totalLength/1000 +' Km'+'<br>Duration : '+ totalDuration.toMMSS() + `</b><hr>`;
+      document.getElementById("route-detail"+routeNum+"").innerHTML += `<b>`+'Route '+(result.routes.indexOf(route)+1) +'<br>Distance : '+ totalLength/1000 +' Km'+'<br>Duration : '+ totalDuration.toMMSS() + `</b>`;
 
       routeNum++;
     });
