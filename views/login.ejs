@@ -148,72 +148,68 @@
     -->
   
     
-
-   <div class="wrapper">
-            <!--header menu end-->
-            <!--sidebar start-->
-            <div class="sidebar">
-                <div class="sidebar-menu">
-                    
-                    <li class="item">
-                        <a href="#" class="menu-btn">
-                            <i class="fa fa-desktop"></i><span>Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li class="item" id="profile">
-                        <a href="#profile" class="menu-btn">
-                            <i class="fa fa-user-circle"></i><span>Profile </span>
-                        </a>
-                        
-                    </li>
-
-                     <li class="item" id="Manage-Hospital">
-                        <a href="#Manage-Hospital" class="menu-btn">
-                            <i class="fa fa-hospital-o"></i><span>Manage-Hospital</span>
-                        </a>
-                        
-                    </li>
-
-                    <li class="item" id="messages">
-                        <a href="#messages" class="menu-btn">
-                            <i class="fa fa-envelope"></i><span>Chat</span>
-                        </a>
-                        
-                    </li>
-                    <li class="item" id="settings">
-                        <a href="#settings" class="menu-btn">
-                            <i class="fa fa-cog fa-spin"></i><span>Account-Settings</span>
-                        </a>
-                        
-                    </li>
-                    <li class="item">
-                        <a href="#" class="menu-btn">
-                            <i class="fa fa-sign-out"></i><span onclick="logout()">Logout<i></i></span>
-                        </a>
-                    </li>
-                </div>
+<div class="centered container" style="margin-top: 2vh;">
+  <div class="ui relaxed grid">
+    <!--header menu end-->
+    <!--sidebar start-->
+    <div class=" three wide column sidebar">
+        <div class="sidebar-menu" >
+            <div class="sidebar-item ">
+                <button class="ui fluid button" onclick="dashboardbtn()">
+                    <i class="desktop icon "></i><span> Dashboard</span>
+                </button>
             </div>
-            <!--sidebar end-->
-            <!--main container start-->
-        <!--    <div class="main-container">
-                <div class="card">
-                    <p></p>
-                </div>
-                <div class="card">
-                    <p></p>
-                </div>
-                <div class="card">
-                    <p></p>
-                </div>
-            </div> -->
-            <!--main container end-->
-      <!--  </div> -->
-       
-        <!--wrapper end-->
-
+            <hr>
+            <div class="sidebar-item">
+                <button class="ui fluid button" onclick="profilebtn()">
+                    <i class="user circle icon"></i><span> Profile </span>
+                </button>
+            </div>
+            <hr>
+            <div class="sidebar-item">
+                <button class="ui fluid button" onclick="mnghospital()">
+                    <i class="hospital outline icon"></i><span> Manage</span>
+                </button>
+            </div>
+            <hr>
+            <div class="sidebar-item">
+                <button class="ui fluid button" onclick="chatpage()">
+                    <i class="envelope outline icon"></i><span> Chat</span>
+                </button>
+            </div>
+            <hr>
+            <div class="sidebar-item">
+                <button class="ui fluid large button" onclick="stgslog()">
+                    <i class="settings icon"></i><span> Settings</span>
+                </button>
+            </div>
+            <hr>
+            <div class="sidebar-item">
+                <button class="ui fluid button" onclick="logout()">
+                    <i class="fa fa-sign-out"></i><span> Logout</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="twelve wide column page-area">
+      <div class="main-item" id="dashboard" style="display: none;">
+      </div>
+      <div class="main-item" id="profile" style="display: none;">
+      </div>
+      <div class="main-item" id="Manage-Hospital" style="display: none;">
+      </div>
+      <div class="main-item" id="chat">
+        <h1 class="ui header">CHAT PAGE</div>
+      </div>
+      <div class="main-item" id="settings" style="display: none;">
+      </div>
+      <div class="main-item" id="logout" style="display: none;">
+      </div>
+    </div> 
   </div>
-  
+</div>
+
   
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
