@@ -109,15 +109,14 @@ routeLine.addObjects([routeOutline, routeArrows]);
         document.getElementById("route"+routeNum).style.color =  "white" ;
         document.getElementById("route"+routeNum).style.pointerEvents = "none";
         document.getElementById("route"+routeNum).style.cursor = "default";
+        document.getElementById("route"+routeNum).style.boxShadow = "-8px 6px 17px -8px rgba(0,0,0,0.75)";
 
       //document.getElementById("route-detail"+routeNum).style.zIndex = "2";
         document.getElementById("route-detail"+routeNum).style.fontSize = "small";
         document.getElementById("route-detail"+routeNum).style.backgroundColor =  card_colors[routeNum] ;
        document.getElementById("route-detail"+routeNum).style.color =  "white" ;
        //document.getElementById("route-detail"+routeNum).style.boxShadow = "-8px 6px 17px -8px rgba(0,0,0,0.75)";
-       document.getElementById("route"+routeNum).style.boxShadow = "-8px 6px 17px -8px rgba(0,0,0,0.75)";
-       document.getElementById("route"+routeNum).style.backgroundColor =  card_colors[routeNum] ;
-       document.getElementById("route"+routeNum).style.color =  "white" ;
+       
        section.actions.forEach(action =>{
          document.getElementById("route"+cardNum+"").innerHTML += `<br>`+ action.instruction;
 

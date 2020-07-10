@@ -3,7 +3,7 @@
 	width:99% !important;
 }
 
-#card0,#card1,#card2,#card3 {
+#card0,#card1,#card2,#card3,#card4 {
 	margin-top: 2vh !important;
 	
 }
@@ -27,6 +27,10 @@
 	padding:1vh !important;
 }
 
+#card4 > div{
+	margin-top: -2.5vh;
+	padding:1vh !important;
+}
 
 .button {
 	margin:0.25em 0.25em 0 0!important;
@@ -293,3 +297,24 @@ body > div.ui.center.aligned.segment.masthead > div > h1{
 .form .registration-form{
 	display : none;
 }
+
+.sidebar-item > button.ui.button > span,i{
+	color:black;
+}
+
+#user_div > div > div > div.three.wide.column.sidebar{
+	background-color: white;
+    opacity: 0.8;
+    border-radius: 10px;
+    margin-top: 2vh;
+	margin-bottom: auto;
+}
+
+#user_div > div > div > div.twelve.wide.column.page-area{
+	background-color:rgb(230, 255, 255);
+    opacity: 0.8;
+    border-radius: 10px;
+	margin-top: 2vh;
+	margin-left: 1.5vh;
+}
+
