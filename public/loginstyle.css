@@ -152,8 +152,10 @@ body{
   background: #2F323A;
   position: fixed;
   top: 70px;
+  bottom: 50px;
   width: 250px;
-  height: calc(100% - 9%);
+  height: calc(100% - 15%);
+  left: 30px;
   transition: 0.3s;
   transition-property: width;
   overflow-y: auto;
@@ -242,13 +244,13 @@ body{
 
 .wrapper .main-container{
   width: (100% - 250px);
-  margin-top: 70px;
+  margin-top: none;
   margin-left: 250px;
-  padding: 15px;
-  background: url(background.jpg)no-repeat;
+  
+ 
   background-size: cover;
-  height: 100vh;
-  transition: 0.3s;
+  height: -10vh;
+  
 }
 
 .wrapper.collapse .sidebar{
