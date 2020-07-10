@@ -3,15 +3,7 @@ var express = require("express"),
 	bodyParser = require("body-parser"),
 	mongoose = require("mongoose"),
 	pug = require("pug"),
-	Esri = require("./models/esri.js"),
-	admin = require('firebase-admin')
-
-var serviceAccount = require('./here-maps-bitsians-firebase-adminsdk-pruq8-e95e5ee839');
-
-var firebaseAdmin = admin.initializeApp({
-	credential: admin.credential.cert(serviceAccount),
-	databaseURL:"https://here-maps-bitsians.firebaseio.com"
-})
+	Esri = require("./models/esri.js")
 
 //MIDDLEWARE for Authentication
 
