@@ -73,7 +73,7 @@
          </div>
 				
 				
-          Password: <div class="inputWithIcon">
+           <div class="inputWithIcon">
             <input type="password" class="active" placeholder="Password" minlength="8" id="password_field2" required/> 
            <i id="icon" class="fa fa-lock fa-lg fa-fu" aria-hidden="true"></i>
            
@@ -135,8 +135,8 @@
 	   
 
 	   <!--logout & user div-->
-  <div id="user_div" class="loggedin-div card" style="margin: auto; width: 50%; border: 2px dotted black; padding: 25px;">
-    <h3>Welcome!</h3>
+     <div   id="user_div" class="loggedin-div card" >
+  <!-- <h3>Welcome!</h3>
     <p id="user_para">You're logged in.</p>
     <button type="button" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="right" title="Logout"  onclick="logout()">Logout</button>
     <br>
@@ -145,7 +145,103 @@
     <button type="button" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="right" title="Change Password" onclick="change_pass()"> Change Password </button>
     <br>
     <button type="button" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="right" title="Delete Account"  onclick="deleteacc()">Delete Account</button>
+    -->
+  
+    
+
+   <div class="wrapper">
+            <!--header menu start-->
+            <div class="header">
+                <div class="header-menu">
+                    <div class="title">Here-<span>Maps</span></div>
+                    
+                    <ul>
+                        
+                        <li><a href="#"><i class="fa fa-bell"></i></a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <!--header menu end-->
+            <!--sidebar start-->
+            <div class="sidebar">
+                <div class="sidebar-menu">
+                    <center class="profile">
+                        
+                        <p>Hospital Name</p>
+                    </center>
+                    <li class="item">
+                        <a href="#" class="menu-btn">
+                            <i class="fa fa-desktop"></i><span>Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="item" id="profile">
+                        <a href="#profile" class="menu-btn">
+                            <i class="fa fa-user-circle"></i><span>Profile <i class="fa fa-chevron-down drop-down"></i></span>
+                        </a>
+                        <div class="sub-menu">
+                            <a href="#"><i class="fa fa-image"></i><span>Name</span></a>
+                            <a href="#"><i class="fa fa-address-card"></i><span>Address</span></a>
+                        </div>
+                    </li>
+
+                     <li class="item" id="Manage-Hospital">
+                        <a href="#Manage-Hospital" class="menu-btn">
+                            <i class="fa fa-hospital-o"></i><span>Manage-Hospital <i class="fa fa-chevron-down drop-down"></i></span>
+                        </a>
+                        <div class="sub-menu">
+                            <a href="#"><i class="fa fa-bed"></i><span>Licenced-Beds</span></a>
+                            <a href="#"><i class="fa fa-bed"></i><span>Staffed-Beds</span></a>
+                        </div>
+                    </li>
+
+                    <li class="item" id="messages">
+                        <a href="#messages" class="menu-btn">
+                            <i class="fa fa-envelope"></i><span>Chat <i class="fa fa-chevron-down drop-down"></i></span>
+                        </a>
+                        <div class="sub-menu">
+                            <a href="#"><i class="fa fa-envelope"></i><span>New</span></a>
+                            <a href="#"><i class="fa fa-envelope-square"></i><span>Sent</span></a>
+                            
+                        </div>
+                    </li>
+                    <li class="item" id="settings">
+                        <a href="#settings" class="menu-btn">
+                            <i class="fa fa-cog fa-spin"></i><span>Account-Settings <i class="fa fa-chevron-down drop-down"></i></span>
+                        </a>
+                        <div class="sub-menu">
+                            <a href="#"><i class="fa fa-lock"></i><span>Password</span></a>
+                            
+                        </div>
+                    </li>
+                    <li class="item">
+                        <a href="#" class="menu-btn">
+                            <i class="fa fa-sign-out"></i><button onclick="logout()">Logout</button>
+                        </a>
+                    </li>
+                </div>
+            </div>
+            <!--sidebar end-->
+            <!--main container start-->
+            <div class="main-container">
+                <div class="card">
+                    <p>Hospital-info</p>
+                </div>
+                <div class="card">
+                    <p></p>
+                </div>
+                <div class="card">
+                    <p>.</p>
+                </div>
+            </div>
+            <!--main container end-->
+        </div>
+        <!--wrapper end-->
+
   </div>
+  
+  
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
 
