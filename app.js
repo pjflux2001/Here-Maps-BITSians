@@ -3,7 +3,24 @@ var express = require("express"),
 	bodyParser = require("body-parser"),
 	mongoose = require("mongoose"),
 	pug = require("pug"),
-	Esri = require("./models/esri.js")
+	Esri = require("./models/esri.js"),
+	admin = require('firebase-admin')
+
+var serviceAccount = require('./here-maps-bitsians-firebase-adminsdk-pruq8-e95e5ee839');
+
+var firebaseAdmin = admin.initializeApp({
+	credential: admin.credential.cert(serviceAccount),
+	databaseURL:"https://here-maps-bitsians.firebaseio.com"
+})
+
+//MIDDLEWARE for Authentication
+
+function isAuthenticated(req,res,next){
+//check whether logged in
+// if they are, attach the user to request object and then call next
+// if not send redirect to login page 
+// with a message saying log in
+}
 
 //MONGO CONFIGRATION
  var uri = process.env.DATABASEURI || "mongodb+srv://sudhanshumohan:hesoyam@cluster0-3z3hj.mongodb.net/hospital_data?retryWrites=true&w=majority"
@@ -54,6 +71,10 @@ app.get("/contact",function(req,res){
 app.get("/login",function(req,res){
 	res.render("login.ejs");
 });
+
+app.get('/dashboard',isAuthenticated,function(req,res){
+	res.render('dashboard.ejs');
+})
 
 //LISTENER PROCESS
 var port = process.env.PORT || 31000
