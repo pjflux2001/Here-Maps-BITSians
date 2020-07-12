@@ -298,9 +298,6 @@ body > div.ui.center.aligned.segment.masthead > div > h1{
 	display : none;
 }
 
-.sidebar-item > button.ui.button > span,i{
-	color:black;
-}
 
 #user_div > div > div > div.three.wide.column.sidebar{
 	background-color: white;

@@ -34,10 +34,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
 	<link rel = "stylesheet" href="loginstyle.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet"
-  href= 
-"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
+<link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 	<body>
       <div id="login_div" class = "login-page">
@@ -146,40 +144,39 @@
     <br>
     <button type="button" class="btn btn-primary" type="button" data-toggle="tooltip" data-placement="right" title="Delete Account"  onclick="deleteacc()">Delete Account</button>
     -->
-  
-    
-<div class="centered container" style="margin-top: 2vh;">
-  <div class="ui relaxed grid">
+<script src="design.js"></script>
+<div class=" ui centered container" style="margin-top: 2vh;">
+  <div class="ui relaxed stackable grid">
     <!--header menu end-->
     <!--sidebar start-->
     <div class=" three wide column sidebar">
         <div class="sidebar-menu" >
             <div class="sidebar-item ">
-                <button class="ui fluid button" onclick="dashboardbtn()">
+                <button class="ui fluid button" onclick="displayMainPage('dashboard-page')">
                     <i class="desktop icon "></i><span> Dashboard</span>
                 </button>
             </div>
             <hr>
             <div class="sidebar-item">
-                <button class="ui fluid button" onclick="profilebtn()">
+                <button class="ui fluid button" onclick="displayMainPage('profile-page')">
                     <i class="user circle icon"></i><span> Profile </span>
                 </button>
             </div>
             <hr>
             <div class="sidebar-item">
-                <button class="ui fluid button" onclick="mnghospital()">
+                <button class="ui fluid button" onclick="displayMainPage('Manage-Hospital')">
                     <i class="hospital outline icon"></i><span> Manage</span>
                 </button>
             </div>
             <hr>
             <div class="sidebar-item">
-                <button id="chatpage" class="ui fluid button" onclick="chatpage()">
+                <button id="chatpage" class="ui fluid button" onclick="displayMainPage('chat')">
                     <i class="envelope outline icon"></i><span> Chat</span>
                 </button>
             </div>
             <hr>
             <div class="sidebar-item">
-                <button class="ui fluid large button" onclick="stgslog()">
+                <button class="ui fluid large button" onclick="displayMainPage('settings-page')">
                     <i class="settings icon"></i><span> Settings</span>
                 </button>
             </div>
@@ -192,22 +189,79 @@
         </div>
     </div>
     
-    <div class="twelve wide column page-area">
-      <div class="main-item" id="dashboard" style="display: none;">
+    <div class="twelve wide column page-area" >
+      <div class="main-item" id="dashboard-page" >
+        <div class="ui header">DASHBOARD</div>
+        <hr>
       </div>
-      <div class="main-item" id="profile" style="display: none;">
+      <div class="main-item" id="profile-page" style="display:none;">
+        <div class="ui header">PROFILE<button class="ui mini positive right floated button">EDIT</button></div>
+        <hr>
       </div>
-      <div class="main-item" id="Manage-Hospital" style="display: none;">
+      <div class="main-item" id="Manage-Hospital" style="display:none;">
+        <div class="ui header">RESOURCE MANAGEMENT<button class="ui mini positive right floated button">EDIT</button></div>
+        <hr>
+        <div class="ui text container">
+          <div class="ui fluid labeled input">
+            <div class="ui basic label">
+              Licensed Beds
+            </div>
+            <input type="text">
+          </div>
+          <div class="ui fluid labeled input">
+            <div class="ui basic label">
+              Staffed Beds
+            </div>
+            <input type="text">
+          </div>
+          <div class="ui fluid labeled input">
+            <div class="ui basic label">
+              ICU Beds
+            </div>
+            <input type="text">
+          </div>
+          <div class="ui fluid labeled input">
+            <div class="ui basic label">
+              Adult ICU Beds
+            </div>
+            <input type="text">
+          </div>
+          <div class="ui fluid labeled input">
+            <div class="ui basic label">
+              Ped ICU Beds
+            </div>
+            <input type="text">
+          </div>
+          <div class="ui fluid labeled input">
+            <div class="ui basic label">
+              Bed Utilization
+            </div>
+            <input type="text">
+          </div>
+          <div class="ui fluid labeled input">
+            <div class="ui basic label">
+              Potential Increase in Bed Capacity
+            </div>
+            <input type="text">
+          </div>
+          <div class="ui fluid labeled input">
+            <div class="ui basic label">
+              Average Ventilator Usage
+            </div>
+            <input type="text">
+          </div>
+        </div>
       </div>
-      <div class="main-item" id="chat">
-        <h1 class="ui header">CHAT PAGE <br> </div>
+      <div class="main-item" id="chat" style="display:none;">
+          <div class="ui header">CHAT PAGE  </div>
+          <hr>
           <h3 id="stat">Status : Online </h3><i id="statusie" class="fa fa-toggle-on" aria-hidden="true"></i><a id="toggle" onclick="toggle_status()">&ensp;<i class="fa fa-bullseye" aria-hidden="true"></i></a>
           <h5>Online Hospitals (<i id="online_number")></i>)</h5>
           Online Members : <i id="online_member"></i>
       </div>
-      <div class="main-item" id="settings" style="display: none;">
-      </div>
-      <div class="main-item" id="logout" style="display: none;">
+      <div class="main-item" id="settings-page" style="display: none;">
+        <div class="ui header">SETTINGS</div>
+        <hr>
       </div>
     </div> 
   </div>

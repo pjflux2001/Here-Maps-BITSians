@@ -1,4 +1,5 @@
 function route(){
+  document.getElementById('card4').style.display = "none";
   map.addLayer(defaultLayers.vector.normal.traffic);
   document.getElementById("status").innerHTML = "Routing...";
   console.log(str);

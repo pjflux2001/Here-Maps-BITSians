@@ -62,3 +62,15 @@ function closebutton(i){
         }
     }
 }
+
+function displayMainPage(i){
+    var pages = ["dashboard-page","profile-page","Manage-Hospital","chat","settings-page"];
+    for(j=0;j<pages.length;j++){
+        if(pages[j].localeCompare(i)==0){
+            document.getElementById(i).style.display = "block";
+        }
+        else{
+           document.getElementById(pages[j]).style.display = "none";    
+        }
+    }
+}
