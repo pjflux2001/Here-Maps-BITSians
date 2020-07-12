@@ -79,7 +79,7 @@
            
          </div>
 				
-					<button class="button" onclick="login()" title="Login">Login</button>
+					<button id="login" class="button" onclick="login()" title="Login">Login</button>
 					<p id="forgot-password"><a href="#">Forgot Password</a></p>
 					<p class="message" id="register-interface">Not Registered? <a href="#"> Register </a></p>
 				</div>
@@ -159,7 +159,6 @@
                     <i class="desktop icon "></i><span> Dashboard</span>
                 </button>
             </div>
-<<<<<<< HEAD
             <hr>
             <div class="sidebar-item">
                 <button class="ui fluid button" onclick="profilebtn()">
@@ -174,7 +173,7 @@
             </div>
             <hr>
             <div class="sidebar-item">
-                <button class="ui fluid button" onclick="chatpage()">
+                <button id="chatpage" class="ui fluid button" onclick="chatpage()">
                     <i class="envelope outline icon"></i><span> Chat</span>
                 </button>
             </div>
@@ -186,7 +185,7 @@
             </div>
             <hr>
             <div class="sidebar-item">
-                <button class="ui fluid button" onclick="logout()">
+                <button class="ui fluid button" onclick="logout(); remove_online(firebase.auth().currentUser);">
                     <i class="fa fa-sign-out"></i><span> Logout</span>
                 </button>
             </div>
@@ -201,32 +200,16 @@
       <div class="main-item" id="Manage-Hospital" style="display: none;">
       </div>
       <div class="main-item" id="chat">
-        <h1 class="ui header">CHAT PAGE</div>
+        <h1 class="ui header">CHAT PAGE <br> </div>
+          <h3 id="stat">Status : Online </h3><i id="statusie" class="fa fa-toggle-on" aria-hidden="true"></i><a id="toggle" onclick="toggle_status()">&ensp;<i class="fa fa-bullseye" aria-hidden="true"></i></a>
+          <h5>Online Hospitals (<i id="online_number")></i>)</h5>
+          Online Members : <i id="online_member"></i>
       </div>
       <div class="main-item" id="settings" style="display: none;">
       </div>
       <div class="main-item" id="logout" style="display: none;">
       </div>
     </div> 
-=======
-            <!--sidebar end-->
-            <!--main container start-->
-            <div class="main-container">
-                <div class="card">
-                    <p></p>
-                </div>
-                <div class="card">
-                    <p></p>
-                </div>
-                <div class="card">
-                    <p></p>
-                </div>
-            </div>
-            <!--main container end-->
-        </div>
-        <!--wrapper end-->
-
->>>>>>> parent of a9afa59... upper white line removed
   </div>
 </div>
 
@@ -250,6 +233,10 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+
+  // Get a reference to the database service
+  var database = firebase.database();
+
 </script>
 
 
@@ -270,9 +257,26 @@
         icon.className = 'fa fa-unlock fa-lg fa-fu';
        inputPass2.className = 'active';
     }
- 
-    var currentUser;
    }
+
+function toggle_status(){
+  
+  var onlineIcon = document.getElementById("statusie"),
+      toggle = document.getElementById("toggle"),
+      stat = document.getElementById("stat");
+        
+        if(onlineIcon.className == "fa fa-toggle-on"){
+          onlineIcon.className = "fa fa-toggle-off";
+          stat.innerHTML = "Status : Offline";
+        }else{
+          onlineIcon.className = "fa fa-toggle-on";
+          stat.innerHTML = "Status : Online";
+        }
+        
+        }
+     
+    var currentUser;
+  
 		function writeUserData(user) {
     firebase.database().ref('users/' + user.uid).set({
       email: user.email
@@ -457,9 +461,47 @@ function create_account(){
     firebase.auth().signOut();
   }
   
-  function addcab(h){
-    firebase.database().ref('cabs/' + h.id).set(h);
+  function add_online(h){
+  firebase.database().ref('online/' + h.user_id).set(h);
+}
+$('#chatpage').click(function(){
+  var online = {
+    user_id: firebase.auth().currentUser.uid,
+    email: firebase.auth().currentUser.email
+  };
+
+  add_online(online);
+
+  });
+
+function remove_online(h){
+    firebase.database().ref('online/' + h.uid).remove();
   }
-  
-  	</script>
+  $('#toggle').click(function(){
+    if(document.getElementById("stat").innerHTML == "Status : Offline")
+      remove_online(firebase.auth().currentUser);
+    else{
+      var online = {
+    user_id: firebase.auth().currentUser.uid,
+    email: firebase.auth().currentUser.email
+    };
+    add_online(online);
+    }
+ });
+
+ var addonref = firebase.database().ref().child("online");
+ addonref.on("value", function(snapshot) {
+      $("#online_member").empty();
+      $("#online_number").empty();
+      var cabHTMLitem="";
+      var onHTMLitem=0;
+      snapshot.forEach(function(childsnapshot){
+        var item = childsnapshot.val();
+        cabHTMLitem += "<br>"+item.email + ",";
+        onHTMLitem++;
+    });
+    $("#online_member").html(cabHTMLitem);
+    $("#online_number").html(onHTMLitem);
+  });
+</script>
 	<%- include("./partials/footer") %>
