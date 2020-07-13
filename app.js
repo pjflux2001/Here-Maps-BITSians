@@ -84,6 +84,11 @@ app.get("/api/getdata",function(req,res){
 	}).limit(10);
 })
 
+//===============get request Fallback========
+
+app.get("*", (req,res) => {
+    res.render("404.ejs");
+  });
 
 
 //========================//
