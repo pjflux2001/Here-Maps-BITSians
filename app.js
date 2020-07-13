@@ -67,7 +67,26 @@ app.get("/login",function(req,res){
 app.get('/dashboard',isAuthenticated,function(req,res){
 	res.render('dashboard.ejs');
 })
+//==========AJAX TESTING ROUTES =========
 
+app.get("/test",function(req,res){
+	res.render("test.ejs");
+})
+
+//========API Routes=========
+app.get("/api/getdata",function(req,res){
+	Esri.find({},function(err,data){
+		if(err){
+			res.send(err);
+		} else {
+			res.send(data);
+		}
+	}).limit(10);
+})
+
+
+
+//========================//
 //LISTENER PROCESS
 var port = process.env.PORT || 31000
 app.listen(port,process.env.IP,function(){
