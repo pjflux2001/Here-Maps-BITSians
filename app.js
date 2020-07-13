@@ -82,7 +82,45 @@ app.get("/api/getdata",function(req,res){
 			res.send(data);
 		}
 	}).limit(10);
-})
+});
+//========THIS SEARCHES FOR A SPECIFIC MONGO ID=========//
+app.get("/api/id",(req,res) =>{
+	var _id = req.body._id;
+	Esri.find({_id:_id},function(err,data){
+		if(err){
+			res.send(err);
+		} else {
+			res.send(data);
+		}
+	})
+});
+//=============Fuzzy Search based on raw data ==========//
+
+app.get("/api/fuzzy/name",(req,res) =>{
+	var HQ_CITY = req.body.HQ_CITY;
+	var STATE_NAME = req.body.HQ_STATE;
+	var HOSPITAL_NAME = req.body.HOSPITAL_NAME;
+	Esri.find({HOSPITAL_NAME:{$regex:HOSPITAL_NAME,$options:"$i"}},function(err,data){
+		if(err){
+			res.send(err);
+		} else {
+			res.send(data);
+		}
+	})
+});
+
+app.get("/api/fuzzy/location",(req,res) =>{
+	var COUNTY_NAME = req.body.COUNTY_NAME;
+	var STATE_NAME = req.body.STATE_NAME;
+	Esri.find({STATE_NAME:{$regex:STATE_NAME,$options:"$i"},COUNTY_NAME:{$regex:COUNTY_NAME,$options:"$i"}},function(err,data){
+		if(err){
+			res.send(err);
+		} else {
+			res.send(data);
+		}
+	})
+});
+
 
 //===============get request Fallback========
 
