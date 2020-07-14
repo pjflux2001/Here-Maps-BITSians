@@ -276,3 +276,30 @@ body{
   width: calc(100% - 70px);
   margin-left: 70px;
 }
+/*=======CSS MOVED========*/
+h1 { 
+  color: #FFFFFF;
+ }
+
+ .inputWithIcon input[type=text]{
+  padding-left: 40px;
+}
+.inputWithIcon input[type=password]{
+  padding-left: 40px;
+}
+
+   .inputWithIcon{
+    position: relative;
+   }
+
+   .inputWithIcon i{
+    position: absolute;
+    left: 0;
+    top: 8px;
+    padding: 11px 10px;
+    transition: 1s;
+   }
+
+   .inputWithIcon input[type=text]:focus + i{
+    color:blue;
+   }

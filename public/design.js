@@ -74,3 +74,32 @@ function displayMainPage(i){
         }
     }
 }
+
+//=============TRANSITION ANIMATION LOGIN PAGE===========//
+$(document).ready(function(){
+    $('.forgot-interface').hide();
+})
+$('#register-interface a').click(function(){
+
+$('.login-form').hide(1000);
+
+    $('.registration-form').show(1000);
+    
+});
+$('#login-interface a').click(function(){
+
+    $('.registration-form').hide(1000);
+    $('.login-form').show(1000);
+    
+});
+$('#forgot-password a').click(function(){
+
+    $('.login-form').hide(1000);
+    $('.forgot-interface').show();
+})
+$('#back-interface a').click(function(){
+
+    $('.forgot-interface').hide(1000);
+    $('.login-form').show(1000);
+})
+
