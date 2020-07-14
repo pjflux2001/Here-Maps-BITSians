@@ -7,12 +7,56 @@
       <ul class="list-group">
     </ul>
   </div>
-  <div id="fuzzy-name">
-    <div class="ui form">
-      <input id="HOSPITAL_NAME" type="text" class="ui input">
+  <div class="ui placeholder segment">
+    <div class="ui two column stackable center aligned grid">
+      <div class="ui vertical divider">Or</div>
+      <div class="middle aligned row">
+        <div class="column">
+          <div class="ui icon header">
+            <i class="search icon"></i>
+            Find Hospital
+          </div>
+          <div class="ui primary button" style="margin: 0 auto 0 auto !important;" onclick="searchDisplay()">
+            Search
+          </div>
+        </div>
+        <div class="column">
+          <div class="ui icon header">
+            <i class="medkit icon"></i>
+            Add New Hospital
+          </div>
+          <div class="ui primary button" style="margin: 0 auto 0 auto !important;" onclick="addDisplay()">
+            Create
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <button class="ui button" type="button" onclick="locationGet()">Search</button>
+  <div class="ui segment"  id="choice-segment-1" style="display: none;">
+    <div id="fuzzy-name" class="ui center aligned">
+      <div class="ui header">Enter Hospital Name</div>
+      <div class="ui icon input">
+        <input id="HOSPITAL_NAME" type="text" placeholder="Search...">
+        <i class="search icon"></i>
+      </div>
+      <button class="ui button" type="button" onclick="fuzzynameGet()">Search</button><br>
+      <div class="ui icon input">
+        <input id="STATE_NAME" type="text" placeholder="State Name...">    
+        <i class="filter icon"></i>
+      </div>
+      <div class="ui icon input">
+        <input id="COUNTY_NAME" type="text" placeholder="County/City Name...">      
+        <i class="filter icon"></i>
+      </div>
+      <button class="ui button" type="button" onclick="fuzzyfilterGet()">Filter</button>
+    </div>
+  </div>
+  <div class="ui segment"  id="choice-segment-2" style="display: none;">
+    <div class="ui form" id="new-form">
+      <div class="ui huge header">This will be a form</div>
+    </div>
+  </div>
+ 
   <div id="getResultDiv2">
     <ul class="list-group">
   </ul>
@@ -25,10 +69,28 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=" crossorigin="anonymous"></script>
 <script>
 
+  //Search Display Logic
+  function searchDisplay(){
+    if ($("#choice-segment-2").css("display") == "block"){
+      $('#choice-segment-2').transition("scale");
+      $('#choice-segment-1').transition("scale");
+    } else {
+      $('#choice-segment-1').transition("scale");
+    }
+  }
+
+  function addDisplay(){
+    if ($("#choice-segment-1").css("display") == "block"){
+      $('#choice-segment-1').transition("scale");
+      $('#choice-segment-2').transition("scale");
+    } else {
+      $('#choice-segment-2').transition("scale");
+    }
+  }
   //LOCATION GET
 
   
-  function locationGet(){
+  function fuzzynameGet(){
     var search_query = {
       HOSPITAL_NAME : $("#HOSPITAL_NAME").val(),
       STATE_NAME : "",
@@ -54,6 +116,35 @@
       }
     });  
   }
+
+  //FILTER MECHANISM
+  function fuzzyfilterGet(){
+    var search_query = {
+      HOSPITAL_NAME : $("#HOSPITAL_NAME").val(),
+      STATE_NAME : $("#STATE_NAME").val(),
+      COUNTY_NAME : $("#COUNTY_NAME").val(),
+      HQ_CITY : "",
+    }
+    $.ajax({
+      type : "GET",
+      contentType: "application/json",
+      url : "/api/fuzzy",
+      data : search_query,
+      dataType:"json",
+      success: function(result){
+        $('#getResultDiv2 ul').empty();
+        $.each(result, function(i, hospital){
+          $('#getResultDiv2 .list-group').append("HOSPITAL NAME - "+hospital.HOSPITAL_NAME + " FID KEY- " + hospital.FID + "<br>")
+        });
+        console.log("Success: ", result);
+      },
+      error : function(e) {
+        $("#getResultDiv2").html("<strong>Error</strong>");
+        console.log("ERROR: ", e);
+      }
+    });  
+  }
+
 
   // DO GET
   function ajaxGet(){
