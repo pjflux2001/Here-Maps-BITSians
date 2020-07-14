@@ -32,7 +32,6 @@ mongoose.connect(uri,{
 //==========================
 
 app.set("view engine","ejs");
-app.set("view engine","pug");
 //setting view engine to ejs
 app.use(express.static(__dirname + '/public'));
 //serving custom resources
