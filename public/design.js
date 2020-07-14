@@ -75,8 +75,8 @@ function displayMainPage(i){
     }
 }
 
-//=============TRANSITION ANIMATION LOGIN PAGE===========//
-$(document).ready(function(){
+  //=============TRANSITION ANIMATION LOGIN PAGE===========//
+  $(document).ready(function(){
     $('.forgot-interface').hide();
 })
 $('#register-interface a').click(function(){
