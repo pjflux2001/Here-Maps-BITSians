@@ -72,8 +72,8 @@
   //Search Display Logic
   function searchDisplay(){
     if ($("#choice-segment-2").css("display") == "block"){
-      $('#choice-segment-2').transition("scale");
-      $('#choice-segment-1').transition("scale");
+      $('#choice-segment-2').transition("scale","1000ms");
+      $('#choice-segment-1').transition("scale","1000ms");
     } else {
       $('#choice-segment-1').transition("scale");
     }
@@ -81,8 +81,8 @@
 
   function addDisplay(){
     if ($("#choice-segment-1").css("display") == "block"){
-      $('#choice-segment-1').transition("scale");
-      $('#choice-segment-2').transition("scale");
+      $('#choice-segment-1').transition("scale","1000ms");
+      $('#choice-segment-2').transition("scale","1000ms");
     } else {
       $('#choice-segment-2').transition("scale");
     }
