@@ -120,6 +120,10 @@
       <div class="main-item" id="dashboard-page" >
         <div class="ui header">DASHBOARD</div>
         <hr>
+        <!--Starting Firebase Cloud Storage-->
+        Upload Progress : <progress value="0" max="100" id="uploader">0%</progress>
+        <br>
+        Choose your file [must be in bmp, jpg, png, or pbm] : <br><input type="file" value="upload" id="fileBtn">
       </div>
       <div class="main-item" id="profile-page" style="display:none;">
         <div class="ui header">PROFILE<button class="ui mini positive right floated button">EDIT</button></div>
@@ -604,6 +608,32 @@ function remove_online(h){
     $("#chat_display").html(chatHTMLitem);
 
   });
+
+
+//Firebase Uploader
+
+var uploader = document.getElementById('uploader');
+var fileBtn = document.getElementById('fileBtn');
+
+fileBtn.addEventListener('change',function(e) {
+    var file = e.target.files[0];
+    var storageRef = firebase.storage().ref('hospital_id/'+firebase.auth().currentUser.email+'_'+file.name);
+    var task = storageRef.put(file);
+    task.on('state_changed',
+      function progress(snapshot){
+        var percentage = (snapshot.bytesTransferred/snapshot.totalBytes) * 100;
+        uploader.value = percentage;
+      },
+      function error(err){
+          //write some error here please
+          alert("Error");
+      },
+      function complete(){
+        //function when complete
+        alert("Done");
+      }
+    );
+});
 </script>
 
 <script> document.getElementById("log-in").classList.add("active"); </script>
