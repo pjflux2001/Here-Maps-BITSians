@@ -130,7 +130,6 @@
                     map.addObject(circle);
                     map.setCenter(browserPosition);
                     map.addObject(marker);
-
                 });
             } else {
                 alert("Geolocation is not supported by this browser!");
@@ -334,15 +333,17 @@
     <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="geocodeBrowse()"><span>Advanced Search</span></button>
     <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="setUpClickListener(map);"><span>Select START and END points of Route</span></button>
     <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="route()"><span>Route</span></button> 
-        <div class="ui stackable four column grid " id="cards-collector">
-            <div class="left floated column" id="card4" >
-                <div>
-                    <button class="ui active negative large button">
-                    <font size="2">Helpline Number</font><br>
-                    999-999-9999<br>
-                </button>
+        <div class="ui container" id="card4" >
+            <div class="ui info message" style="margin-top: 0.1vh;">
+                <div class="header">
+                    Click on Map to get HelpLine Number for that region!!
                 </div>
+                Click <a href="https://www.adducation.info/general-knowledge-travel-and-transport/emergency-numbers/"><b>here</b></a> for countrywise list of emergency numbers
             </div>
+        </div>
+        
+        <div class="ui stackable four column grid " id="cards-collector">
+            
         </div>
     </div>
   
