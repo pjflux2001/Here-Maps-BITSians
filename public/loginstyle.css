@@ -303,3 +303,26 @@ h1 {
    .inputWithIcon input[type=text]:focus + i{
     color:blue;
    }
+
+   #chat_input {
+    resize: none;
+  padding: 5px 10px;
+  width: 600px;
+  height: 40px;
+  font-family: 'Lato', sans-serif;
+	font-size: 14px;
+  color: #0a0a0a;
+  flex: 1;
+  border: none;
+  background: rgba(228, 235, 229, 0.863);
+   border-bottom: 1px solid rgba(0, 0, 0, .05);
+  
+  }
+
+
+
+
+  
+ 
+
+   
