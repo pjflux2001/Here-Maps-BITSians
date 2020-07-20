@@ -1,5 +1,7 @@
 body{
-  background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('https://wallpaperplay.com/walls/full/9/5/e/13971.jpg');
+  /*background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('https://wallpaperplay.com/walls/full/9/5/e/13971.jpg');*/
+  background: -webkit-linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   height: 100vh;
   background-size: cover;
   background-position: center;
@@ -40,7 +42,8 @@ body{
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4CAF50;
+  /*background: #4CAF50;*/
+  background:#7F7FD5;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -52,8 +55,9 @@ body{
  
 
  .form button:hover,.form button:active{
-  background: #0000ff;
- }
+  /*background: #0000ff;*/
+  background:#86A8E7;
+}
  
  .form .message{
   margin: 15px 0 0;

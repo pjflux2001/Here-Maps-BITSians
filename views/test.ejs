@@ -34,7 +34,7 @@
   </div>
   <div class="ui segment"  id="choice-segment-1" style="display: none;">
     <div id="fuzzy-name" class="ui center aligned">
-      <div class="ui header">Enter Hospital Name</div>
+      <div class="ui dividing blue header">Enter Hospital Name</div>
       <div class="ui icon input">
         <input id="HOSPITAL_NAME" type="text" placeholder="Search...">
         <i class="search icon"></i>
@@ -52,9 +52,141 @@
     </div>
   </div>
   <div class="ui segment"  id="choice-segment-2" style="display: none;">
-    <div class="ui form" id="new-form">
-      <div class="ui huge header">This will be a form</div>
+    <!--Form for new Hospitals-->
+    <form>
+      <div class="ui large form" id="new-form">
+        <div class="ui dividing blue header">
+          Hospital
+          <div class="sub header">
+            Please provide information to start registeration process
+          </div>
+        </div>
+          <div class="fields">
+            <div class="eleven wide field">
+              <label>Hospital Name</label>
+              <input type="text" placeholder="Name">
+            </div>
+            <div class="five wide field">
+              <label>Hospital Type</label>
+              <input type="text" placeholder="Type">
+            </div>
+          </div>
+        <div class="ui dividing blue header">Location</div>
+        <h4 class="ui header">Location Geographical Coordinates<a target="_blank" href="https://www.latlong.net/"><i class="question circle black icon" data-content="Click here to get Coordinates of the hospital"></i></a></h4>
+          <div class="two fields">
+            <div class="field">
+              <label>Lattitude</label>
+              <input type="text" placeholder="X">
+            </div>
+            <div class="field">
+              <label>Longitude</label>
+              <input type="text" placeholder="Y">
+            </div>
+          </div>
+        <h4 class="ui header">Headquarters Address</h4>
+        <div class="ui small info message">
+          <p>Provide hospital address in absence of headquarters</p>
+        </div>
+          <div class="field">
+            <label>Address</label>
+            <input type="text" placeholder="Address">
+          </div>
+          <div class="three fields">
+            <div class="field">
+              <label>City</label>
+              <input type="text" placeholder="City">
+            </div>
+            <div class="field">
+              <label>State</label>
+              <input type="text" placeholder="State">
+            </div>
+            <div class="field">
+              <label>Zip Code</label>
+              <input type="text" placeholder="Zip">
+            </div>
+          </div>
+        <h4 class="ui header">Hospital Address</h4>
+          <div class="three fields">
+            <div class="field">
+              <label>Country</label>
+              <input type="text" placeholder="Country">
+            </div>
+            <div class="field">
+              <label>State</label>
+              <input type="text" placeholder="State">
+            </div>
+            <div class="field">
+              <label>FIPS</label>
+              <input type="text" placeholder="FIPS">
+            </div>
+          </div>
+        <div class="ui dividing blue header">
+          Additional Information
+          <div class="sub header">
+            This information will help us in resource allocation
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Licensed Beds</label>
+            <input type="number" placeholder="Licensed Beds">
+          </div>
+          <div class="field">
+            <label>Staffed Beds</label>
+            <input type="number" placeholder="Staffed Beds">
+          </div>
+        </div>
+        <div class="three fields">
+          <div class="field">
+            <label>ICU Beds</label>
+            <input type="number" placeholder="ICU beds">
+          </div>
+          <div class="field">
+            <label>Adult ICU Beds</label>
+            <input type="number" placeholder="Adult ICU beds">
+          </div>
+          <div class="field">
+            <label>Pediatric ICU Beds</label>
+            <input type="number" placeholder="Pediatric ICU beds">
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Bed Utilization</label>
+            <input type="number" placeholder="Avg Bed Utilization">
+          </div>
+          <div class="field">
+            <label>Expected Bed Capacity Increase</label>
+            <input type="number" placeholder="Increase in Bed Capacity">
+          </div>
+        </div>
+        <div class="inline fields">
+          <label>Average Ventilator utilization</label>
+          <div class="fourteen wide field">
+            <input type="number" placeholder="Number of Patients per Ventilator">
+          </div>
+        </div>
+
+      </div>
+      <br>
+      <div class="ui four column centered stackable grid">
+        <div class="left floated eleven wide column">
+          <div class="sub header">
+            <br>
+            By clicking submit you agree to have carefully gone through and agreeing with  our Terms, Data Policy and Cookie Policy
+          </div>
+        </div>
+        <div class="right floated right aligned column">
+          <div class="ui animated blue huge button" tabindex="0">
+            <div class="visible content">Submit</div>
+            <div class="hidden content">
+              <i class="right arrow icon"></i>
+            </div>
+          </div>
+        </div>
     </div>
+    </form>
+    <!--Form for new Hospitals end-->
   </div>
  
   <div id="getResultDiv2">
@@ -167,7 +299,11 @@
   }
 
 </script>
-<script> document.getElementById("test").classList.add("active"); </script>
+<script> 
+  document.getElementById("test").classList.add("active"); 
+  $('i').popup();
+
+</script>
 <script>
   //watson addon assitant (build incomplete)
 window.watsonAssistantChatOptions = {
