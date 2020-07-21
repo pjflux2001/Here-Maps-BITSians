@@ -33,13 +33,15 @@
     </div>
   </div>
   <div class="ui segment"  id="choice-segment-1" style="display: none;">
-    <div id="fuzzy-name" class="ui center aligned">
+    <div id="fuzzy-name">
       <div class="ui dividing blue header">Enter Hospital Name</div>
-      <div class="ui icon input">
+      <div class="ui fluid icon input">
         <input id="HOSPITAL_NAME" type="text" placeholder="Search...">
-        <i class="search icon"></i>
+        <div class="ui large blue animated button" tabindex="0" onclick="fuzzynameGet()">
+          <div class="visible content"><i class="search icon"></i></div>
+          <div class="hidden content"><i class="right arrow icon"></i></div>
+        </div>
       </div>
-      <button class="ui button" type="button" onclick="fuzzynameGet()">Search</button><br>
       <div class="ui icon input">
         <input id="STATE_NAME" type="text" placeholder="State Name...">    
         <i class="filter icon"></i>
@@ -48,7 +50,7 @@
         <input id="COUNTY_NAME" type="text" placeholder="County/City Name...">      
         <i class="filter icon"></i>
       </div>
-      <button class="ui button" type="button" onclick="fuzzyfilterGet()">Filter</button>
+      <button class="ui teal button" type="button" onclick="fuzzyfilterGet()">Filter</button>
     </div>
   </div>
   <div class="ui segment"  id="choice-segment-2" style="display: none;">
