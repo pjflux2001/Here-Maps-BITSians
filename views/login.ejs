@@ -79,38 +79,38 @@
     <div class=" three wide column sidebar">
         <div class="sidebar-menu" >
             <div class="sidebar-item ">
-                <button class="ui fluid button" onclick="displayMainPage('dashboard-page')">
-                    <i class="desktop icon "></i><span> Dashboard</span>
+                <button class="black colored ui fluid button" onclick="displayMainPage('dashboard-page')">
+                    <i class="grey colored desktop icon "></i><span> Dashboard</span>
                 </button>
             </div>
             <hr>
             <div class="sidebar-item">
-                <button class="ui fluid button" onclick="displayMainPage('profile-page')">
-                    <i class="user circle icon"></i><span> Profile </span>
+                <button class="black colored ui fluid button" onclick="displayMainPage('profile-page')">
+                    <i class="grey colored user circle icon"></i><span> Profile </span>
                 </button>
             </div>
             <hr>
             <div class="sidebar-item">
-                <button class="ui fluid button" onclick="displayMainPage('Manage-Hospital')">
-                    <i class="hospital outline icon"></i><span> Manage</span>
+                <button class="black colored ui fluid button" onclick="displayMainPage('Manage-Hospital')">
+                    <i class="grey colored hospital outline icon"></i><span> Manage</span>
                 </button>
             </div>
             <hr>
             <div class="sidebar-item">
-                <button id="chatpage" class="ui fluid button" onclick="displayMainPage('chat')">
-                    <i class="envelope outline icon"></i><span> Chat</span>
+                <button id="chatpage" class="black colored ui fluid button" onclick="displayMainPage('chat')">
+                    <i class="grey colored envelope outline icon"></i><span> Chat</span>
                 </button>
             </div>
             <hr>
             <div class="sidebar-item">
-                <button class="ui fluid large button" onclick="displayMainPage('settings-page')">
-                    <i class="settings icon"></i><span> Settings</span>
+                <button class="black colored ui fluid large button" onclick="displayMainPage('settings-page')">
+                    <i class="grey colored settings icon"></i><span> Settings</span>
                 </button>
             </div>
             <hr>
             <div class="sidebar-item">
-                <button class="ui fluid button" onclick="logout(); remove_online(firebase.auth().currentUser);">
-                    <i class="fa fa-sign-out"></i><span> Logout</span>
+                <button class="black colored ui fluid button" onclick="logout(); remove_online(firebase.auth().currentUser);">
+                  <i class="grey colored share square outline icon"></i></i><span> Logout</span>
                 </button>
             </div>
         </div>
@@ -363,10 +363,13 @@
 
 
           </div>
+          <div class="ui fluid icon input">
           <input id="chat_input" placeholder="Type something.....">
-          
+               
         </input>
-          <button class="ui primary button" id="chat_btn">Send</button> 
+        <button class="ui primary button" id="chat_btn">Send</button> 
+        </div>
+           
              </div>
       <div class="main-item" id="settings-page" style="display: none;">
         <div class="ui header">SETTINGS</div>
