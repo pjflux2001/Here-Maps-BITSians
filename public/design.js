@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(themeStylesheet.href.includes('light')){
             themeStylesheet.href = 'dark-theme.css';
             themeToggle.innerText = 'Light Mode';
+            
         } else {
             // if it's dark -> go light
             themeStylesheet.href = 'light-theme.css';

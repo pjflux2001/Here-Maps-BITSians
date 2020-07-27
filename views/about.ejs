@@ -1,59 +1,104 @@
 <%- include("./partials/header") %>
 <div class="ui center aligned segment masthead"  id="cover">
     <div class="ui center aligned text container">
-        <h1 class="ui header library">Here Maps: BITSians</h1>
-        <p class="pretty">A Load Balancer for Medical Faciliities</p><br>
-        <a href="/map" class="ui huge green download button">
-            Get Started <i class="right arrow icon"></i>
-          </a>
-        <a href="#desc" class="ui huge green download button">
-            Services <i class="down arrow icon"></i>
-	    </a>
+        <h1 class="ui header ">Plasma Bed</h1>
+        <p class="pretty">A Load Balancer for Medical Faciliities</p>
+        <a href="/map" class="ui massive basic inverted animated button">
+            <div class="visible content">Get Started</div>
+            <div class="hidden content">
+              <i class="right arrow icon"></i>
+            </div>    
+        </a>  
+        <a href="#desc" class="ui massive basic inverted animated button">
+          <div class="visible content">Services</div>
+          <div class="hidden content">
+            <i class="down arrow icon"></i>
+          </div>            
+	      </a>
     </div>
 </div>
-<!-- Other UI interface
+<!--
 <div class="ui text container">
-  <div class="ui grid">
-    <div class="two column row">
-      <div class="left floated center aligned column">
-        Here Maps: BITSians is a load balancing project for medical facilities and health care units using HERE Maps APIs. HERE Map API provides accurate, comprehensive and highly interactive maps and is the go-to destination for location services for any need, from public sector and infrastructure to healthcare, from transportation and logistics to media.
+  <img class="ui fluid image" src="hospital-vector.svg" id="desc">
+  <h1 class="ui centered huge header" style="font-size:3em;">Get the Best in Healthcare</h1>
+  
+  
+  
+  <h2 class="ui icon header" id="desc">
+      <a><i class="user md icon"></i></a>
+      <div class="content">
+          Description
+        <div class="sub header">Here Maps: BITSians is a load balancing project for medical facilities and health care units using HERE Maps APIs. HERE Map API provides accurate, comprehensive and highly interactive maps and is the go-to destination for location services for any need, from public sector and infrastructure to healthcare, from transportation and logistics to media.</div>
       </div>
-      <div class="right floated six wided column">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Light_Bulb_or_Idea_Flat_Icon_Vector.svg/473px-Light_Bulb_or_Idea_Flat_Icon_Vector.svg.png"
-        class="ui small image">
-      </div>
-    </div>
-  </div>
-</div>
--->
-
-<div class="ui text container">
-
-    <h2 class="ui icon header" id="desc">
-        <a><i class="user md icon"></i></a>
-        <div class="content">
-            Description
-          <div class="sub header">Here Maps: BITSians is a load balancing project for medical facilities and health care units using HERE Maps APIs. HERE Map API provides accurate, comprehensive and highly interactive maps and is the go-to destination for location services for any need, from public sector and infrastructure to healthcare, from transportation and logistics to media.</div>
-        </div>
-      </h2>
-      <hr>
-    <h2 class="ui icon header">
-            <a><i class="hospital icon"></i></a>
-            <div class="content">
-                Application
-              <div class="sub header">The project includes a dynamic map embedded as a part of the web application. The project aims at providing most efficient and effective usage of available medical facilities, without adding any extra burden to any specific unit(s). Not only does it provide data on number of beds and ventilators available, but also maps their utilization values.
-                This makes it very convenient for the patient to decide on which hospital to choose. The web application is equipped with multiple features like looking for emergency services, dynamic routing, discovering medical units, and what not.</div>
-            </div>
     </h2>
     <hr>
-    <h2 class="ui icon header">
-        <a><i class="jenkins icon"></i></a>
-        <div class="content">
-            Assistant Macro
-          <div class="sub header">Also, the application is equipped with an AI based bot to guide the user through. For future releases, developers are planning to shift from dynamic to realtime database in order to receive real time updates from various healthcare and medical units on data concerning bed numbers and its timely utilization values.</div>
-        </div>
-      </h2>
-      <hr>
+  <h2 class="ui icon header">
+          <a><i class="hospital icon"></i></a>
+          <div class="content">
+              Application
+            <div class="sub header">The project includes a dynamic map embedded as a part of the web application. The project aims at providing most efficient and effective usage of available medical facilities, without adding any extra burden to any specific unit(s). Not only does it provide data on number of beds and ventilators available, but also maps their utilization values.
+              This makes it very convenient for the patient to decide on which hospital to choose. The web application is equipped with multiple features like looking for emergency services, dynamic routing, discovering medical units, and what not.</div>
+          </div>
+  </h2>
+  <hr>
+  <h2 class="ui icon header">
+      <a><i class="jenkins icon"></i></a>
+      <div class="content">
+          Assistant Macro
+        <div class="sub header">Also, the application is equipped with an AI based bot to guide the user through. For future releases, developers are planning to shift from dynamic to realtime database in order to receive real time updates from various healthcare and medical units on data concerning bed numbers and its timely utilization values.</div>
+      </div>
+    </h2>
+    <hr>
 </div>
-<script> document.getElementById("about").classList.add("active"); </script>
+-->
+<br>
+<h1 class="ui centered header" style="font-size: 3em;" id="desc">Project Features</h1>
+<br>
+<div class="ui middle aligned stackable grid container">
+  <div class="two column row">
+    <div class="ten wide column">
+      <div class="ui relaxed items">
+        <div class="item">
+          <div class="middle aligned content">
+            <div class="header">Information Provider</div>
+            <div class="description">Plasma Bed provides relevant information like number of ICU beds, ventilator equipped beds and many more. This allows user to make an informed decision while chosing a Hospital</div>
+          </div>
+        </div>
+        <br>
+        <div class="item">
+          <div class="middle aligned content">
+            <div class="header">Load Balancer</div>
+            <div class="description">Plasma Bed provides utilization value for each registered hospital. Based on this utilization value, dynamic map provides nearby hospitals and recommends hospitals based on distance, travelling time and utilization value. Our attempt is to reduce patient inflow to hospitals with high utilization value. </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right floated center aligned six wide column">
+      <img src="https://pngimage.net/wp-content/uploads/2018/06/hopital-png-5.png" style="height:40vh;">
+    </div>
+  </div>
+  <div class="row"></div>
+  <div class="one column centered row">
+    <div class="ten wide column">
+      <div class="ui items">
+        <div class="item">
+          <div class="image">
+            <img src="https://www.freepngimg.com/download/map/62663-vector-map-google-center-icons-maps-computer.png" style="height:30vh;width:auto;">
+          </div>
+          <div class="middle aligned content">
+            <div class="header">Dynamic Routing</div>
+            <div class="description">Using Here:Maps API, Plasma Bed highlights hospitals nearby along with that hospital's information. It also provides routing options along with advance search feature to get most suitable available option.  </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+</div>
+
+<script> 
+document.getElementById("about").classList.add("active"); 
+$('.ui.accordion')
+  .accordion()
+;
+</script>
 <%- include("./partials/footer") %>
