@@ -277,28 +277,8 @@
           <hr>
           <br>
           <div class= "ui small message" >
-            <button class="ui circular facebook icon button">
-              <i class="facebook icon"></i>
-            </button>
-            <button class="ui circular twitter icon button">
-              <i class="twitter icon"></i>
-            </button>
-            <button class="ui circular linkedin icon button">
-              <i class="linkedin icon"></i>
-            </button>
-            <button class="ui circular google plus icon button">
-              <i class="google plus icon"></i>
-            </button>
-            <div class="ui right floated compact menu">
-              <a class="item">
-                <i class="red colored icon mail"></i> Messages
-                <div class="floating ui red label">7</div>
-              </a>
-              <a class="item">
-                <i class="blue colored icon users"></i> Friends
-                <div class="floating ui teal label">10</div>
-              </a>
-            </div>
+            
+         
             <h2 class="ui center aligned icon header">
               <i class="red colored circular envelope icon"></i>
               Messages
@@ -310,8 +290,8 @@
                   <div class="chatboxin">
               
               
-                    <div class="chat-container">
-                      <div class="chat-sender msg">
+                    <div class="chat-container" >
+                      <div class="chat-sender msg" id = "chat_display">
                         <i class="red colored heartbeat icon"></i>
                         <strong>Sender</strong>
                         <div class="chatmsg">hi</div>
@@ -320,7 +300,7 @@
               
               
                     <div class="chat-container">
-                      <div class="chat-respond msg">
+                      <div class="chat-respond msg" id = "chat_display">
                       
                         <div class="flippd">
                           <i class="green colored user md icon"></i>
@@ -333,28 +313,10 @@
                     </div>
               
               
-                    <div class="chat-container">
-                     
-                      <div class="chat-sender msg">
-                        <i class="red colored heartbeat icon"></i>
-                        <strong>Sender</strong>
-                        <div class="chatmsg">Hi</div>
-                      </div>
-                    </div>
+                  
               
               
-                    <div class="chat-container">
-                      <div class="chat-respond msg">
-                       
-                        <div class="flippd">
-                          <i class="green colored user md icon"></i>
-                          <strong>Responder</strong>
-                          <div class="chatmsg"> Hi
-                          </div>
-                        </div>
-                      </div>
                  
-                    </div>
               
               
                   </div>
@@ -674,7 +636,7 @@ function remove_online(h){
 }
 
   $('#chat_btn').click(function(){
-    document.getElementById("chat_display").innerHTML += "<h5>"+firebase.auth().currentUser.email + "</h5> : " + document.getElementById("chat_input").value + "<br>";
+    document.getElementById("chat_display").innerHTML += "<chat-sender msg>"+firebase.auth().currentUser.email + "<chat-sender msg> : " + document.getElementById("chat_input").value + "<br>";
     
     var message = {
       user_id: firebase.auth().currentUser.uid,
