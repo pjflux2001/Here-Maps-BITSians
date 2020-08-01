@@ -37,9 +37,9 @@ mongoose.connect(process.env.DATABASEURI,{
 	useUnifiedTopology:true,
 	useFindAndModify: false
 }).then(()=>{
-	console.log("Connected to Database");
+	console.log("Connected to Database",chalk.green('✓'));
 }).catch(err =>{
-	console.log("ERROR:",err.message);
+	console.log('MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'),err.message);
 });
 
 //==========================
@@ -67,10 +67,26 @@ app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
 //to remove the webserver identification
 app.disable('x-powered-by');
+//created the copy of request header and saved it in response header
+app.use((req, res, next) => {
+	res.locals.user = req.user;
+	next();
+  });
 
 //path protection middlewares
 
-
+/**
+ * Error Handler.
+ */
+if (process.env.NODE_ENV === 'development') {
+	// only use in development
+	app.use(errorHandler());
+  } else {
+	app.use((err, req, res, next) => {
+	  console.error(err);
+	  res.status(500).send('Server Error');
+	});
+  }
 
 //Serving HomePage
 app.get("/",function(req,res){
@@ -270,5 +286,6 @@ app.post("/email",function(req,res){
 //LISTENER PROCESS
 var port = process.env.PORT || 31000
 app.listen(port,process.env.IP,function(){
-	console.log("Server started at port:"+port);
+	console.log("Server started at port:"+port ,chalk.green('✓'));
+	console.log('  Press CTRL-C to stop');
 });
