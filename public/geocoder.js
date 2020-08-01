@@ -122,6 +122,40 @@ function revGeocode(lat, lon){
 
 }
 
+
+
+function covid(){
+  let geocodeParam ={
+      name: 'covid',
+      at: map.getCenter().lat +',' + map.getCenter().lng, 
+      limit: 50
+              
+  }
+  
+  function onResult(result){
+      console.log(result);
+      let covidIcon = new H.map.Icon('covid.png');
+      if(result.items.length>0){
+        for(var i =0 ; i < result.items.length ; i++){
+            var covidMarker = new H.map.Marker(result.items[i].position, {icon: covidIcon});
+            map.addObject(covidMarker);
+            covidMarker.setData(result.items[i].title + ' (' + result.items[i].distance +' m)');
+        }
+        
+    }
+            
+     ui.addBubble(new H.ui.InfoBubble(result.items[0].position,{
+          content: result.items[0].title + ' (' + result.items[0].distance +' m)'
+      }));
+      document.getElementById("status").innerHTML = result.items.length + " COVID-19 Testing Sites Found Around You";
+      
+  }
+
+  
+  
+  geocoder.browse(geocodeParam,onResult, alert);
+}
+
 function getNumber(i){
     var numbers = [
         {

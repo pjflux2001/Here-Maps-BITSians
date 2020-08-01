@@ -1,4 +1,6 @@
-
+html{
+	scroll-behavior: smooth;
+}
 #mapContainer > div > div:nth-child(0) > div > div {
 	width:99% !important;
 }
@@ -6,6 +8,10 @@
 #card0,#card1,#card2,#card3,#card4 {
 	margin-top: 2vh !important;
 	
+}
+
+#desc,#PlasmaBankInfo,#CareNetInfo,#TrackABedInfo,#CareBotInfo{
+	height:100vh;
 }
 
 #card0 > div{
@@ -119,9 +125,7 @@ src: url("fonts/fontawesome-webfont.eot");
 	    -o-transition-duration: .2s;
 	    transition-duration: .2s;
 	}
-	.hamburger.active {
 
-	}
 	.hamburger.active .hamburger-bun {
 		margin: 0;
 		-webkit-transform-origin: center center;
@@ -181,6 +185,13 @@ body > div > div.ui.fluid.two.column.centered.grid.menu{
   }
 	.ui.stackable.menu.open {
 		height:inherit
+	}
+	h1{
+		text-align: center;
+	}
+	#desc,#PlasmaBankInfo,#CareNetInfo,#TrackABedInfo,#CareBotInfo,#Mission{
+		margin-top:5vh;
+		height: auto;
 	}
 }
 
@@ -293,8 +304,7 @@ body > div.ui.center.aligned.segment.masthead > div > h1{
 	/*url('https://wallpaperplay.com/walls/full/9/5/e/13971.jpg');*/
 	/*url('https://images.squarespace-cdn.com/content/v1/592c6821d482e9898c72d7d3/1533773281442-1DHFKHWELY6OROXJJ5OC/ke17ZwdGBToddI8pDm48kCurl7xsCVdN09-BC3yacVoUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKca6EWiN-QmYyWPTJTg79O__5GPghVJDUwaft6EaC2SwI-L1n5dDK_g2cKn1s7GrJc/Background.png?format=2500w');*/
 	/*background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.4), rgba(204, 149, 192,0.6)),url('https://healthtechmagazine.net/sites/healthtechmagazine.net/files/styles/cdw_hero/public/articles/%5Bcdw_tech_site%3Afield_site_shortname%5D/201810/HET_Q418_EdLetter-HERO.jpg?itok=zSAInqEg');	*/
-	background-image: linear-gradient(to bottom, rgba(127, 127, 213,0.6), rgba(134, 168, 231,0.5)),url('https://healthtechmagazine.net/sites/healthtechmagazine.net/files/styles/cdw_hero/public/articles/%5Bcdw_tech_site%3Afield_site_shortname%5D/201810/HET_Q418_EdLetter-HERO.jpg?itok=zSAInqEg');	
-
+	background-image: linear-gradient(to bottom, rgba(0, 165, 76, 0.5),rgba(0, 175, 239, 0.5));	
 	background-repeat: no-repeat;
 	height:95vh;
     background-size: cover;
@@ -314,10 +324,211 @@ body > div.ui.center.aligned.segment.masthead > div > h1{
 }
 
 #user_div > div > div > div.twelve.wide.column.page-area{
-	background-color:rgb(230, 255, 255);
     opacity: 0.8;
     border-radius: 10px;
 	margin-top: 2vh;
 	margin-left: 1.5vh;
 }
 
+
+/*=================plasma bank==================*/
+
+/* infographics */
+
+#slideshow{
+	height: 400px;
+	margin: auto;
+	max-width: 500px;
+	position: relative;
+  }
+  
+  #slideshow img{
+	border-radius: 10px;
+	/*border: 5px solid #222;*/
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	height: auto;
+	opacity: 0;
+	left: 0;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	width: 100%;
+	-webkit-transition: 1s all;
+	-webkit-transform: scale(1);
+	/*-webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(250, 250, 250, 0.1)));*/
+	-webkit-backface-visibility: hidden;
+  }
+  
+  #slideshow .is-active{
+	opacity: 1;
+	left: 0;
+	top: 0;
+	z-index: 2;
+	-webkit-transition: 1s all;
+	-webkit-transform: scale(.8);
+	-webkit-backface-visibility: hidden;
+  }
+
+
+  #myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+/* infographics */
+
+/* plasma bank footer */
+.sticky-footer{
+	background: radial-gradient(white,rgba(212, 212, 212, 0.89),grey);
+	align-items: center;
+}
+/* plasma bank footer */
+
+/* news1 */
+#marqueecontainer{
+	position: relative;
+	 width: 500px auto; /*marquee width */
+	height: 280px; /*marquee height */
+	 background-color: white;
+	overflow: hidden;
+	/*border: 3px solid orange;*/
+	/*padding: 2px;*/
+	padding-left: 8px;
+	padding-right: 8px;
+	}
+/* news1 */
+
+/* scroller */
+	.scroller {
+		position: relative;
+		width: 500px auto; /*marquee width */
+	   height: 280px; /*marquee height */
+		background-color: white;
+	   overflow: hidden;
+	   /*border: 3px solid orange;*/
+	   /*padding: 2px;*/
+	   padding-left: 8px;
+	   padding-right: 8px;
+	}
+	.scroller span {
+	 position: absolute;
+	 width: 100%;
+	 height: 100%;
+	 margin: 0;
+	 line-height: 20px;
+	 text-align: left;
+	 /* Starting position */
+	 -moz-transform:translateY(100%);
+	 -webkit-transform:translateY(100%);	
+	 transform:translateY(100%);
+	 /* Apply animation to this element */	
+	 -moz-animation: scroller 40s linear infinite;
+	 -webkit-animation: scroller 40s linear infinite;
+	 animation: scroller 40s linear infinite;
+	}
+	/* Move it (define the animation) */
+	@-moz-keyframes scroller {
+	 0%   { -moz-transform: translateY(10%); }
+	 100% { -moz-transform: translateY(-350%); }
+	}
+	@-webkit-keyframes scroller {
+	 0%   { -webkit-transform: translateY(10%); }
+	 100% { -webkit-transform: translateY(-350%); }
+	}
+	@keyframes scroller {
+	 0%   { 
+	 -moz-transform: translateY(10%); /* Firefox bug fix */
+	 -webkit-transform: translateY(10%); /* Firefox bug fix */
+	 transform: translateY(10%); 		
+	 }
+	 100% { 
+	 -moz-transform: translateY(-350%); /* Firefox bug fix */
+	 -webkit-transform: translateY(-350%); /* Firefox bug fix */
+	 transform: translateY(-350%); 
+	 }
+	}
+
+
+
+/*======================plasma bank====================*/

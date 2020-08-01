@@ -1,7 +1,6 @@
 body{
-  /*background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('https://wallpaperplay.com/walls/full/9/5/e/13971.jpg');*/
-  background: -webkit-linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /*background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('https://wallpaperplay.com/walls/full/9/5/e/13971.jpg');*/	
+  background-image: linear-gradient(to bottom, rgba(0, 165, 76, 0.2),rgba(0, 175, 239, 0.4 ));
   height: 100vh;
   background-size: cover;
   background-position: center;
@@ -392,8 +391,8 @@ h1 {
    text-align: right;
     padding: 9px 9px;
     padding-left: 21px;
-    background-color: #E6E6E6;
-    color: rgb(51, 51, 51);
+    /*background-color: #E6E6E6;*/
+    color: rgb(255, 255, 255);
     box-sizing: border-box;
     width: calc(100% - 53px);
     margin-right: -9px;

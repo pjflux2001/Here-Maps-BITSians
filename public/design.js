@@ -25,12 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // if it's light -> go dark
         if(themeStylesheet.href.includes('light')){
             themeStylesheet.href = 'dark-theme.css';
-            themeToggle.innerText = 'Light Mode';
+            themeToggle.innerHTML = '<i class="sun icon"></i>';
             
         } else {
             // if it's dark -> go light
             themeStylesheet.href = 'light-theme.css';
-            themeToggle.innerText = 'Dark Mode';
+            themeToggle.innerHTML = '<i class="moon icon"></i>';
         }
         // save the preference to localStorage
         localStorage.setItem('theme',themeStylesheet.href)  
@@ -63,7 +63,7 @@ function closebutton(i){
         }
     }
 }
-
+//===========Post Login interface==================//
 function displayMainPage(i){
     var pages = ["dashboard-page","profile-page","Manage-Hospital","chat","settings-page"];
     for(j=0;j<pages.length;j++){

@@ -1,6 +1,6 @@
 <%- include("./partials/header") %>
 
-      <link rel = "stylesheet" href="loginstyle.css">
+      <link id="login-style" rel = "stylesheet" href="loginstyle.css">
       <div id="login_div" class = "login-page">
 
 			<div class = "form">
@@ -22,7 +22,7 @@
        <i class="fa fa-key fa-lg fa-fu" aria-hidden="true"></i>
        </div>
 				
-					<button class="button" title="Sign Up" onclick="create_account()">Create</button>
+					<button class="button" title="Sign Up" onclick="create_account(); ">Create</button>
 					<p class="message" id="login-interface">Already Registered? <a href="#"> Login </a></p>
       </div>
 
@@ -79,269 +79,85 @@
     <div class=" three wide column sidebar">
         <div class="sidebar-menu" >
             <div class="sidebar-item ">
+              <div class="ui small message">
                 <button class="black colored ui fluid button" onclick="displayMainPage('dashboard-page')">
                     <i class="grey colored desktop icon "></i><span> Dashboard</span>
                 </button>
             </div>
+            </div>
             <hr>
             <div class="sidebar-item">
+              <div class="ui small message">
                 <button class="black colored ui fluid button" onclick="displayMainPage('profile-page')">
                     <i class="grey colored user circle icon"></i><span> Profile </span>
                 </button>
             </div>
+            </div>
             <hr>
             <div class="sidebar-item">
+              <div class="ui small message">
                 <button class="black colored ui fluid button" onclick="displayMainPage('Manage-Hospital')">
                     <i class="grey colored hospital outline icon"></i><span> Manage</span>
                 </button>
             </div>
+            </div>
             <hr>
             <div class="sidebar-item">
+              <div class="ui small message">
                 <button id="chatpage" class="black colored ui fluid button" onclick="displayMainPage('chat')">
                     <i class="grey colored envelope outline icon"></i><span> Chat</span>
                 </button>
             </div>
+            </div>
             <hr>
             <div class="sidebar-item">
+              <div class="ui small message">
                 <button class="black colored ui fluid large button" onclick="displayMainPage('settings-page')">
                     <i class="grey colored settings icon"></i><span> Settings</span>
                 </button>
             </div>
+            </div>
             <hr>
             <div class="sidebar-item">
-                <button class="black colored ui fluid button" onclick="logout(); remove_online(firebase.auth().currentUser);">
+              <div class="ui small message">
+                <button id="logout" class="black colored ui fluid button" onclick="logout(); remove_online(firebase.auth().currentUser);">
                   <i class="grey colored share square outline icon"></i></i><span> Logout</span>
                 </button>
+            </div>
             </div>
         </div>
     </div>
     
     <div class="twelve wide column page-area" >
-      <div class="main-item" id="dashboard-page" >
-        <div class="ui header">DASHBOARD</div>
-        <hr>
-        <!--Starting Firebase Cloud Storage-->
-        Upload Progress : <progress value="0" max="100" id="uploader">0%</progress>
-        <br>
-        Choose your file [must be in bmp, jpg, png, or pbm] : <br><input type="file" value="upload" id="fileBtn">
-        <br>
-        <br>
-        Analysis goes here :
-        <div id="analysis"></div>
-        <br>
-        <br>
-        Result : <div id="res" style="display: inline; color: orchid;">Pending</div>
-      </div>
-      <div class="main-item" id="profile-page" style="display:none;">
-        <div class="ui header">PROFILE<button class="ui mini positive right floated button">EDIT</button></div>
-        <hr>
-        <form>
-          <div class="ui container">
-            <div class="ui fluid labeled input">
-              <div class="ui basic label">
-                X
-              </div>
-              <input type="text">
-            </div>
-            <div class="ui fluid labeled input">
-              <div class="ui basic label">
-                Y
-              </div>
-              <input type="text">
-            </div>
-            <div class="ui fluid labeled input">
-              <div class="ui basic label">
-                FID
-              </div>
-              <input type="text">
-            </div>
-            <div class="ui fluid labeled input">
-              <div class="ui basic label">
-                Hospital Name
-              </div>
-              <input type="text">
-            </div>
-            <div class="ui fluid labeled input">
-              <div class="ui basic label">
-                Hospital Type
-              </div>
-              <input type="text">
-            </div>
-            <div class="ui fluid labeled input">
-              <div class="ui basic label">
-                HQ Address
-              </div>
-              <input type="text">
-            </div>
-            <div class="ui fluid labeled input">
-              <div class="ui basic label">
-                HQ City
-              </div>
-              <input type="text">
-            </div>
-            <div class="ui fluid labeled input">
-              <div class="ui basic label">
-                HQ State
-              </div>
-              <input type="text">
-            </div>
-            <div class="ui fluid labeled input">
-              <div class="ui basic label">
-                HQ Zip Code
-              </div>
-              <input type="text">
-            </div>
-            <div class="ui fluid labeled input">
-              <div class="ui basic label">
-                Country
-              </div>
-              <input type="text">
-            </div>
-            <div class="ui fluid labeled input">
-              <div class="ui basic label">
-                State
-              </div>
-              <input type="text">
-            </div>
-            <div class="ui fluid labeled input">
-              <div class="ui basic label">
-                FIPS
-              </div>
-              <input type="text">
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="main-item" id="Manage-Hospital" style="display:none;">
-        <div class="ui header">RESOURCE MANAGEMENT<button class="ui mini positive right floated button">EDIT</button></div>
-        <hr>
-        <form>
-        <div class="ui container">
-          <div class="ui fluid labeled input">
-            <div class="ui basic label">
-              Licensed Beds
-            </div>
-            <input type="text">
-          </div>
-          <div class="ui fluid labeled input">
-            <div class="ui basic label">
-              Staffed Beds
-            </div>
-            <input type="text">
-          </div>
-          <div class="ui fluid labeled input">
-            <div class="ui basic label">
-              ICU Beds
-            </div>
-            <input type="text">
-          </div>
-          <div class="ui fluid labeled input">
-            <div class="ui basic label">
-              Adult ICU Beds
-            </div>
-            <input type="text">
-          </div>
-          <div class="ui fluid labeled input">
-            <div class="ui basic label">
-              Ped ICU Beds
-            </div>
-            <input type="text">
-          </div>
-          <div class="ui fluid labeled input">
-            <div class="ui basic label">
-              Bed Utilization
-            </div>
-            <input type="text">
-          </div>
-          <div class="ui fluid labeled input">
-            <div class="ui basic label">
-              Potential Increase in Bed Capacity
-            </div>
-            <input type="text">
-          </div>
-          <div class="ui fluid labeled input">
-            <div class="ui basic label">
-              Average Ventilator Usage
-            </div>
-            <input type="text">
-          </div>
-        </div>
-        </form>
-      </div>
-      <div class="main-item" id="chat" style="display:none;">
-          <div class="ui header">CHAT PAGE <br> </div>
-          <h3 id="stat">Status : Online </h3><i id="statusie" class="fa fa-toggle-on" aria-hidden="true"></i><a id="toggle" onclick="toggle_status()">&ensp;<i class="fa fa-bullseye" aria-hidden="true"></i></a>
-          <h5>Online Hospitals (<i id="online_number")></i>)</h5>
-          Online Members : <i id="online_member"></i>
-          <br>
-          <hr>
-          <br>
-          <div class= "ui small message" >
-            
-         
-            <h2 class="ui center aligned icon header">
-              <i class="red colored circular envelope icon"></i>
-              Messages
-            </h2>
-                
-            <div class="chat">
-              <div class
-              
-                  <div class="chatboxin">
-              
-              
-                    <div class="chat-container" >
-                      <div class="chat-sender msg" id = "chat_display">
-                        <i class="red colored heartbeat icon"></i>
-                        <strong>Sender</strong>
-                        <div class="chatmsg">hi</div>
-                      </div>
-                    </div>
-              
-              
-                    <div class="chat-container">
-                      <div class="chat-respond msg" id = "chat_display">
-                      
-                        <div class="flippd">
-                          <i class="green colored user md icon"></i>
-                          <strong>Responder</strong>
-                          <div class="chatmsg"> Hey 
-                          </div>
-                        </div>
-                      </div>
-                      
-                    </div>
-              
-              
-                  
-              
-              
-                 
-              
-              
-                  </div>
-                </div>
-              
+     
+       <!-- //===============DASHBOARD RENDERING TEMPLATE==============// -->
+       <%- include("./login-assets/dashboard") %>
+       <!-- //=============END OF DASHBOARD TEMPLATE==============// -->
+      
+      <!-- //===============PROFILE HOSPITAL RENDERING TEMPLATE==============// -->
+      <%- include("./login-assets/profile") %>
+      <!-- //=============END OF PROFILE HOSPITAL TEMPLATE==============// -->
 
+      <!-- //========= MANAGE HOSPITAL RENDERING TEMPLATE==============// -->
+      <%- include("./login-assets/manage") %>
+      <!-- //=============END OF MANAGE HOSPITAL TEMPLATE==============// -->
 
-          </div>
-          <div class="ui fluid icon input">
-          <input id="chat_input" placeholder="Type something.....">
-               
-        </input>
-        <button class="ui primary button" id="chat_btn">Send</button> 
-        </div>
-           
-             </div>
-      <div class="main-item" id="settings-page" style="display: none;">
-        <div class="ui header">SETTINGS</div>
-        <hr>
-      </div>
+       <!-- //========= CHAT RENDERING TEMPLATE==============// -->
+       <%- include("./login-assets/chat") %>
+       <!-- //=============END OF CHAT TEMPLATE==============// -->
+
+         <!-- //========= SETTINGS RENDERING TEMPLATE==============// -->
+         <%- include("./login-assets/settings") %>
+         <!-- //=============END OF SETTINGS TEMPLATE==============// -->
+      
+
+      
     </div> 
   </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.7/semantic.min.js"></script>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
 <script src="https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js"></script>
@@ -366,6 +182,9 @@
   var database = firebase.database();
 
 </script>
+<!-- //=============AJAX HELPER SCRIPTS=============// -->
+<%- include("./login-assets/ajax-scripts") %>
+<!-- //=================CONTACT SMK BEFORE MOVING THIS=============// -->
 	<script>
     var inputPass2 = document.getElementById('password_field2'),
     icon = document.getElementById('icon');
@@ -409,8 +228,23 @@ function toggle_status(){
   }
     
   firebase.auth().onAuthStateChanged(function(user) {
+    const loginStylesheet = document.getElementById('login-style');
     if (user) {
+      $("input").val("");
+      if(firebase.auth().currentUser.emailVerified){
+        $("#dash-email").addClass("completed");
+      } else {
+        $("#dash-email").removeClass("completed");
+      }
+
       // User is signed in.
+      dbDataRetriever();//This function brings data from mongo
+     
+      if(firebase.auth().currentUser){
+        loginStylesheet.href = 'dashboard.css';
+      } else {
+        loginStylesheet.href = 'loginstyle.css'
+      }
   
       document.getElementById("user_div").style.display = "block";
       document.getElementById("login_div").style.display = "none";
@@ -418,26 +252,33 @@ function toggle_status(){
           
       var currentUser = user;
       
-  
+
   
       if(user != null){
-  
+
         var email_id = user.email;
         var email_verfied = user.emailVerified;
   
         if(email_verfied){
-          document.getElementById("verify_btn").style.display = "none";
+          //document.getElementById("verify_btn").style.display = "none";
+          document.getElementById("togl").style.display = "none";
         }else{
-          document.getElementById("verify_btn").style.display = "block";
+          //document.getElementById("verify_btn").style.display = "block";
+          document.getElementById("togl").style.display = "block";
         }
-        document.getElementById("user_para").innerHTML = "User : " + email_id + "<br> Verfied : " + email_verfied;
+        //document.getElementById("user_para").innerHTML = "User : " + email_id + "<br> Verfied : " + email_verfied;
   
   
       }
   
     } else {
       // No user is signed in.
-  
+              //login fuck up fix
+      if(firebase.auth().currentUser){
+        loginStylesheet.href = 'dashboard.css';
+      } else {
+        loginStylesheet.href = 'loginstyle.css'
+      }
       document.getElementById("user_div").style.display = "none";
       document.getElementById("login_div").style.display = "block";
     }
@@ -461,6 +302,8 @@ function toggle_status(){
   
       // ...
     });
+
+
   
   }
   
@@ -474,10 +317,12 @@ function create_account(){
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-  
+
       window.alert("Error : " + errorMessage);
     });
   }
+
+
   
   function send_verification(){
   
@@ -486,14 +331,34 @@ function create_account(){
     user.sendEmailVerification().then(function() {
       // Email sent.
       window.alert("Verification Sent! Check your email!");
+      document.getElementById("togl").style.display="none";
     }).catch(function(error) {
       // An error happened.
       window.alert("Err!");
     });
     
+    
   
   
   }
+
+        
+  function add_user_verification(){
+  function add_verif(h){
+          firebase.database().ref('mongo_hospital/' + h.user_id).set(h);
+        }
+
+      var user_verif = {
+      user_id: firebase.auth().currentUser.uid,
+      email: firebase.auth().currentUser.email,
+      object_id: 'undefined',
+      email_verif: 0,
+      id_verif: 0,
+      time: new Date().toLocaleString()
+    };
+
+    add_verif(user_verif);
+}
   
   function forgot_password(){
   
@@ -631,12 +496,15 @@ function remove_online(h){
 
 
   var cnt = 0;
+  
   function add_chat(h){
   firebase.database().ref('chat/' +Date()  +'_'+h.user_id+'@'+cnt).set(h);
-}
+  }
+  
 
+  // send button bellow chat 
   $('#chat_btn').click(function(){
-    document.getElementById("chat_display").innerHTML += "<chat-sender msg>"+firebase.auth().currentUser.email + "<chat-sender msg> : " + document.getElementById("chat_input").value + "<br>";
+   //document.getElementById("chat_display").innerHTML += '<div class="chat-container"><div class="chat-respond msg"style="background: aqua;" >' + firebase.auth().currentUser.email + ' : ' + '</div></div>';
     
     var message = {
       user_id: firebase.auth().currentUser.uid,
@@ -648,30 +516,50 @@ function remove_online(h){
     
   add_chat(message);
   cnt++
-    document.getElementById("chat_input").value = "";
+     document.getElementById("chat_input").value = "";
+     window.scrollBy(0,100);
+  
+     
  });
 
  var chatonref = firebase.database().ref().child("chat");
  chatonref.on("value", function(snapshot) {
       
       var chatHTMLitem="";
+      if(firebase.auth().currentUser!=null)
+        var currentUser = firebase.auth().currentUser.email;
       snapshot.forEach(function(childsnapshot){
         
         var item = childsnapshot.val();
-        chatHTMLitem += "<br>"+ item.email + " : "+item.message;
+        if(item.email == currentUser){
+          chatHTMLitem += '<div class="chat" style="text-align: right" ><div class="ui compact green colored message"style="border-radius: 100px;"><i class="blue colored user md icon"></i>'+ item.email + " : "+item.message + '</div></div>' +'<div class="ui hidden divider">' +'</div>';
+        }
+        else{
+          chatHTMLitem += '<div class="chat" ><div class="ui compact blue colored message"style="border-radius: 100px;"><i class="red colored hospital symbol icon"></i>'+ item.email + " : "+item.message + '</div></div>'+'<div class="ui hidden divider">' +'</div>';
+        }
+        //document.getElementById('chat_input').value="";
         
+
     });
     $("#chat_display").html(chatHTMLitem);
+    /*var m=0;
+  for(m=0; m<document.getElementsByClassName('chatmsg').length; m++){
+      if(document.getElementsByClassName('chatmsg')[m].innerText.search(firebase.auth().currentUser.email) >= 0){
+        document.getElementsByClassName('chat-sender msg')[m].style.background = "indigo";
+        //make chat bubbles pushed to right
+      }
+  }*/
 
   });
 
-
+  
 //Firebase Uploader
 
 var uploader = document.getElementById('uploader');
 var fileBtn = document.getElementById('fileBtn');
 
 fileBtn.addEventListener('change',function(e) {
+  if(firebase.auth().currentUser.emailVerified ? 1 : 0){
     var file = e.target.files[0];
     var loc = URL.createObjectURL(event.target.files[0])+'';
     var storageRef = firebase.storage().ref('hospital_id/'+firebase.auth().currentUser.email+'_'+file.name);
@@ -679,11 +567,15 @@ fileBtn.addEventListener('change',function(e) {
     var anal_div = document.getElementById('analysis');
     task.on('state_changed',
       function progress(snapshot){
+        document.getElementById('uploader').style.display = "inline"
+        document.getElementById('chs').style.display = "none"
         var percentage = (snapshot.bytesTransferred/snapshot.totalBytes) * 100;
         uploader.value = percentage;
+        
       },
       function error(err){
           //write some error here please
+          
           alert("Error");
       },
       function complete(){
@@ -694,39 +586,73 @@ fileBtn.addEventListener('change',function(e) {
         Tesseract.recognize(
           loc,
             'eng',
-            { logger: m => console.log(m) }
+            { logger: m => {document.getElementById('analysis').innerHTML = " "+m.status;
+            document.getElementById("percentage").innerHTML =  '<progress value="'+ m.progress*100 +'" max="100" id="uploader">0%</progress>'} }
           ).then(({ data: { text } }) => {
-            document.getElementById('analysis').innerHTML = text;
+            //document.getElementById('analysis').innerHTML = text;
+            document.getElementById('analysis').innerHTML = "text processed"
             if(text.search("Hospital") < 0 && text.search("hospital") < 0 && text.search("HOSPITAL") < 0){
                 document.getElementById('res').innerHTML = "Failed!";
                 document.getElementById('res').style.color = "red";
             }else{
                 document.getElementById('res').innerHTML = "Passed.";
+                $("#dash-id").addClass("completed");
                 document.getElementById('res').style.color = "green";
+                function add_verif_set(h){
+                  firebase.database().ref('mongo_hospital/' + h.user_id).set(h);
+                }
+
+                var email_verif_set = {
+                  user_id: firebase.auth().currentUser.uid,
+                  id_verif: 1,
+                  email: firebase.auth().currentUser.email,
+                  object_id: 'undefined',
+                  email_verif: firebase.auth().currentUser.emailVerified ? 1 : 0,
+                  time: new Date().toLocaleString()
+                               
+              };
+
+              add_verif_set(email_verif_set);
+
             }
           })
       }
     );
+  }else{
+    alert("Please verify your account under the settings tab first");
+  }
 });
 </script>
 
 <script> document.getElementById("log-in").classList.add("active"); </script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=" crossorigin="anonymous"></script>
 <script src="design.js"></script>
+
 <script>
-    //watson addon assitant (build incomplete)
-window.watsonAssistantChatOptions = {
-integrationID: "5e79a775-134a-4d7c-a0f1-9f70133207ac", // The ID of this integration.
-region: "au-syd", // The region your integration is hosted in.
-serviceInstanceID: "ff546963-32f2-41c0-8f8f-5f76b6340b62", // The ID of your service instance.
-onLoad: function(instance) { instance.render(); }
-};
-setTimeout(function(){
+    // <!-- Visual ELement Initialisation-->
+    $('i').popup();
+</script>
+<script>
+var enter_evt = document.getElementById("chat_input");
+enter_evt.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("chat_btn").click();
+    }
+});
+</script>
+<script>
+  window.watsonAssistantChatOptions = {
+      integrationID: "3a38c64f-ef6d-4910-b314-78f42d76a652", // The ID of this integration.
+      region: "eu-gb", // The region your integration is hosted in.
+      serviceInstanceID: "411ae7c2-7181-492b-aa64-fdcaafb19e28", // The ID of your service instance.
+      onLoad: function(instance) { instance.render(); }
+    };
+  setTimeout(function(){
     const t=document.createElement('script');
     t.src="https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
     document.head.appendChild(t);
-});
+  });
 </script>
 </body>
 </html>
