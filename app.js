@@ -1,13 +1,22 @@
-const { functionsIn } = require("lodash");
+/**
+ * Module dependencies.
+ */
 
-var express = require("express"),
-	app = express(),
-	bodyParser = require("body-parser"),
-	mongoose = require("mongoose"),
+const express = require("express");
+const compresssion = require("compression");
+const session = require("express-session");
+const bodyParser = require("body-parser");
+const logger = require('morgan');
+const chalk = require('chalk');
+const errorHandler = require('errorhandler');
+const lusca = require('lusca');
+const dotenv = require('dotenv');
+const mongoose = require("mongoose");
+const passport = require('passport');
 	//pug = require("pug"),
-	nodemailer = require('nodemailer'),
-	Esri = require("./models/esri.js");
-
+const nodemailer = require('nodemailer')
+const Esri = require("./models/esri.js")
+const { functionsIn } = require("lodash");
 //MIDDLEWARE for Authentication
 
 function isAuthenticated(req,res,next){
@@ -16,7 +25,7 @@ function isAuthenticated(req,res,next){
 // if not send redirect to login page 
 // with a message saying log in
 }
-
+const app = express();
 //MONGO CONFIGRATION
  var uri = process.env.DATABASEURI || "mongodb+srv://sudhanshumohan:hesoyam@cluster0-3z3hj.mongodb.net/hospital_data?retryWrites=true&w=majority"
 
