@@ -3,7 +3,7 @@
  */
 
 const express = require("express");
-const compresssion = require("compression");
+const compression = require("compression");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const logger = require('morgan');
@@ -13,23 +13,25 @@ const lusca = require('lusca');
 const dotenv = require('dotenv');
 const mongoose = require("mongoose");
 const passport = require('passport');
-	//pug = require("pug"),
 const nodemailer = require('nodemailer')
 const Esri = require("./models/esri.js")
 const { functionsIn } = require("lodash");
-//MIDDLEWARE for Authentication
 
-function isAuthenticated(req,res,next){
-//check whether logged in
-// if they are, attach the user to request object and then call next
-// if not send redirect to login page 
-// with a message saying log in
-}
+
+/**
+ * Load environment variables from .env file, where API keys and passwords are configured.
+ */
+dotenv.config({ path: '.env' });
+
+
+
+
 const app = express();
-//MONGO CONFIGRATION
- var uri = process.env.DATABASEURI || "mongodb+srv://sudhanshumohan:hesoyam@cluster0-3z3hj.mongodb.net/hospital_data?retryWrites=true&w=majority"
 
-mongoose.connect(uri,{
+//==================
+//MONGO CONFIGRATION
+//===================
+mongoose.connect(process.env.DATABASEURI,{
 	useNewUrlParser:true,
 	useCreateIndex:true,
 	useUnifiedTopology:true,
@@ -43,15 +45,32 @@ mongoose.connect(uri,{
 //==========================
 //SOME OTHER PACKAGES CONFIG
 //==========================
-
+//setting view engines to ejs
 app.set("view engine","ejs");
-//setting view engine to ejs
-app.use(express.static(__dirname + '/public'));
+// app.use(expressStatusMonitor()); //Will use it later
+app.use(compression());
+
 //serving custom resources
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public'));
 
 //using bodyparser so recieve req object
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+
+//Express Session
+
+//PASSPORT=> INITISLISE , SESSION
+
+
+//lusca for security
+app.use(lusca.xframe('SAMEORIGIN'));
+app.use(lusca.xssProtection(true));
+//to remove the webserver identification
+app.disable('x-powered-by');
+
+//path protection middlewares
+
+
 
 //Serving HomePage
 app.get("/",function(req,res){
@@ -73,7 +92,7 @@ app.get("/login",function(req,res){
 	res.render("login.ejs");
 });
 
-app.get('/dashboard',isAuthenticated,function(req,res){
+app.get('/dashboard',function(req,res){
 	res.render('dashboard.ejs');
 });
 
