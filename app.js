@@ -39,7 +39,6 @@ admin.initializeApp({
   	databaseURL: "https://here-maps-bitsians.firebaseio.com"
 });
 
-const csrfMiddleware = csrf({cookie:true});
 
 const app = express();
 
@@ -77,6 +76,10 @@ app.use(session({
 	cookieName: "session",
 	secret: process.env.SESSION_SECRET,
 	duration:30*60*1000,
+	activeDuration:5*60*1000,
+	httpOnly:true, //don't let any JS code access this cookie
+	secure:true, //only set cookies over https
+	ephemeral:true //destroys cookies on browser close
 }))
 //PASSPORT=> INITISLISE , SESSION
 
@@ -147,14 +150,17 @@ app.post("/sessionLogin", (req, res) => {
 		}
 	  );
   });
+
   app.get("/profile", function (req, res) {
 	const sessionCookie = req.session.userId || "";
   
 	admin
 	  .auth()
 	  .verifySessionCookie(sessionCookie, true /** checkRevoked */)
-	  .then(() => {
-		res.render("dashboard");
+	  .then((decodedClaims) => {
+		admin.auth().getUser(decodedClaims.sub).then(function(userRecord) {
+		res.render("dashboard",{user:userRecord});
+		})
 	  })
 	  .catch((error) => {
 		res.redirect("/login2");
@@ -167,7 +173,6 @@ app.get("/sessionLogout", (req, res) => {
 app.get("/test",function(req,res){
 	res.render("test.ejs");
 });
-
 //========API Routes============//
 
 app.get("/api/getall",apiController.getAll);
