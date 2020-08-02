@@ -32,7 +32,7 @@ exports.aboutDev = (req, res) => {
     });
   };
   // GET /dashboard
-  exports.getDashboard = (req, res) => {
+  exports.getDashboard = (req, res ,next) => {
     res.render('dashboard', {
       title: 'DashBoard'
     });

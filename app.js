@@ -4,8 +4,10 @@
 
 const express = require("express");
 const compression = require("compression");
-const session = require("express-session");
+const session = require("client-sessions");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const csrf = require("csurf");
 const logger = require('morgan');
 const chalk = require('chalk');
 const errorHandler = require('errorhandler');
@@ -17,6 +19,7 @@ const passport = require('passport');
 const nodemailer = require('nodemailer')
 const Esri = require("./models/esri.js")
 const { functionsIn } = require("lodash");
+const admin = require("firebase-admin");
 
 
 /**
@@ -30,7 +33,14 @@ dotenv.config({ path: '.env' });
 const homeController = require('./controllers/home');
 const apiController = require('./controllers/api');
 
+var serviceAccount = require("./serviceAccount.json");
 
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://here-maps-bitsians.firebaseio.com"
+});
+
+const csrfMiddleware = csrf({cookie:true});
 
 const app = express();
 
@@ -64,7 +74,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 //Express Session
-
+app.use(session({
+	cookieName: "session",
+	secret: process.env.SESSION_SECRET,
+	duration:30*60*1000,
+}))
 //PASSPORT=> INITISLISE , SESSION
 
 
@@ -101,7 +115,7 @@ app.get('/', homeController.index);
 app.get("/map",homeController.getMap);
 app.get("/AboutProject",homeController.aboutDev);
 app.get("/login",homeController.getLogin);
-app.get('/dashboard',homeController.getDashboard);
+// app.get('/dashboard',homeController.getDashboard);
 
 // ======== plasma bank Routes ==========//
 app.get("/index_plasma",homeController.getStatistics);
@@ -113,6 +127,44 @@ app.get("/plasma_bank",homeController.getPlasmaBank);
 
 //========== AJAX TESTING ROUTES =========//
 
+app.get("/login2",(req,res)=> {
+	res.render("login2");
+})
+app.post("/sessionLogin", (req, res) => {
+	const idToken = req.body.idToken.toString();
+  
+	const expiresIn = 60 * 60 * 24 * 5 * 1000;
+  
+	admin
+	  .auth()
+	  .createSessionCookie(idToken, { expiresIn })
+	  .then(
+		(sessionCookie) => {
+		  req.session.userId = sessionCookie;
+		  res.end(JSON.stringify({ status: "success" }));
+		},
+		(error) => {
+		  res.status(401).send("UNAUTHORIZED REQUEST!");
+		}
+	  );
+  });
+  app.get("/profile", function (req, res) {
+	const sessionCookie = req.session.userId || "";
+  
+	admin
+	  .auth()
+	  .verifySessionCookie(sessionCookie, true /** checkRevoked */)
+	  .then(() => {
+		res.render("dashboard");
+	  })
+	  .catch((error) => {
+		res.redirect("/login2");
+	  });
+  });
+app.get("/sessionLogout", (req, res) => {
+	res.clearCookie("session");
+	res.redirect("/login");
+  });
 app.get("/test",function(req,res){
 	res.render("test.ejs");
 });
