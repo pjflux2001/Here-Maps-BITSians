@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const logger = require('morgan');
 const chalk = require('chalk');
 const errorHandler = require('errorhandler');
+const expressStatusMonitor = require('express-status-monitor');
 const lusca = require('lusca');
 const dotenv = require('dotenv');
 const mongoose = require("mongoose");
@@ -23,6 +24,11 @@ const { functionsIn } = require("lodash");
  */
 dotenv.config({ path: '.env' });
 
+/**
+ * Controllers (route handlers).
+ */
+const homeController = require('./controllers/home');
+const apiController = require('./controllers/api');
 
 
 
@@ -47,7 +53,7 @@ mongoose.connect(process.env.DATABASEURI,{
 //==========================
 //setting view engines to ejs
 app.set("view engine","ejs");
-// app.use(expressStatusMonitor()); //Will use it later
+app.use(expressStatusMonitor());
 app.use(compression());
 
 //serving custom resources
@@ -88,50 +94,24 @@ if (process.env.NODE_ENV === 'development') {
 	});
   }
 
-//Serving HomePage
-app.get("/",function(req,res){
-	res.render("about.ejs");
-});
-app.get("/map",function(req,res){
-	Esri.find({},function(err,foundObj){
-		if(err){
-			console.log(err);
-		} else {
-			res.render("index.ejs",{foundArr:foundObj});
-		}
-	})
-	});
-app.get("/AboutProject",function(req,res){
-	res.render("AboutProject.ejs");
-});
-app.get("/login",function(req,res){
-	res.render("login.ejs");
-});
+/**
+ * Primary app routes.
+ */
+app.get('/', homeController.index);
+app.get("/map",homeController.getMap);
+app.get("/AboutProject",homeController.aboutDev);
+app.get("/login",homeController.getLogin);
+app.get('/dashboard',homeController.getDashboard);
 
-app.get('/dashboard',function(req,res){
-	res.render('dashboard.ejs');
-});
+// ======== plasma bank Routes ==========//
+app.get("/index_plasma",homeController.getStatistics);
+app.get("/amenities",homeController.getAmenities);
+app.get("/form_donor",homeController.getDonorForm);
+app.get("/form_patient",homeController.getPatientForm);
+app.get("/common_pool",homeController.getCommonPool);
+app.get("/plasma_bank",homeController.getPlasmaBank);
 
-// ======== plasma bank ========= //
-app.get("/index_plasma",function(req,res){
-	res.render("index_plasma.ejs");
-});
-app.get("/amenities",function(req,res){
-	res.render("amenities.ejs");
-});
-app.get("/form_donor",function(req,res){
-	res.render("form_donor.ejs");
-});
-app.get("/form_patient",function(req,res){
-	res.render("form_patient.ejs");
-});
-app.get("/common_pool",function(req,res){
-	res.render("common_pool.ejs");
-});
-app.get("/plasma_bank",function(req,res){
-	res.render("plasma_bank.ejs");
-});
-//==========AJAX TESTING ROUTES =========
+//========== AJAX TESTING ROUTES =========//
 
 app.get("/test",function(req,res){
 	res.render("test.ejs");
