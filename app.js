@@ -33,11 +33,10 @@ dotenv.config({ path: '.env' });
 const homeController = require('./controllers/home');
 const apiController = require('./controllers/api');
 
-var serviceAccount = require("./serviceAccount.json");
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://here-maps-bitsians.firebaseio.com"
+	credential: admin.credential.cert(JSON.parse(process.env.FIREBASE_CONFIG)),
+  	databaseURL: "https://here-maps-bitsians.firebaseio.com"
 });
 
 const csrfMiddleware = csrf({cookie:true});
