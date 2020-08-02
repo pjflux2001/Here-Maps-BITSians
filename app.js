@@ -118,27 +118,10 @@ app.get("/test",function(req,res){
 });
 
 //========API Routes============//
-//========THIS API GETS ALL THE DATA===========//
-app.get("/api/getall",function(req,res){
-	Esri.find({},function(err,data){
-		if(err){
-			res.send(err);
-		} else {
-			res.send(data);
-		}
-	}).limit(10);
-});
-//========THIS SEARCHES FOR A SPECIFIC MONGO ID=========//
-app.get("/api/",(req,res) =>{
-	var _id = req.query._id;
-	Esri.findById(_id,function(err,data){
-		if(err){
-			res.send(err);
-		} else {
-			res.send(data);
-		}
-	})
-});
+
+app.get("/api/getall",apiController.getAll);
+app.get("/api/",apiController.getId);
+
 //===========THIS API Route Searches and Updates the document ============//
 app.put("/api/",(req,res)=>{
 	Esri.findByIdAndUpdate(req.body._id,req.body,{upsert:false,new:true},function(err,updatedObject){
