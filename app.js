@@ -91,10 +91,31 @@ app.use(lusca.xssProtection(true));
 app.disable('x-powered-by');
 //created the copy of request header and saved it in response header
 app.use((req, res, next) => {
-	res.locals.user = req.user;
-	next();
+	if(!(req.session && req.session.userId)){
+		return next();
+	}
+	admin
+	.auth()
+	.verifySessionCookie(req.session.userId, true /** checkRevoked */)
+	.then((decodedClaims) => {
+	  admin.auth().getUser(decodedClaims.sub).then(function(userRecord) {
+		req.user = userRecord;
+		res.locals.user = userRecord;
+		next();
+	  })
+	})
+	.catch((error) => {
+	  res.redirect("/login2");
+	});
+
   });
 
+  function loginRequired(req,res,next){
+	  if(!req.user){
+		  return res.redirect("/login2");
+	  }
+	  next();
+  }
 //path protection middlewares
 
 /**
@@ -151,20 +172,8 @@ app.post("/sessionLogin", (req, res) => {
 	  );
   });
 
-  app.get("/profile", function (req, res) {
-	const sessionCookie = req.session.userId || "";
-  
-	admin
-	  .auth()
-	  .verifySessionCookie(sessionCookie, true /** checkRevoked */)
-	  .then((decodedClaims) => {
-		admin.auth().getUser(decodedClaims.sub).then(function(userRecord) {
-		res.render("dashboard",{user:userRecord});
-		})
-	  })
-	  .catch((error) => {
-		res.redirect("/login2");
-	  });
+  app.get("/profile",loginRequired, (req, res)=>{
+		res.render("dashboard");
   });
 app.get("/sessionLogout", (req, res) => {
 	res.clearCookie("session");
