@@ -9,7 +9,7 @@ exports.getAll = (req,res)=>{
 		} else {
 			res.send(data);
 		}
-	}).limit(10);
+	}).limit(1000);
 };
 //========THIS SEARCHES FOR A SPECIFIC MONGO ID=========//
 exports.getId = (req,res)=>{

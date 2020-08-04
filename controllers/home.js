@@ -12,13 +12,7 @@ exports.index = (req, res) => {
   };
 //GET /map
 exports.getMap = (req, res)=>{
-    Esri.find({},function(err,foundObj){
-		if(err){
-			console.log(err);
-		} else {
-			res.render("index.ejs",{foundArr:foundObj});
-		}
-	}).limit(100);
+  res.render("index.ejs");
 };
 exports.aboutDev = (req, res) => {
     res.render('AboutProject.ejs', {

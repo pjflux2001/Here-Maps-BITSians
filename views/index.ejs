@@ -328,22 +328,21 @@
         
         let hosptialIcon = new H.map.Icon('hospital.png');
         function adp(){
-            var foundArr = <%- JSON.stringify(foundArr) %>;
-             console.log(foundArr.length);
-            document.getElementById("status").innerHTML = "Processing Data Points . . .";
-            for(i=0;i<=50005*map.getZoom();i++){
-               if(i!=4281){ 
+//              console.log(foundArr.length);
+//             document.getElementById("status").innerHTML = "Processing Data Points . . .";
+//             for(i=0;i<=50005*map.getZoom();i++){
+//                if(i!=4281){ 
                     
-                let Pos = {lat: foundArr[i].Y , lng: foundArr[i].X };
-                let hospitalMarker = new H.map.Marker(Pos, {icon: hosptialIcon});
-                map.addObject(hospitalMarker);
-                hospitalMarker.setData("<h2>"+foundArr[i].HOSPITAL_NAME+"</h2><hr><b>Type : </b>"+foundArr[i].HOSPITAL_TYPE+"<br><b>Location</b> : "+foundArr[i].HQ_ADDRESS+", "+foundArr[i].HQ_CITY+", "+foundArr[i].STATE_NAME+" - "+foundArr[i].HQ_ZIP_CODE+"<br><b>No. of Licensed Beds : </b>"+foundArr[i].NUM_LICENSED_BEDS
-+"<br><b>No. of Staffed Beds</b> : "+foundArr[i].NUM_STAFFED_BEDS+"<br><b>No. of ICU Beds</b> : "+foundArr[i].NUM_ICU_BEDS+"<br><b>No. of Adult ICU Beds</b> : "+foundArr[i].ADULT_ICU_BEDS+"<br><b>No. of Pediatric ICU Beds</b> : "+foundArr[i].PEDI_ICU_BEDS+"<br><b>Bed Utilization Rate</b> : "+foundArr[i].BED_UTILIZATION+"<br><b>Average Ventilator Usage</b> : "+foundArr[i].AVG_VENTILATOR_USAGE+"<br><b>Potential Increase in Bed Capacity</b> : "+foundArr[i].Potential_Increase_In_Bed_Capac);
-                 }
+//                 let Pos = {lat: foundArr[i].Y , lng: foundArr[i].X };
+//                 let hospitalMarker = new H.map.Marker(Pos, {icon: hosptialIcon});
+//                 map.addObject(hospitalMarker);
+//                 hospitalMarker.setData("<h2>"+foundArr[i].HOSPITAL_NAME+"</h2><hr><b>Type : </b>"+foundArr[i].HOSPITAL_TYPE+"<br><b>Location</b> : "+foundArr[i].HQ_ADDRESS+", "+foundArr[i].HQ_CITY+", "+foundArr[i].STATE_NAME+" - "+foundArr[i].HQ_ZIP_CODE+"<br><b>No. of Licensed Beds : </b>"+foundArr[i].NUM_LICENSED_BEDS
+// +"<br><b>No. of Staffed Beds</b> : "+foundArr[i].NUM_STAFFED_BEDS+"<br><b>No. of ICU Beds</b> : "+foundArr[i].NUM_ICU_BEDS+"<br><b>No. of Adult ICU Beds</b> : "+foundArr[i].ADULT_ICU_BEDS+"<br><b>No. of Pediatric ICU Beds</b> : "+foundArr[i].PEDI_ICU_BEDS+"<br><b>Bed Utilization Rate</b> : "+foundArr[i].BED_UTILIZATION+"<br><b>Average Ventilator Usage</b> : "+foundArr[i].AVG_VENTILATOR_USAGE+"<br><b>Potential Increase in Bed Capacity</b> : "+foundArr[i].Potential_Increase_In_Bed_Capac);
+//                  }
                 
-            }
-            console.log("Data Points Added!");
-            document.getElementById("status").innerHTML = "Data Points added successfully";  
+//             }
+//             console.log("Data Points Added!");
+//             document.getElementById("status").innerHTML = "Data Points added successfully";  
         }
 
         ClickListener(map);
@@ -359,13 +358,13 @@
 
     <button class="ui button" style="vertical-align: middle; position: relative;" onclick="getBrowserPosition()"><span>My Location</span></button>
     <button class="ui button" style="vertical-align: middle; position: relative;" onclick="highlightHospital()"><span>Highlight Hospitals</span></button>
-    <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="adp()"><span>Add Data Points</span></button>
-    <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="geocoderSearch()"><span>Search</span></button>
-    <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="geocodeAndSearch()"><span>Discover hospitals</span></button>
-    <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="geocodeBrowse()"><span>Advanced Search</span></button>
-    <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="setUpClickListener(map);"><span>Routing Points</span></button>
-    <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="route()"><span>Route</span></button>
-    <button class="ui button" style="vertical-align: middle; position: relative; inline-block;" onclick="covid()"><span>COVID Test Sites</span></button> 
+    <button class="ui button" style="vertical-align: middle; position: relative;" onclick="adp()"><span>Add Data Points</span></button>
+    <button class="ui button" style="vertical-align: middle; position: relative;" onclick="geocoderSearch()"><span>Search</span></button>
+    <button class="ui button" style="vertical-align: middle; position: relative;" onclick="geocodeAndSearch()"><span>Discover hospitals</span></button>
+    <button class="ui button" style="vertical-align: middle; position: relative;" onclick="geocodeBrowse()"><span>Advanced Search</span></button>
+    <button class="ui button" style="vertical-align: middle; position: relative;" onclick="setUpClickListener(map);"><span>Routing Points</span></button>
+    <button class="ui button" style="vertical-align: middle; position: relative;" onclick="route()"><span>Route</span></button>
+    <button class="ui button" style="vertical-align: middle; position: relative;" onclick="covid()"><span>COVID Test Sites</span></button> 
         <div class="ui container" id="card4" >
             <div class="ui info message" style="margin-top: 0.1vh;">
                 <div class="header">
