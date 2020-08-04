@@ -61,6 +61,7 @@ mongoose.connect(process.env.DATABASEURI,{
 //==========================
 //setting view engines to ejs
 app.set("view engine","ejs");
+app.set("view engine","pug");
 app.use(expressStatusMonitor());
 app.use(compression());
 
@@ -89,6 +90,7 @@ app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
 //to remove the webserver identification
 app.disable('x-powered-by');
+//checking user session if doesnot exists then just call next otherwise search DB
 //created the copy of request header and saved it in response header
 app.use((req, res, next) => {
 	if(!(req.session && req.session.userId)){
@@ -151,7 +153,7 @@ app.get("/plasma_bank",homeController.getPlasmaBank);
 //========== AJAX TESTING ROUTES =========//
 
 app.get("/login2",(req,res)=> {
-	res.render("login2");
+	res.render("login2.ejs");
 })
 app.post("/sessionLogin", (req, res) => {
 	const idToken = req.body.idToken.toString();
@@ -173,7 +175,7 @@ app.post("/sessionLogin", (req, res) => {
   });
 
   app.get("/profile",loginRequired, (req, res)=>{
-		res.render("dashboard");
+		res.render("dashboard.pug");
   });
 app.get("/sessionLogout", (req, res) => {
 	res.clearCookie("session");
@@ -243,7 +245,7 @@ app.post("/email",function(req,res){
 		  console.log(info);
 		}
 	});
-	res.render("common_pool");
+	res.render("common_pool.ejs");
 })
 
 //========================//

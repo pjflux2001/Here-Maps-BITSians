@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    meta(charset="UTF-8", name="viewport", content="width=device-width, initial-scale=1.0")
+    title Profile Page
+    link(rel="stylesheet", href="./mvp/css")
+  body
+    main
+      if user.displayName
+        h2 Welcome, #{user.displayName}
+      else
+        h2 Welcome, #{user.email}
+      p This is a private page.
+      p Details are as
+      h4 UID : #{user.uid}
+      h4 Email Verfication Status : #{user.emailVerified}
+      a(href="/sessionLogout") Log out
+
