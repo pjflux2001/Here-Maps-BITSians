@@ -38,7 +38,7 @@ var onResult = function(result) {
       let totalDuration = 0;
 
       let colors = ["#9400D3","#f461c3","#8B4513","#000000"]
-      let card_colors = ["#9400D3aa","#f461c3dd","#8B4513aa","#000000aa"]
+      let card_colors = ["rgba(5, 165, 78,0.7)","rgba(4, 172, 236,0.7)","rgba(5, 165, 78,0.7)","rgba(4, 172, 236,0.7)"]
       route.sections.forEach((section) => {
         // Create a linestring to use as a point source for the route line
        let linestring = H.geo.LineString.fromFlexiblePolyline(section.polyline);
@@ -83,7 +83,7 @@ routeLine.addObjects([routeOutline, routeArrows]);
        endMarker.setData("Routing Ends Here!"); 
        totalLength += section.summary.length;
        totalDuration += section.summary.duration;
-	      document.getElementById("cards-collector").innerHTML += '<div class="column" id="card'+routeNum+'"+> <div class="content"><div class="ui buttons"><button class="ui compact button" id="closebtn'+routeNum+'" onclick="closebutton('+routeNum+')" >X</button><button class="ui large button" id="route-detail'+routeNum+'"></button><button class="ui compact button" id="openbtn'+routeNum+'" onclick="displaydetail('+routeNum+')" >&gt</button></div><div class="description" id="route'+cardNum+'"></div> </div></div>' 
+	      document.getElementById("cards-collector").innerHTML += '<div class="column" id="card'+routeNum+'"+> <div class="content"><div class="ui buttons"><button class="ui compact button" id="closebtn'+routeNum+'" onclick="closebutton('+routeNum+')" >X</button><button class="ui large button" id="route-detail'+routeNum+'"></button><button class="ui compact button" id="openbtn'+routeNum+'" onclick="displaydetail('+routeNum+')" ><span style="font-size:x-large;">&gt</span></button></div><div class="description" id="route'+cardNum+'"></div> </div></div>' 
         document.getElementById("card"+routeNum).style.marginTop = "2vh";
         document.getElementById("card"+routeNum).style.marginBottom = "auto";
        

@@ -64,9 +64,6 @@ body > div.ui.pointing.menu.stackable {
 
 /* ======== default semantic container width changed */
 @media only screen and (min-width: 1200px){
-#MapPage{
-	overflow: hidden;
-}
 #homepage-container{
     width: 1250px !important;
     margin-left: auto!important;
