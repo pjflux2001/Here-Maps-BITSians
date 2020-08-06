@@ -1,5 +1,5 @@
 html{
-	scroll-behavior: smooth;
+	scroll-behavior: smooth !important;
 }
 #mapContainer > div > div:nth-child(0) > div > div {
 	width:99% !important;
@@ -8,6 +8,10 @@ html{
 #card0,#card1,#card2,#card3,#card4 {
 	margin-top: 2vh !important;
 	
+}
+
+body,.card,.step,.description,.meta,.icon,hr,label,a,.content{
+	transition-duration:2s !important;
 }
 
 #desc,#PlasmaBankInfo,#CareNetInfo,#TrackABedInfo,#CareBotInfo{
@@ -45,6 +49,7 @@ body > div.ui.pointing.menu.stackable {
 	margin-bottom:0;
 }
 #cover {
+	transition:2s!important;
 	margin-top:0;
 }
 /* end of margin fix */
