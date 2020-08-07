@@ -1,4 +1,4 @@
-# CareQuest(Extension of Original Maps)
+# CareQuest(Extension Project)
 
 <p align="center"><img src="https://github.com/pjflux2001/CareQuest/blob/master/public/Logo.png" width = "25%" height = "25%"></p>
 
