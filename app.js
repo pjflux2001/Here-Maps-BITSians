@@ -20,6 +20,9 @@ const nodemailer = require('nodemailer')
 const Esri = require("./models/esri.js")
 const { functionsIn } = require("lodash");
 const admin = require("firebase-admin");
+const shell = require('shelljs');
+
+shell.exec('./faq.sh');
 
 
 /**
