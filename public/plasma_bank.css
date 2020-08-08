@@ -28,8 +28,8 @@
 
 /* Section - Title */
 /**************************/
-#parallax-world-of-ugg .title {background: white; padding: 60px; margin:0 auto; text-align:center;}
-#parallax-world-of-ugg .title h1 {font-size:35px; letter-spacing:8px;}
+#parallax-world-of-ugg .title-bs {background: white; padding: 60px; margin:0 auto; text-align:center;}
+#parallax-world-of-ugg .title-bs h1 {font-size:35px; letter-spacing:8px;}
 
 /* Section - Block */
 /**************************/
@@ -92,7 +92,7 @@
 }
 
 /* Transition property for dark mode */
-.block,.title{
+.block,.title-bs{
   transition:2s !important;
 }
 input,select{

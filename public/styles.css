@@ -10,7 +10,7 @@ html{
 	
 }
 
-body,.card,.step,.description,.meta,.icon,hr,label,a,.content{
+body,.card,.step,.description,.meta,hr,label,a,.content{
 	transition-duration:2s !important;
 }
 
