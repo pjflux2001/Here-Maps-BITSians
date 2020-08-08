@@ -11,7 +11,7 @@ exports.getAll = (req,res)=>{
 		}
 	}).limit(1000);
 };
-//========THIS SEARCHES FOR A SPECIFIC MONGO ID=========//
+//========THIS SEARCHES FOR A SPECIFIC MONGO ID==========//
 exports.getId = (req,res)=>{
     var _id = req.query._id;
 	Esri.findById(_id,function(err,data){
