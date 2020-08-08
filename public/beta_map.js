@@ -33,7 +33,7 @@ document.getElementById('mapContainer'),
 defaultLayers.vector.normal.map,
 {
   zoom: 10,
-  center: { lat: 18.5204, lng: 73.8567} //change this to user location
+  center: { lat: 28.65381, lng: 77.22897} //set to delhi
 });
 
 var ui = H.ui.UI.createDefault(map, defaultLayers,'en-US');
@@ -90,9 +90,9 @@ var ui = H.ui.UI.createDefault(map, defaultLayers,'en-US');
                 marker.setData("You're here!");
                 
                 // Add the circle to the map:
-                map.addObject(circle);
+                //map.addObject(circle);
                 map.setCenter(browserPosition);
-                map.addObject(marker);
+                //map.addObject(marker);
             });
         } 
         else {
@@ -180,24 +180,3 @@ var ui = H.ui.UI.createDefault(map, defaultLayers,'en-US');
     clickToMark();
     clickDragMarkers();
 /*=============================================================*/ 
-
-/*===========================adding locations to database - start==================================*/ 
-function add_location(){
-function add_loc(h){
-    firebase.database().ref('location/' + h.user_id).set(h);
-}
-
-var location = {
-  user_id: firebase.auth().currentUser.uid,
-  mob: firebase.auth().currentUser.phoneNumber,
-  time: new Date().toLocaleString(),
-  latitude: user_lat,
-  longitude: user_lng
-};
-
-console.log(user_lat + " @ "+ user_lng);
-
-add_loc(location);
-}
-/*===========================adding locations to database - end==================================*/ 
-
