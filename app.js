@@ -171,6 +171,11 @@ app.get("/form_patient",homeController.getPatientForm);
 app.get("/common_pool",homeController.getCommonPool);
 app.get("/plasma_bank",homeController.getPlasmaBank);
 
+//========== BETA Feature ROUTES =========//
+app.get("/beta_login",(req,res)=> {
+	res.render("beta_login.ejs");
+});
+
 //========== AJAX TESTING ROUTES =========//
 
 app.get("/login2",(req,res)=> {
