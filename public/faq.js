@@ -1,3 +1,5 @@
+var faqCounter = 1;
+
 
 fetch("./faq_dump/faq1.json")
     .then(response => response.text())
@@ -10,11 +12,12 @@ fetch("./faq_dump/faq1.json")
             console.log()
             if(removeTags(data.answer)){
                 document.getElementById("faqContent").innerHTML  += `
-                <div class="ui styled fluid accordion">
-                    <div class="title"><i class="dropdown icon"></i>${data.question}</div>
+                <div class="ui styled fluid accordion" id="faq${faqCounter}" >
+                    <div class="title" onclick="accordionClicked('faq${faqCounter}')"><i class="dropdown icon"></i>${data.question}</div>
                     <div class="content"><p class="transition hidden">${data.answer}</p></div>
                 </div>
                 `
+                faqCounter += 1;
             }
         }
     })
@@ -32,11 +35,12 @@ fetch("./faq_dump/faq2.json")
         console.log()
         if(removeTags(data.answer)){
             document.getElementById("faqContent").innerHTML  += `
-            <div class="ui accordion">
-                <div class="title"><i class="dropdown icon"></i>${data.question}</div>
+            <div class="ui accordion" id="faq${faqCounter}" >
+                <div class="title" onclick="accordionClicked('faq${faqCounter}')"><i class="dropdown icon"></i>${data.question}</div>
                 <div class="content">${data.answer}</div>
             </div>
             `
+            faqCounter += 1;
         }
     }
 })
@@ -53,11 +57,12 @@ fetch("./faq_dump/faq3.json")
         console.log()
         if(removeTags(data.answer)){
             document.getElementById("faqContent").innerHTML  += `
-            <div class="ui accordion">
-                <div class="title"><i class="dropdown icon"></i>${data.question}</div>
+            <div class="ui accordion" id="faq${faqCounter}" >
+                <div class="title" onclick="accordionClicked('faq${faqCounter}')"><i class="dropdown icon"></i>${data.question}</div>
                 <div class="content">${data.answer}</div>
             </div>
             `
+            faqCounter += 1;
         }
     }
 })
@@ -71,3 +76,18 @@ function removeTags(str) {
         str = str.toString();
     return str.replace( /(<([^>]+)>)/ig, '');
 }
+
+
+// Function for  Accordion because aur koi chara nhi hai
+function accordionClicked(i){
+    console.log('clicked');
+    var childElements = document.getElementById(i).children;
+    if(childElements[0].classList.contains('active')){
+        childElements[0].classList.remove('active');
+        childElements[1].classList.remove('active');
+    }
+    else{
+        childElements[0].classList.add('active');
+        childElements[1].classList.add('active');
+    }
+};
