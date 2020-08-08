@@ -18,7 +18,7 @@ const mongoose = require("mongoose");
 const passport = require('passport');
 const nodemailer = require('nodemailer')
 const Esri = require("./models/esri.js")
-const { functionsIn } = require("lodash");
+const { functionsIn, forEach } = require("lodash");
 const admin = require("firebase-admin");
 const shell = require('shelljs');
 
@@ -42,7 +42,7 @@ admin.initializeApp({
   	databaseURL: "https://here-maps-bitsians.firebaseio.com"
 });
 
-
+var hospital = admin.database().ref().child("mongo_hospital");
 const app = express();
 
 //==================
@@ -121,6 +121,23 @@ app.use((req, res, next) => {
 	  }
 	  next();
   }
+  function isAdmin(req,res,next){
+	if(req.user){
+		hospital.on("value", function(snapshot) {
+			snapshot.forEach(function(childsnapshot){
+				if(childsnapshot.val().admin){
+					if(req.user.uid == childsnapshot.val().user_id){
+						res.locals.role = childsnapshot.val();
+						next();
+					} else {
+						return res.send("NOT PRIVILAGED!");
+					}
+				}
+				});
+			});
+	}
+
+  }
 //path protection middlewares
 
 /**
@@ -163,6 +180,8 @@ app.post("/sessionLogin", (req, res) => {
 
 	const expiresIn = 60 * 60 * 24 * 5 * 1000;
 
+	
+
 	admin
 	  .auth()
 	  .createSessionCookie(idToken, { expiresIn })
@@ -177,7 +196,7 @@ app.post("/sessionLogin", (req, res) => {
 	  );
   });
 
-  app.get("/profile",loginRequired, (req, res)=>{
+  app.get("/profile",loginRequired,isAdmin, (req, res)=>{
 		res.render("dashboard.pug");
   });
 app.get("/sessionLogout", (req, res) => {

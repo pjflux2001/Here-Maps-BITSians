@@ -10,9 +10,11 @@ html
         h2 Welcome, #{user.displayName}
       else
         h2 Welcome, #{user.email}
-      p This is a private page.
+      p This is a private page only for admins!
       p Details are as
       h4 UID : #{user.uid}
       h4 Email Verfication Status : #{user.emailVerified}
+      h4 Admin Status : #{role.admin}
+      h4 Hospital Object Attached : #{role.object_id}
       a(href="/sessionLogout") Log out
 
