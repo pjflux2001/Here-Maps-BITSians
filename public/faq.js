@@ -1,5 +1,5 @@
 $(function() {
-    $.getJSON("https://extreme-ip-lookup.com/json/",
+    $.getJSON("./faq_dump/faq1.json",
        function(json){
 
   var requestOptions = {
@@ -7,7 +7,7 @@ $(function() {
     redirect: 'follow'
   };
   var i;
-  fetch("https://api.coronatracker.com/news/trending?limit=25&offset&country="+json.country+"&countryCode", requestOptions)
+  fetch("./faq_dump/faq1.json", requestOptions)
     .then(response => response.json())
     .then(results => console.log(results))
     .catch(error => console.log('error', error));
