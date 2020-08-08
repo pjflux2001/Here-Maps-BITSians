@@ -71,7 +71,7 @@ input, button {
   margin: 0px auto;
   margin-top: 150px;
   padding: 20px;
-  min-width: fit-content;
+  min-width: max-content !important; 
 }
 
 .main-div input {
@@ -114,6 +114,7 @@ input, button {
 </style>
 </head>
 <body>
+
   <div class="ui inverted pointing menu stackable">
       <a id="about" href="/" class="item header">Home</a>
       <a id="index_plasma" href="/index_plasma" class="item">Dashboard</a>
@@ -139,11 +140,14 @@ input, button {
       </div>
   </div>
 
-
+<div class="ui fluid center aligned segment">
+    <h3 class="ui header" style="font-size:3.3em;">COVID Live Contact Tracing</h3>
+</div>
 
 <div id="mobile" class="main-div bg-dark" style="display: block">
 <form>
-  <h3 style="color: White;">Enter your mobile number : </h3>
+  <h2 style="color: White;">Enter your mobile number : </h2>
+  
   <input type="text" id="mobile_number" placeholder="+91**********" />
   <div id="recaptcha-container"></div>
   <br>
@@ -153,7 +157,8 @@ input, button {
 
 <div id="code" class="main-div bg-dark" style="display: none">
 <form>
-  <h3 style="color: White;">Enter Verification code : </h3>
+  <h2 style="color: White;">Enter Verification code : </h2>
+  
   <input type="text" id="verificationCode" placeholder="Enter verification code">
   <button type="button" onclick="codeverify();">Verify code</button>
 </form>
