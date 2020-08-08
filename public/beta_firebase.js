@@ -57,6 +57,13 @@ function add_location(){
         let userMarker = new H.map.Marker(userPosition, {icon: userIcon});
         map.addObject(userMarker);
         map.addObject(circle); // adding green circle around user
+
+        
+
+        point = new H.geo.Point(item.latitude , item.longitude);
+        console.log("Is there someone ?")
+        console.log(turf.booleanPointInPolygon(point.toGeoJSON(), circle.toGeoJSON()));
+
 	    userMarker.setData(firebase.auth().currentUser.phoneNumber);  
     });
 
@@ -67,13 +74,3 @@ function add_location(){
 /*===========================checking other's coordinate status - start==================================*/
 
 
-// This checks to see whether the Sydney Harbour Bridge is contained somewhere in Sydney
-poly = new H.map.Polygon(new H.geo.LineString([150.64, -34.08, 0, 150.64, -33.53, 0, 151.33, -33.53, 0, 151.33, -34.08, 0]),
-    {
-        style: { fillColor: 'rgba(150, 100, 0, .8)', lineWidth: 0 }
-    }
-)
-
-point = new H.geo.Point(151.21, -33.84);
-
-console.log(turf.booleanPointInPolygon(point.toGeoJSON(), poly.toGeoJSON()));
