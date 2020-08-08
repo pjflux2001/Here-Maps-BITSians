@@ -175,6 +175,9 @@ app.get("/plasma_bank",homeController.getPlasmaBank);
 app.get("/beta_login",(req,res)=> {
 	res.render("beta_login.ejs");
 });
+app.get("/beta_map",(req,res)=> {
+	res.render("beta_map.ejs");
+});
 
 //========== AJAX TESTING ROUTES =========//
 
