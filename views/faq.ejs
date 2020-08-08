@@ -8,14 +8,15 @@
 </div>
 
 <img class="ui large centered image" src="faqDoubts.png">
-<br>    
+<br>
 <div class="ui text container" id="faqContent">
 </div>
 
 <!-- JQUERY for accordion initialisation -->
-<script language='javascript'> 
+<script language='javascript'>
     $(document).ready(function(){
         $('.ui.accordion').accordion();
     });
-</script> 
+    $('.ui.accordion').accordion('refresh');
+</script>
 <%- include("./partials/footer") %>
