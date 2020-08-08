@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Map</title>
+    <meta name="viewport" content="initial-scale=1.0,width=device-width" />
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js" type="text/javascript"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <h2>Done</h2>
+
+  <div style="width: 640px; height: 480px" id="mapContainer"></div>
+  
+  <p>Click the button to get your coordinates.</p>
+
+  <div>
+    <h5><b>This is your Position Coordinates :</b></h5>
+    <p id="demo">Please wait ...</p><br><br>
+  </div>
+<!--+++++++++++++++++++++++++++++++++++++++++++-->
+  
+<!--+++++++++++++++++++++++++++++++++++++++++++-->
+
+
+<!--+++++++++++++++++++++++++++++++++++++++++++-->
+  
+<script src="map.js" type="text/javascript"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+    /*Your web app's Firebase configuration*/
+    var firebaseConfig = {
+    apiKey: "AIzaSyChax-RIyl8an4nKJA0XLdIc8CyU3jeGgY",
+    authDomain: "here-maps-bitsians.firebaseapp.com",
+    databaseURL: "https://here-maps-bitsians.firebaseio.com",
+    projectId: "here-maps-bitsians",
+    storageBucket: "here-maps-bitsians.appspot.com",
+    messagingSenderId: "517005193635",
+    appId: "1:517005193635:web:846d53aebc789427b0ea16"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  
+    
+    var addonref = firebase.database().ref().child("location");
+
+    addonref.on("value", function(snapshot) {
+
+      var currentUserPhoneNumber = firebase.auth().currentUser.phoneNumber;
+      
+      map.removeObjects(map.getObjects());
+      
+      snapshot.forEach(function(childsnapshot){
+        var item = childsnapshot.val();
+
+        var userPosition = {lat: item.latitude , lng: item.longitude };
+        console.log(userPosition);
+
+        //var checkUser = ((user_lat.toFixed(2)) == (item.latitude.toFixed(2)) && (user_lng.toFixed(2)) == (item.longitude.toFixed(2)));
+        var checkUser = (currentUserPhoneNumber == item.mob);
+        var userIcon = (checkUser) ? (new H.map.Icon('./icons/icons8-standing-man-48.png')) : (new H.map.Icon('./icons/icons8-man-50 (1).png'));
+        console.log(checkUser);
+
+        let userMarker = new H.map.Marker(userPosition, {icon: userIcon});
+        map.addObject(userMarker);
+        map.addObject(circle); // adding green circle around user
+	      userMarker.setData(firebase.auth().currentUser.phoneNumber);  
+    });
+
+  });
+
+</script>
+
+  <button onclick="add_location()">Add all locations from database</button>
+
+  </body>
+</html>
