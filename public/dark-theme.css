@@ -56,6 +56,16 @@ input,select{
 }
 /* Dark Theme for plasma Bank ends */
 
+/* Dark Theme for Map */
+.ui.info.message,.ui.secondary.basic.button{
+    color:white!important;
+    background-color: #3d3d3d!important;
+}
+
+.ui.tiny.statistic.column > .value,.ui.tiny.statistic.column > .label{
+    color:white!important;
+}
+
 /* Dark Theme for Accordion */
 .ui.accordion > .title{
     color:white!important;
