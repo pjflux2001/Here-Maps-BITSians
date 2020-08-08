@@ -55,3 +55,8 @@ input,select{
     color: white!important;
 }
 /* Dark Theme for plasma Bank ends */
+
+/* Dark Theme for Accordion */
+.ui.accordion > .title{
+    color:white!important;
+}

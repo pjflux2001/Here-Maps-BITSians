@@ -1,20 +1,21 @@
 <%- include("./partials/header") %>
 
-
+<script src="js/accordion.js"></script>
 <script src="faq.js"></script>
 
 <div class="ui fluid left aligned segment">
-    <h1 class="ui header" style="font-size:4.5em;">FAQ</h1>
-</div>
-<br>
-<br>
-<div class="ui stackable centered two column grid">
-    <div class="six wide column">
-        <img class="ui large image" src="faqimage.png">
-    </div>
-    <div class="ten wide column">
-        <p>Content yaha aega</p>
-    </div>
+    <h1 class="ui header" style="font-size:4.5em;">Frequently Asked Questions</h1>
 </div>
 
+<img class="ui huge centered  circular image" src="faqimage.png">
+<br>    
+<div class="ui text container" id="faqContent">
+</div>
+
+<!-- JQUERY for accordion initialisation -->
+<script language='javascript'> 
+    $(document).ready(function(){
+        $('.ui.accordion').accordion();
+    });
+</script> 
 <%- include("./partials/footer") %>
