@@ -13,10 +13,17 @@
 </div>
 
 <!-- JQUERY for accordion initialisation -->
-<script language='javascript'>
+<script>
     $(document).ready(function(){
         $('.ui.accordion').accordion();
     });
-    $('.ui.accordion').accordion('refresh');
+    $('.trigger.example .accordion')
+      .accordion({
+        selector: {
+          trigger: '.title .icon'
+        }
+      })
+    ;
+
 </script>
 <%- include("./partials/footer") %>
