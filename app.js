@@ -160,9 +160,9 @@ app.get("/login2",(req,res)=> {
 })
 app.post("/sessionLogin", (req, res) => {
 	const idToken = req.body.idToken.toString();
-  
+
 	const expiresIn = 60 * 60 * 24 * 5 * 1000;
-  
+
 	admin
 	  .auth()
 	  .createSessionCookie(idToken, { expiresIn })
@@ -186,6 +186,9 @@ app.get("/sessionLogout", (req, res) => {
   });
 app.get("/test",function(req,res){
 	res.render("test.ejs");
+});
+app.get("/faq",(req,res)=> {
+	res.render("faq.ejs");
 });
 //========API Routes============//
 
