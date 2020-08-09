@@ -73,6 +73,13 @@ var ui = H.ui.UI.createDefault(map, defaultLayers,'en-US');
     //let imgIcon = new H.map.Icon('./icons/icons8-standing-man-48.png');
 
     var circle;
+    var fillColor;
+    // Create a style object:
+    var circleStyle = {
+        strokeColor: 'rgb(0, 99, 198)',
+        fillColor: 'rgba(21, 127, 234 , 0.2)',
+    };
+
     function getBrowserPosition(){
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
@@ -87,7 +94,7 @@ var ui = H.ui.UI.createDefault(map, defaultLayers,'en-US');
 
                 // Instantiate a circle object (using the default style):
                 circle = new H.map.Circle({lat: position.coords.latitude + 0.015, lng: position.coords.longitude }, 10000, {style: circleStyle});
-                marker.setData("You're here!");
+                //marker.setData("You're here!");
                 
                 // Add the circle to the map:
                 //map.addObject(circle);
@@ -99,14 +106,7 @@ var ui = H.ui.UI.createDefault(map, defaultLayers,'en-US');
             alert("Geolocation is not supported by this browser!");
         }
     }
-    // Create a style object:
-    var circleStyle = {
-    
-        strokeColor: 'green',
-        fillColor: 'rgba(0, 232, 0, 0.25)',
-        opacity: 0.5
 
-    };
 /*===============Here maps end====================*/    
 
 /*=========================== Markers : No use ==================================*/ 
