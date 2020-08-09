@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://github.com/pjflux2001/CareQuest/blob/master/public/Logo.png" width = "25%" height = "25%"></p>
 
-[![License](https://img.shields.io/badge/License-Apache2-red.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Website](https://img.shields.io/badge/View-Website-blue)](https://care-quest.herokuapp.com/)
+[![License](https://img.shields.io/badge/License-Apache2-red.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Website](https://img.shields.io/badge/View-Website-blue)](https://maps-bitsian.herokuapp.com/))
 
 <strong>A load balancing platform for medical services aimed at bringing order to the chaos caused by COVID-19</strong>
 
@@ -90,7 +90,7 @@ Step 4 : Now, open your browser and navigate to http://localhost:31000/ to acces
 
 ## Live demo
 
-You can find a running system to test at [maps-bitsian.herokuapp.com/ ](https://maps-bitsian.herokuapp.com/)
+You can find a running system to test at [maps-bitsian.herokuapp.com/](https://maps-bitsian.herokuapp.com/)
 
 ## Built with
 
