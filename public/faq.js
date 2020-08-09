@@ -35,7 +35,7 @@ fetch("./faq_dump/faq2.json")
         console.log()
         if(removeTags(data.answer)){
             document.getElementById("faqContent").innerHTML  += `
-            <div class="ui accordion" id="faq${faqCounter}" >
+            <div class="ui styled fluid accordion" id="faq${faqCounter}" >
                 <div class="title" onclick="accordionClicked('faq${faqCounter}')"><i class="dropdown icon"></i>${data.question}</div>
                 <div class="content">${data.answer}</div>
             </div>
@@ -57,9 +57,9 @@ fetch("./faq_dump/faq3.json")
         console.log()
         if(removeTags(data.answer)){
             document.getElementById("faqContent").innerHTML  += `
-            <div class="ui accordion" id="faq${faqCounter}" >
+            <div class="ui styled fluid accordion" id="faq${faqCounter}" >
                 <div class="title" onclick="accordionClicked('faq${faqCounter}')"><i class="dropdown icon"></i>${data.question}</div>
-                <div class="content">${data.answer}</div>
+                <div class="content" style="text-align: justify;text-justify: inter-word;">${data.answer}</div>
             </div>
             `
             faqCounter += 1;
