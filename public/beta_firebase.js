@@ -76,15 +76,16 @@ function add_location(){
        if(checkPosition){
           if(item.status == "red"){
             console.log("range mein aagaya red wala");
-            circleStyle.fillColor = 'rgba(255, 0, 0, 0.25)';
+            console.log("changed to yellow");
           }
           else if(item.status == "yellow"){
             console.log("range mein aagaya yellow wala");
-            circleStyle.fillColor = 'rgba(255, 0, 0, 0.25)';
+            console.log("changed to yellow");
           }
        }
 
        map.addObject(circle); // adding green circle around user
+
       userMarker.setData(firebase.auth().currentUser.phoneNumber);  
       
     });
