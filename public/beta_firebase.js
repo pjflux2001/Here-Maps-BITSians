@@ -39,7 +39,7 @@ function add_location(){
 /*===========================adding locations to database - end==================================*/ 
 
 /*===========================fetching locations from database - start==================================*/
-    
+    var flag = 0;
 
     var addonref = firebase.database().ref().child("location");
 
@@ -79,7 +79,7 @@ function add_location(){
         
         console.log("Is there someone ?")
         console.log(checkPosition);
-
+       
        if(checkPosition && !checkUser){
           if(item.status == "red"){
             console.log("range mein aagaya red wala");
@@ -90,6 +90,10 @@ function add_location(){
             console.log("range mein aagaya yellow wala");
             firebase.database().ref('location/' + firebase.auth().currentUser.uid).update({status: "yellow"});
             console.log("changed to yellow");
+          }
+          if(flag == 0){
+            alert("Alert !!! There might be some Covid carriers around YOU.");
+            flag++;
           }
        }
 
