@@ -16,7 +16,7 @@ fetch("./faq_dump/faq1.json")
             var data = JSON.parse(faqData[i]);
             if(removeTags(data.answer)){
                 document.getElementById(`faqSegment${segmentNo}`).innerHTML  += `
-                <div class="ui fluid accordion" id="faq${faqCounter}" >
+                <div class="ui styled fluid accordion" id="faq${faqCounter}" >
                     <div class="title" onclick="accordionClicked('faq${faqCounter}')"><i class="dropdown icon"></i>${data.question}</div>
                     <div class="content"><p class="transition hidden">${data.answer}</p></div>
                 </div>
@@ -43,7 +43,7 @@ fetch("./faq_dump/faq2.json")
             var data = JSON.parse(faqData[i]);
             if(removeTags(data.answer)){
                 document.getElementById(`faqSegment${segmentNo}`).innerHTML  += `
-                <div class="ui fluid accordion" id="faq${faqCounter}" >
+                <div class="ui styled fluid accordion" id="faq${faqCounter}" >
                     <div class="title" onclick="accordionClicked('faq${faqCounter}')"><i class="dropdown icon"></i>${data.question}</div>
                     <div class="content"><p class="transition hidden">${data.answer}</p></div>
                 </div>
@@ -70,7 +70,7 @@ fetch("./faq_dump/faq3.json")
             var data = JSON.parse(faqData[i]);
             if(removeTags(data.answer)){
                 document.getElementById(`faqSegment${segmentNo}`).innerHTML  += `
-                <div class="ui fluid accordion" id="faq${faqCounter}" >
+                <div class="ui styled fluid accordion" id="faq${faqCounter}" >
                     <div class="title" onclick="accordionClicked('faq${faqCounter}')"><i class="dropdown icon"></i>${data.question}</div>
                     <div class="content"><p class="transition hidden">${data.answer}</p></div>
                 </div>
