@@ -90,7 +90,7 @@ Step 4 : Now, open your browser and navigate to http://localhost:31000/ to acces
 
 ## Live demo
 
-You can find a running system to test at [care-quest.herokuapp.com](https://care-quest.herokuapp.com/)
+You can find a running system to test at [maps-bitsian.herokuapp.com/ ](https://maps-bitsian.herokuapp.com/)
 
 ## Built with
 
@@ -123,8 +123,6 @@ We use [github](https://github.com/) for versioning. Versions will be made avail
 * **Prashant Jha** - *Backend* - [pjflux2001](https://github.com/pjflux2001)
 * **Sudhanshu Mohan Kashyap** - *Backend And Frontend* - [mightyjoe781](https://github.com/mightyjoe781)
 * **Umang Barthwal** - *Backend And Frontend* - [barthwalumang](https://github.com/barthwalumang)
-* **Apoorv Garg** - *Frontend* - [ApEdu](https://github.com/ApEdu)
-* **Aayush Kaushal** - *Frontend* - [Aayush-7](https://github.com/Aayush-7)
 
 ## License
 
