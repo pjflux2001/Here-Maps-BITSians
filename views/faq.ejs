@@ -1,7 +1,6 @@
 <%- include("./partials/header") %>
 
 
-<script src="faq.js"></script>
 
 <div class="ui fluid left aligned segment">
     <h3 class="ui header" style="font-size:3.3em;">Frequently Asked Questions</h3>
@@ -9,21 +8,13 @@
 
 <img class="ui large centered image" src="faqDoubts.png">
 <br>
-<div class="ui text container" id="faqContent" style="min-width: 75%;">
+<!-- Main Content -->
+<div class="ui container" id="faqContent" style="min-width: 75%;">
 </div>
-
+<!-- Page Nav  -->
+<div class="ui fluid center aligned segment" id="faqPageNavContainer">
+</div>
 <br>
-<!-- JQUERY for accordion initialisation -->
-<!-- <script>
-    $(document).ready(function(){
-        $('.ui.accordion').accordion();
-    });
-    $('.trigger.example .accordion')
-      .accordion({
-        selector: {
-          trigger: '.title .icon'
-        }
-      });
 
-</script> -->
+<script src="faq.js"></script>
 <%- include("./partials/footer") %>

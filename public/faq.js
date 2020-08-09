@@ -1,72 +1,129 @@
 var faqCounter = 1;
+var segmentNo = 1;
 
+
+document.getElementById('faqContent').innerHTML += `
+    <div class="ui segment" id="faqSegment${segmentNo}" style="display:none;min-height:120vh;">
+    </div>
+`
 
 fetch("./faq_dump/faq1.json")
     .then(response => response.text())
     .then(results => {
         let requiredRegex = /\{([^}]+)\}/g
         var faqData = results.match(requiredRegex);
-        console.log(faqData);
         for(var i=0;i<faqData.length;i++){
             var data = JSON.parse(faqData[i]);
-            console.log()
             if(removeTags(data.answer)){
-                document.getElementById("faqContent").innerHTML  += `
-                <div class="ui styled fluid accordion" id="faq${faqCounter}" >
+                document.getElementById(`faqSegment${segmentNo}`).innerHTML  += `
+                <div class="ui fluid accordion" id="faq${faqCounter}" >
                     <div class="title" onclick="accordionClicked('faq${faqCounter}')"><i class="dropdown icon"></i>${data.question}</div>
                     <div class="content"><p class="transition hidden">${data.answer}</p></div>
                 </div>
                 `
                 faqCounter += 1;
+                if( faqCounter%25 == 0){
+                    segmentNo += 1;
+                    document.getElementById('faqContent').innerHTML += `
+                    <div class="ui segment" id="faqSegment${segmentNo}" style="display:none;min-height:120vh;">
+                    </div>
+                    `
+                }
             }
         }
     })
     .catch(error => console.log('error', error));
 
-
 fetch("./faq_dump/faq2.json")
-.then(response => response.text())
-.then(results => {
-    let requiredRegex = /\{([^}]+)\}/g
-    var faqData = results.match(requiredRegex);
-    console.log(faqData);
-    for(var i=0;i<faqData.length;i++){
-        var data = JSON.parse(faqData[i]);
-        console.log()
-        if(removeTags(data.answer)){
-            document.getElementById("faqContent").innerHTML  += `
-            <div class="ui styled fluid accordion" id="faq${faqCounter}" >
-                <div class="title" onclick="accordionClicked('faq${faqCounter}')"><i class="dropdown icon"></i>${data.question}</div>
-                <div class="content">${data.answer}</div>
-            </div>
-            `
-            faqCounter += 1;
+    .then(response => response.text())
+    .then(results => {
+        let requiredRegex = /\{([^}]+)\}/g
+        var faqData = results.match(requiredRegex);
+        for(var i=0;i<faqData.length;i++){
+            var data = JSON.parse(faqData[i]);
+            if(removeTags(data.answer)){
+                document.getElementById(`faqSegment${segmentNo}`).innerHTML  += `
+                <div class="ui fluid accordion" id="faq${faqCounter}" >
+                    <div class="title" onclick="accordionClicked('faq${faqCounter}')"><i class="dropdown icon"></i>${data.question}</div>
+                    <div class="content"><p class="transition hidden">${data.answer}</p></div>
+                </div>
+                `
+                faqCounter += 1;
+                if( faqCounter%25 == 0){
+                    segmentNo += 1;
+                    document.getElementById('faqContent').innerHTML += `
+                    <div class="ui segment" id="faqSegment${segmentNo}" style="display:none;min-height:120vh;">
+                    </div>
+                    `
+                }
+            }
         }
-    }
-})
-.catch(error => console.log('error', error));
+    })
+    .catch(error => console.log('error', error));
 
 fetch("./faq_dump/faq3.json")
-.then(response => response.text())
-.then(results => {
-    let requiredRegex = /\{([^}]+)\}/g
-    var faqData = results.match(requiredRegex);
-    console.log(faqData);
-    for(var i=0;i<faqData.length;i++){
-        var data = JSON.parse(faqData[i]);
-        console.log()
-        if(removeTags(data.answer)){
-            document.getElementById("faqContent").innerHTML  += `
-            <div class="ui styled fluid accordion" id="faq${faqCounter}" >
-                <div class="title" onclick="accordionClicked('faq${faqCounter}')"><i class="dropdown icon"></i>${data.question}</div>
-                <div class="content" style="text-align: justify;text-justify: inter-word;">${data.answer}</div>
-            </div>
-            `
-            faqCounter += 1;
+    .then(response => response.text())
+    .then(results => {
+        let requiredRegex = /\{([^}]+)\}/g
+        var faqData = results.match(requiredRegex);
+        for(var i=0;i<faqData.length;i++){
+            var data = JSON.parse(faqData[i]);
+            if(removeTags(data.answer)){
+                document.getElementById(`faqSegment${segmentNo}`).innerHTML  += `
+                <div class="ui fluid accordion" id="faq${faqCounter}" >
+                    <div class="title" onclick="accordionClicked('faq${faqCounter}')"><i class="dropdown icon"></i>${data.question}</div>
+                    <div class="content"><p class="transition hidden">${data.answer}</p></div>
+                </div>
+                `
+                faqCounter += 1;
+                if( faqCounter%25 == 0){
+                    segmentNo += 1;
+                    document.getElementById('faqContent').innerHTML += `
+                    <div class="ui segment" id="faqSegment${segmentNo}" style="display:none;min-height:120vh;">
+                    </div>
+                    `
+                }
+            }
         }
-    }
-})
-.catch(error => console.log('error', error));
+        
+    })
+    .then(function(){
+        // keep account of active segment
+        var activeSegment = 1;
+        
+        // Adding page nav at bottom
+        document.getElementById('faqPageNavContainer').innerHTML += `
+            <div class="ui horizontal list" id="faqPageNav" ></div>
+        `;
+        
+        // Adding items in page nav 
+        var segments = document.getElementById('faqContent').children;
+        console.log(segments.length)
+        for(var j=1;j<=segments.length;j++){
+            document.getElementById('faqPageNav').innerHTML +=`
+            <a class="item" id="segmentPageTab${j}" onclick="displayFaqSegment(${j},${segments.length})">${j}</a>
+            `
+        }
+
+        // Displaying first Page initially
+        displayFaqSegment(activeSegment,segments.length);
+    })
+    .catch(error => console.log('error', error));
+
+
+
+// nav page function
+function displayFaqSegment(i,k){
+    for(var j=1;j<=k;j++){
+        if(j!=i){
+            document.getElementById(`segmentPageTab${j}`).style.fontWeight = "normal";
+            document.getElementById(`faqSegment${j}`).style.display = "none";
+        }else{
+            document.getElementById(`segmentPageTab${j}`).style.fontWeight = "bolder";
+            document.getElementById(`faqSegment${j}`).style.display = "block";
+        }
+    }   
+}
 
 // Function to remove unnecessary tags from scrapped data
 function removeTags(str) {
@@ -78,7 +135,7 @@ function removeTags(str) {
 }
 
 
-// Function for  Accordion because aur koi chara nhi hai
+// Function for  Accordion 
 function accordionClicked(i){
     console.log('clicked');
     var childElements = document.getElementById(i).children;

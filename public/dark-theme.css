@@ -68,6 +68,6 @@ input,select{
 
 /* Dark Theme for Accordion */
 .ui.accordion > .title,.ui.accordion > .content{
-    background-color: #404040!important;
+    background-color: #3d3d3d!important;
     color:white!important;
 }
