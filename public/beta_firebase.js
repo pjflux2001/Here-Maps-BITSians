@@ -63,7 +63,7 @@ function add_location(){
         var checkRed = (item.status == "red");
         var checkYellow = (item.status == "yellow");
         var userIcon = (checkUser) ? (new H.map.Icon('./beta_icons/icons8-standing-man-48.png')) : ( (checkRed) ? (new H.map.Icon('./beta_icons/icons8-man-50.png')) : ( (checkYellow) ? (new H.map.Icon('./beta_icons/icons8-man-50 (2).png')) : (new H.map.Icon('./beta_icons/icons8-man-50 (1).png'))) );
-        console.log(checkUser);
+        //console.log(checkUser);
 
         let userMarker = new H.map.Marker(userPosition, {icon: userIcon});
         map.addObject(userMarker);
@@ -78,13 +78,15 @@ function add_location(){
         console.log("Is there someone ?")
         console.log(checkPosition);
 
-       if(checkPosition){
+       if(checkPosition && !checkUser){
           if(item.status == "red"){
             console.log("range mein aagaya red wala");
+            firebase.database().ref('location/' + firebase.auth().currentUser.uid).update({status: "yellow"});
             console.log("changed to yellow");
           }
           else if(item.status == "yellow"){
             console.log("range mein aagaya yellow wala");
+            firebase.database().ref('location/' + firebase.auth().currentUser.uid).update({status: "yellow"});
             console.log("changed to yellow");
           }
        }
