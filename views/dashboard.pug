@@ -31,18 +31,58 @@ html
         span.hamburger-bun
         span.hamburger-patty
         span.hamburger-bun
+    .ui.container
+      br
+      main
+        h2.ui.header Welcome, #{(user.displayName)?user.displayName:user.email}
+        p.ui.meta This is a private page only for admins!
+        .ui.segment
+          p Details are as
+          h4 UID : #{user.uid}
+          h4 Email Verfication Status : #{user.emailVerified}
+          h4 Admin Status : #{role.admin}
+          h4 Hospital Object Attached : #{role.object_id}
+          h4 OCR Status : #{(role.id_verif)?'True':'False'}
+          a.ui.red.button(href="/sessionLogout") Log out
+        .ui.segment
+          h3.ui.header DASHBOARD
+          .ui.cards.three.centered
+            .card
+              .content
+                h4.ui.header HOSPITAL MANAGEMENT
+                .description Use this to search Object Id of the Hospital you want to manage!
+                hr
+                .extra.content
+                  .ui.input.fluid
+                    input#hospital(type="text", placeholder="Name of Hospital ...")
+                    .ui.primary.button.right.floated(onclick="fuzzynameGet();") Search
+            .card
+              .content
+                h4.ui.header Connected Accounts
+                .description Use this to find out which users are connected to a specific users.
+                hr
+                .extra.content
+                  .ui.input.fluid
+                    input(type="text", placeholder="Hospital object ids ...")
+                    .ui.primary.button.right.floated Search
 
-    main
-      if user.displayName
-        h2 Welcome, #{user.displayName}
-      else
-        h2 Welcome, #{user.email}
-      p This is a private page only for admins!
-      p Details are as
-      h4 UID : #{user.uid}
-      h4 Email Verfication Status : #{user.emailVerified}
-      h4 Admin Status : #{role.admin}
-      h4 Hospital Object Attached : #{role.object_id}
-      a(href="/sessionLogout") Log out
+            .card
+              .content
+                h4.ui.header USER MANAGEMENT
+                .description Use this manage the users using user Email Accounts!.
+                hr
+                .extra.content
+                  .ui.input.fluid
+                    input(type="text", placeholder="Email Address ...")
+                    .ui.primary.button.right.floated Manage
+            
+
+        .ui.segment
+          h2.header Search Results!
+          #result
+            .ui.cards.one.fluid
+          
+
   script(src="design.js")
+  script(src="js/ajax_helper.js")
 
