@@ -1,7 +1,3 @@
-firebase.database().ref('location/' + firebase.auth().currentUser.uid).on('value',(snap)=>{
-    document.getElementById('covidstatus').value = snap.val().status;
-});
-
 /*===============gelocation start====================*/
 var user_lat, user_lng;
 var x = document.getElementById("demo");
