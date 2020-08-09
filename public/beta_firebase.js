@@ -54,6 +54,8 @@ function add_location(){
         firebase.database().ref('location/' + firebase.auth().currentUser.uid).on('value',(snap)=>{
                document.getElementById('covidstatus').value = snap.val().status;
      });
+
+
         var userPosition = {lat: item.latitude , lng: item.longitude };
         console.log(userPosition);
         console.log(`status : ${item.status}`);
@@ -93,6 +95,15 @@ function add_location(){
 
        map.addObject(circle); // adding green circle around user
 
+      /*====current user update - start====*/
+      var updates = {
+        time: new Date().toLocaleString(),
+        latitude: user_lat,
+        longitude: user_lng
+      }
+      firebase.database().ref('location/' + firebase.auth().currentUser.uid).update(updates);
+      /*====current user update -end ====*/
+   
       userMarker.setData(firebase.auth().currentUser.phoneNumber);  
       
     });
