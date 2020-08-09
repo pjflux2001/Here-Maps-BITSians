@@ -11,9 +11,9 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
-firebase.database().ref('location/' + firebase.auth().currentUser.uid).on('value',(snap)=>{
-    document.getElementById('covidstatus').value = snap.val().status;
-});
+//firebase.database().ref('location/' + firebase.auth().currentUser.uid).on('value',(snap)=>{
+   // document.getElementById('covidstatus').value = snap.val().status;
+//});
 
 /*===========================adding locations to database - start==================================*/ 
 function add_location(){
@@ -51,7 +51,9 @@ function add_location(){
       
       snapshot.forEach(function(childsnapshot){
         var item = childsnapshot.val();
-
+        firebase.database().ref('location/' + firebase.auth().currentUser.uid).on('value',(snap)=>{
+               document.getElementById('covidstatus').value = snap.val().status;
+     });
         var userPosition = {lat: item.latitude , lng: item.longitude };
         console.log(userPosition);
         console.log(`status : ${item.status}`);
@@ -66,7 +68,7 @@ function add_location(){
         let userMarker = new H.map.Marker(userPosition, {icon: userIcon});
         map.addObject(userMarker);
         
-
+     
         
         //checking the coordinate range
 
