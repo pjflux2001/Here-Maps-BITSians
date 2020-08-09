@@ -73,6 +73,14 @@ var ui = H.ui.UI.createDefault(map, defaultLayers,'en-US');
     //let imgIcon = new H.map.Icon('./icons/icons8-standing-man-48.png');
 
     var circle;
+    
+    // Create a style object:
+    var circleStyle = {
+        strokeColor: 'green',
+        fillColor: 'rgba(0, 232, 0, 0.25)',
+        opacity: 0.5
+    };
+
     function getBrowserPosition(){
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
@@ -99,14 +107,7 @@ var ui = H.ui.UI.createDefault(map, defaultLayers,'en-US');
             alert("Geolocation is not supported by this browser!");
         }
     }
-    // Create a style object:
-    var circleStyle = {
-    
-        strokeColor: 'green',
-        fillColor: 'rgba(0, 232, 0, 0.25)',
-        opacity: 0.5
 
-    };
 /*===============Here maps end====================*/    
 
 /*=========================== Markers : No use ==================================*/ 

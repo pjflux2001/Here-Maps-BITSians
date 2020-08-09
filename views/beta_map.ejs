@@ -47,6 +47,7 @@
 
   <div style="text-align-last: center;"">
     <h5><b>This is your Position Coordinates :</b></h5>
+    <img src="beta_icons/icons8-standing-man-48.png">
     <p id="demo">Please wait ...</p><br><br>
   </div>
 <!--+++++++++++++++++++++++++++++++++++++++++++-->
@@ -67,8 +68,19 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
 <script src="beta_firebase.js"></script>
+
 <div class="wrapper" style="text-align: center;">
+  <div>
+    <label for="covidstatus">Covid-Status</label>
+    <select name="covidstatus" id="covidstatus" required>
+      <option value="">--select--</option>
+      <option value="green">Green</option>
+      <option value="yellow">Yellow</option>
+      <option value="red">Red</option>
+    </select>
+  </div>
   <button style="position: relative;" onclick="add_location()">Add all locations from database</button>
 </div>
+
   </body>
 </html>

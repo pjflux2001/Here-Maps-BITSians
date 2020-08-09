@@ -18,12 +18,15 @@ function add_location(){
         firebase.database().ref('location/' + h.user_id).set(h);
     }
     
+    var covidStatus = $('#covidstatus').val();
+
     var location = {
       user_id: firebase.auth().currentUser.uid,
       mob: firebase.auth().currentUser.phoneNumber,
       time: new Date().toLocaleString(),
       latitude: user_lat,
-      longitude: user_lng
+      longitude: user_lng,
+      status: covidStatus
     };
     
     console.log(user_lat + " @ "+ user_lng);
@@ -48,29 +51,44 @@ function add_location(){
 
         var userPosition = {lat: item.latitude , lng: item.longitude };
         console.log(userPosition);
+        console.log(`status : ${item.status}`);
 
         //var checkUser = ((user_lat.toFixed(2)) == (item.latitude.toFixed(2)) && (user_lng.toFixed(2)) == (item.longitude.toFixed(2)));
         var checkUser = (currentUserPhoneNumber == item.mob);
-        var userIcon = (checkUser) ? (new H.map.Icon('./beta_icons/icons8-standing-man-48.png')) : (new H.map.Icon('./beta_icons/icons8-man-50 (1).png'));
+        var checkRed = (item.status == "red");
+        var checkYellow = (item.status == "yellow");
+        var userIcon = (checkUser) ? (new H.map.Icon('./beta_icons/icons8-standing-man-48.png')) : ( (checkRed) ? (new H.map.Icon('./beta_icons/icons8-man-50.png')) : ( (checkYellow) ? (new H.map.Icon('./beta_icons/icons8-man-50 (2).png')) : (new H.map.Icon('./beta_icons/icons8-man-50 (1).png'))) );
         console.log(checkUser);
 
         let userMarker = new H.map.Marker(userPosition, {icon: userIcon});
         map.addObject(userMarker);
-        map.addObject(circle); // adding green circle around user
-
         
 
-        point = new H.geo.Point(item.latitude , item.longitude);
-        console.log("Is there someone ?")
-        console.log(turf.booleanPointInPolygon(point.toGeoJSON(), circle.toGeoJSON()));
+        
+        //checking the coordinate range
 
-	    userMarker.setData(firebase.auth().currentUser.phoneNumber);  
+        point = new H.geo.Point(item.latitude , item.longitude);
+        var checkPosition = turf.booleanPointInPolygon(point.toGeoJSON(), circle.toGeoJSON());
+        
+        console.log("Is there someone ?")
+        console.log(checkPosition);
+
+       if(checkPosition){
+          if(item.status == "red"){
+            console.log("range mein aagaya red wala");
+            circleStyle.fillColor = 'rgba(255, 0, 0, 0.25)';
+          }
+          else if(item.status == "yellow"){
+            console.log("range mein aagaya yellow wala");
+            circleStyle.fillColor = 'rgba(255, 0, 0, 0.25)';
+          }
+       }
+
+       map.addObject(circle); // adding green circle around user
+      userMarker.setData(firebase.auth().currentUser.phoneNumber);  
+      
     });
 
   });
 
 /*===========================fetching locations from database - end==================================*/
-
-/*===========================checking other's coordinate status - start==================================*/
-
-
