@@ -3,7 +3,7 @@ var segmentNo = 1;
 
 
 document.getElementById('faqContent').innerHTML += `
-    <div class="ui segment" id="faqSegment${segmentNo}" style="display:none;min-height:120vh;">
+    <div class="ui segment" id="faqSegment${segmentNo}" style="display:none;min-height:140vh;">
     </div>
 `
 
@@ -25,7 +25,7 @@ fetch("./faq_dump/faq1.json")
                 if( faqCounter%25 == 0){
                     segmentNo += 1;
                     document.getElementById('faqContent').innerHTML += `
-                    <div class="ui segment" id="faqSegment${segmentNo}" style="display:none;min-height:120vh;">
+                    <div class="ui segment" id="faqSegment${segmentNo}" style="display:none;min-height:140vh;">
                     </div>
                     `
                 }
@@ -52,7 +52,7 @@ fetch("./faq_dump/faq2.json")
                 if( faqCounter%25 == 0){
                     segmentNo += 1;
                     document.getElementById('faqContent').innerHTML += `
-                    <div class="ui segment" id="faqSegment${segmentNo}" style="display:none;min-height:120vh;">
+                    <div class="ui segment" id="faqSegment${segmentNo}" style="display:none;min-height:140vh;">
                     </div>
                     `
                 }
@@ -79,7 +79,7 @@ fetch("./faq_dump/faq3.json")
                 if( faqCounter%25 == 0){
                     segmentNo += 1;
                     document.getElementById('faqContent').innerHTML += `
-                    <div class="ui segment" id="faqSegment${segmentNo}" style="display:none;min-height:120vh;">
+                    <div class="ui segment" id="faqSegment${segmentNo}" style="display:none;min-height:140vh;">
                     </div>
                     `
                 }
