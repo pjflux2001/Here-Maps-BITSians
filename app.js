@@ -218,6 +218,89 @@ app.get("/test",function(req,res){
 app.get("/faq",(req,res)=> {
 	res.render("faq.ejs");
 });
+
+//=============ADMIN API===========//
+
+app.get("/admin/findemail",function(req,res){
+	var id = req.query._id;
+	var results = [];
+	hospital.on("value",function(snapshot){
+		snapshot.forEach(function(childsnapshot){
+			if(childsnapshot.val().object_id == id){
+				results.push(childsnapshot.val());
+			}
+		})
+	})
+	res.send(results);
+});
+app.get("/admin/getUser",function(req,res){
+	var email = req.query.email;
+	admin.auth().getUserByEmail(email)
+		.then(function(userRecord){
+			res.send(userRecord);
+		})
+		.catch(function(e){
+			res.send(e);
+		});
+})
+app.get("/admin/createUser",function(req,res){
+	var email = req.query.email;
+	var password = req.query.password;
+	admin.auth().createUser({
+		email: email,
+		emailVerified: false,
+		password: password,
+		disabled: false
+	  })
+		.then(function(userRecord) {
+		  // See the UserRecord reference doc for the contents of userRecord.
+		  res.send(userRecord);
+		})
+		.catch(function(error) {
+		  res.send( error);
+		});
+});
+app.get("/admin/updateUser",function(req,res){
+	var uid = req.query.uid;
+	var email = req.query.email;
+	var phoneNumber = req.query.phoneNumber;
+	var emailVerified = req.query.emailVerified;
+	var password = req.query.password;
+	var displayName = req.query.displayName;
+	var photoURL = req.query.photoURL;
+	var disabled = req.query.disabled;
+	admin.auth().updateUser(uid, {
+		email: email,
+		phoneNumber: phoneNumber,
+		emailVerified: emailVerified,
+		password: password,
+		displayName: displayName,
+		photoURL: phoneURL,
+		disabled: disabled
+	  })
+		.then(function(userRecord) {
+		  // See the UserRecord reference doc for the contents of userRecord.
+		  res.send(userRecord.toJSON());
+		})
+		.catch(function(error) {
+		  res.send(error);
+		});
+});
+app.get("/admin/deleteUser",(req,res)=>{
+	var uid = req.query.uid;
+	admin.auth().deleteUser(uid)
+	.then(function() {
+	  res.send('Successfully deleted user');
+	})
+	.catch(function(error) {
+	  res.send('Error deleting user:', error);
+	});
+});
+
+
+
+
+
 //========API Routes============//
 
 app.get("/api/getall",apiController.getAll);
