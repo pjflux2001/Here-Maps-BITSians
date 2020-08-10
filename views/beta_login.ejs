@@ -1,118 +1,119 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>
-  CareQuest
-  </title>
-  <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0" />
-  <script src="creds.js"></script>
-   <!-- new css -->
+  <head>
+    <title>
+    CareQuest
+    </title>
+    <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0" />
+    <script src="creds.js"></script>
+    <!-- new css -->
 
-  <!-- semantic ui config-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
-  <link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- semantic ui config-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
+    <link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <link id="theme" rel="stylesheet" type="text/css" href="light-theme.css" />
+    <link id="theme" rel="stylesheet" type="text/css" href="light-theme.css" />
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Scroll animation -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script>
+        //some default pre init
+        var PB = PB || {};PB.q = PB.q || [];PB.events = PB.events || [];
 
-  <!-- Scroll animation -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <script>
-      //some default pre init
-      var PB = PB || {};PB.q = PB.q || [];PB.events = PB.events || [];
+        //PushBots ApplicationId (required)
+        PB.app_id = "5f2161475bf96b31d73b49a2";
+        //Your domain name, must be HTTPS or localhost  (required)
+        PB.domain = "https://care-quest.herokuapp.com";
+        //Update and uncomment it if you are using custom safari certificate for your app
+        PB.safari_push_id = "web.com.pushbots.safaripush";
+        //****************************************
 
-      //PushBots ApplicationId (required)
-      PB.app_id = "5f2161475bf96b31d73b49a2";
-      //Your domain name, must be HTTPS or localhost  (required)
-      PB.domain = "https://care-quest.herokuapp.com";
-      //Update and uncomment it if you are using custom safari certificate for your app
-      PB.safari_push_id = "web.com.pushbots.safaripush";
-      //****************************************
+        PB.logging_enabled = true;
+        PB.auto_subscribe = true;
 
-      PB.logging_enabled = true;
-      PB.auto_subscribe = true;
+        //Custom worker and manifest URL
+        PB.worker_url = PB.domain + "/pushbots-worker.js";
 
-      //Custom worker and manifest URL
-      PB.worker_url = PB.domain + "/pushbots-worker.js";
+        //Welcome notification message
+        PB.welcome = {title:"Welcome ",message:"Thanks for subscribing!", url :PB.domain};
 
-      //Welcome notification message
-      PB.welcome = {title:"Welcome ",message:"Thanks for subscribing!", url :PB.domain};
+        function sendNotification(){
+              PB.register();
+              PB.q.push(["sendNotification", {title:"Hey ",message:"Why not?", url :"https://care-quest.herokuapp.com"}]);
+        }
 
-      function sendNotification(){
-            PB.register();
-            PB.q.push(["sendNotification", {title:"Hey ",message:"Why not?", url :"https://care-quest.herokuapp.com"}]);
-      }
+        </script>
 
-      </script>
+        <script src="//cdn.pushbots.com/js/sdk.min.js" type="text/javascript" onload="PB.init()" async></script>
 
-      <script src="//cdn.pushbots.com/js/sdk.min.js" type="text/javascript" onload="PB.init()" async></script>
-
-      <!--google font-->
-  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
-  <!--css file-->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!--google font-->
+          <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+        <!--css file-->
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 
-<style>
-body {
-  background: #fff;
-  padding: 0px;
-  margin: 0px;
-  font-family: 'Nunito', sans-serif;
-  font-size: 16px;
-}
+  <style>
+  body {
+    background: #fff;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+  }
 
-input, button {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
-}
+  input, button {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+  }
 
-.main-div {
-  width: 20%;
-  margin: 0px auto;
-  margin-top: 150px;
-  padding: 20px;
-  min-width: max-content !important;
-}
+  .main-div {
+    width: 20%;
+    margin: 0px auto;
+    margin-top: 150px;
+    padding: 20px;
+    min-width: max-content !important;
+  }
 
-.main-div input {
-  display: block;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background: #fff;
-  padding: 15px;
-  outline: none;
-  width: 100%;
-  margin-bottom: 20px;
-  transition: 0.3s;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-}
+  .main-div input {
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    padding: 15px;
+    outline: none;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+  }
 
-.main-div input:focus {
-  border: 1px solid #777;
-}
+  .main-div input:focus {
+    border: 1px solid #777;
+  }
 
-.main-div button{
-  background: #5d8ffc;
-  color: #fff;
-  border: 1px solid #5d8ffc;
-  border-radius: 5px;
-  padding: 15px;
-  display: block;
-  width: 100%;
-  transition: 0.3s;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-}
+  .main-div button{
+    background: #5d8ffc;
+    color: #fff;
+    border: 1px solid #5d8ffc;
+    border-radius: 5px;
+    padding: 15px;
+    display: block;
+    width: 100%;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+  }
 
-.main-div button:hover{
-  background: #fff;
-  color: #5d8ffc;
-  border: 1px solid #5d8ffc;
-  cursor: pointer;
-}
-</style>
-</head>
+  .main-div button:hover{
+    background: #fff;
+    color: #5d8ffc;
+    border: 1px solid #5d8ffc;
+    cursor: pointer;
+  }
+  </style>
+  </head>
 <body>
 
   <div class="ui inverted pointing menu stackable">
@@ -145,23 +146,22 @@ input, button {
 </div>
 
 <div id="mobile" class="main-div bg-dark" style="display: block">
-<form>
-  <h2 style="color: White;">Enter your mobile number : </h2>
-
-  <input type="text" id="mobile_number" placeholder="+91**********" />
-  <div id="recaptcha-container"></div>
-  <br>
-  <button type="button" onclick="phoneAuth();">Send Code</button>
-</form>
+  <form>
+    <h2 style="color: White;text-align: center;" >Enter Your Mobile Number</h2>
+    <input type="text" id="mobile_number" placeholder="+91**********" />
+    <div id="recaptcha-container" style="display: flex;justify-content: center;"></div>
+    <br>
+    <button type="button" onclick="phoneAuth();">Send Code</button>
+  </form>
 </div>
 
 <div id="code" class="main-div bg-dark" style="display: none">
-<form>
-  <h2 style="color: White;">Enter Verification code : </h2>
+  <form>
+    <h2 style="color: White;">Enter Verification code : </h2>
 
-  <input type="text" id="verificationCode" placeholder="Enter verification code">
-  <button type="button" onclick="codeverify();">Verify code</button>
-</form>
+    <input type="text" id="verificationCode" placeholder="Enter verification code">
+    <button type="button" onclick="codeverify();">Verify code</button>
+  </form>
 </div>
 
 
@@ -192,6 +192,7 @@ input, button {
 
 	</script>
 <script src="beta_login.js" type="text/javascript"></script>
+<script src="design.js"></script>
 
 <script>
     window.watsonAssistantChatOptions = {
