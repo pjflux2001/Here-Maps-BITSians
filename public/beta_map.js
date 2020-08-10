@@ -5,14 +5,14 @@ var x = document.getElementById("demo");
 (function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
-  } 
-  else { 
+  }
+  else {
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 })();
 
 function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  x.innerHTML = "Latitude: " + position.coords.latitude +
   "<br>Longitude: " + position.coords.longitude;
   user_lat = position.coords.latitude;
   user_lng = position.coords.longitude;
@@ -57,7 +57,7 @@ var ui = H.ui.UI.createDefault(map, defaultLayers,'en-US');
     var style = new H.map.Style('beta_map_style.yaml','https://js.api.here.com/v3/3.1/styles/omv/');
 
     // set the style on the existing layer
-    provider.setStyle(style); 
+    provider.setStyle(style);
     map.getViewModel().setLookAtData({
        tilt: 45
     });
@@ -69,15 +69,26 @@ var ui = H.ui.UI.createDefault(map, defaultLayers,'en-US');
         'height="22" /><text x="12" y="18" font-size="12pt" ' +
         'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
         'fill="white">.</text></svg>'; */
-    
+
     //let imgIcon = new H.map.Icon('./icons/icons8-standing-man-48.png');
 
-    var circle;
-    var fillColor;
-    // Create a style object:
+    var circle, green_circle, yellow_circle, red_circle;
+      // Create a style object:
     var circleStyle = {
         strokeColor: 'rgb(0, 99, 198)',
         fillColor: 'rgba(21, 127, 234 , 0.2)',
+      };
+    var green_circleStyle = {
+      strokeColor: 'rgb(0,100,0)',
+      fillColor: 'rgba(152,251,152,0.3)',
+    };
+    var yellow_circleStyle = {
+        strokeColor: 'rgb(255,255,0)',
+        fillColor: 'rgba(255,255,153,0.4)',
+    };
+    var red_circleStyle = {
+        strokeColor: 'rgb(255,0,0)',
+        fillColor: 'rgba(233,150,122,0.3)',
     };
 
     function getBrowserPosition(){
@@ -94,22 +105,25 @@ var ui = H.ui.UI.createDefault(map, defaultLayers,'en-US');
 
                 // Instantiate a circle object (using the default style):
                 circle = new H.map.Circle({lat: position.coords.latitude + 0.015, lng: position.coords.longitude }, 10000, {style: circleStyle});
+                green_circle = new H.map.Circle({lat: position.coords.latitude + 0.015, lng: position.coords.longitude }, 10000, {style: green_circleStyle});
+                yellow_circle = new H.map.Circle({lat: position.coords.latitude + 0.015, lng: position.coords.longitude }, 10000, {style: yellow_circleStyle});
+                red_circle = new H.map.Circle({lat: position.coords.latitude + 0.015, lng: position.coords.longitude }, 10000, {style: red_circleStyle});
                 //marker.setData("You're here!");
-                
+
                 // Add the circle to the map:
                 //map.addObject(circle);
                 map.setCenter(browserPosition);
                 //map.addObject(marker);
             });
-        } 
+        }
         else {
             alert("Geolocation is not supported by this browser!");
         }
     }
 
-/*===============Here maps end====================*/    
+/*===============Here maps end====================*/
 
-/*=========================== Markers : No use ==================================*/ 
+/*=========================== Markers : No use ==================================*/
 
     function clickToMark(){
         // Add event listener:
@@ -138,7 +152,7 @@ var ui = H.ui.UI.createDefault(map, defaultLayers,'en-US');
                 }else{
                     pointerMarker.getData();
                 }
-                       
+
                 map.addObject(pointerMarker);
             }
         });
@@ -161,8 +175,8 @@ var ui = H.ui.UI.createDefault(map, defaultLayers,'en-US');
             map.addEventListener('dragend', function(ev) {
                 var target = ev.target;
                 if (target instanceof H.map.Marker) {
-                  
-                    
+
+
                 behavior.enable();
                 }
             }, false);
@@ -179,4 +193,4 @@ var ui = H.ui.UI.createDefault(map, defaultLayers,'en-US');
     getBrowserPosition();
     clickToMark();
     clickDragMarkers();
-/*=============================================================*/ 
+/*=============================================================*/

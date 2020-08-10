@@ -15,12 +15,12 @@
    // document.getElementById('covidstatus').value = snap.val().status;
 //});
 
-/*===========================adding locations to database - start==================================*/ 
+/*===========================adding locations to database - start==================================*/
 function add_location(){
     function add_loc(h){
         firebase.database().ref('location/' + h.user_id).set(h);
     }
-    
+
     var covidStatus = $('#covidstatus').val();
 
     var location = {
@@ -31,12 +31,12 @@ function add_location(){
       longitude: user_lng,
       status: covidStatus
     };
-    
+
     console.log(user_lat + " @ "+ user_lng);
-    
+
     add_loc(location);
     }
-/*===========================adding locations to database - end==================================*/ 
+/*===========================adding locations to database - end==================================*/
 
 /*===========================fetching locations from database - start==================================*/
     var flag = 0;
@@ -46,9 +46,9 @@ function add_location(){
     addonref.on("value", function(snapshot) {
 
       var currentUserPhoneNumber = firebase.auth().currentUser.phoneNumber;
-      
+
       map.removeObjects(map.getObjects());
-      
+
       snapshot.forEach(function(childsnapshot){
         var item = childsnapshot.val();
         firebase.database().ref('location/' + firebase.auth().currentUser.uid).on('value',(snap)=>{
@@ -69,27 +69,31 @@ function add_location(){
 
         let userMarker = new H.map.Marker(userPosition, {icon: userIcon});
         map.addObject(userMarker);
-        
-     
-        
+
+
+
         //checking the coordinate range
 
         point = new H.geo.Point(item.latitude , item.longitude);
         var checkPosition = turf.booleanPointInPolygon(point.toGeoJSON(), circle.toGeoJSON());
-        
+
         console.log("Is there someone ?")
         console.log(checkPosition);
-       
+
        if(checkPosition && !checkUser){
           if(item.status == "red"){
             console.log("range mein aagaya red wala");
             firebase.database().ref('location/' + firebase.auth().currentUser.uid).update({status: "yellow"});
             console.log("changed to yellow");
+            map.removeObject(map.getObjects()[1]);
+
           }
           else if(item.status == "yellow"){
             console.log("range mein aagaya yellow wala");
             firebase.database().ref('location/' + firebase.auth().currentUser.uid).update({status: "yellow"});
             console.log("changed to yellow");
+            map.removeObject(map.getObjects()[1]);
+
           }
           if(flag == 0){
             alert("Alert !!! There might be some Covid carriers around YOU.");
@@ -97,7 +101,21 @@ function add_location(){
           }
        }
 
-       map.addObject(circle); // adding green circle around user
+       switch(document.getElementById('covidstatus').value){
+         case 'green':
+          map.addObject(green_circle);
+          break;
+        case 'yellow':
+          map.addObject(yellow_circle);
+          break;
+        case 'red':
+          map.addObject(red_circle);
+          break;
+        default:
+          map.addObject(circle);
+
+       }
+
 
       /*====current user update - start====*/
       var updates = {
@@ -107,9 +125,9 @@ function add_location(){
       }
       firebase.database().ref('location/' + firebase.auth().currentUser.uid).update(updates);
       /*====current user update -end ====*/
-   
-      userMarker.setData(firebase.auth().currentUser.phoneNumber);  
-      
+
+      userMarker.setData(firebase.auth().currentUser.phoneNumber);
+
     });
 
   });
