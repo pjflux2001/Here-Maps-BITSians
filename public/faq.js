@@ -59,63 +59,62 @@ fetch("./faq_dump/faq1.json")
                     }
                 }
             })
-            .catch(error => console.log('error', error));
-    })
-    .then(function(){
-        fetch("./faq_dump/faq3.json")
-            .then(response => response.text())
-            .then(results => {
-                let requiredRegex = /\{([^}]+)\}/g
-                var faqData = results.match(requiredRegex);
-                for(var i=0;i<faqData.length;i++){
-                    var data = JSON.parse(faqData[i]);
-                    if(removeTags(data.answer)){
-                        document.getElementById(`faqSegment${segmentNo}`).innerHTML  += `
-                        <div class="ui styled fluid accordion" id="faq${faqCounter}" >
-                            <div class="title" onclick="accordionClicked('faq${faqCounter}')"><i class="dropdown icon"></i>${data.question}</div>
-                            <div class="content"><p class="transition hidden">${data.answer}</p></div>
-                        </div>
+            .then(function(){
+                fetch("./faq_dump/faq3.json")
+                    .then(response => response.text())
+                    .then(results => {
+                        let requiredRegex = /\{([^}]+)\}/g
+                        var faqData = results.match(requiredRegex);
+                        for(var i=0;i<faqData.length;i++){
+                            var data = JSON.parse(faqData[i]);
+                            if(removeTags(data.answer)){
+                                document.getElementById(`faqSegment${segmentNo}`).innerHTML  += `
+                                <div class="ui styled fluid accordion" id="faq${faqCounter}" >
+                                    <div class="title" onclick="accordionClicked('faq${faqCounter}')"><i class="dropdown icon"></i>${data.question}</div>
+                                    <div class="content"><p class="transition hidden">${data.answer}</p></div>
+                                </div>
+                                `
+                                faqCounter += 1;
+                                if( faqCounter%25 == 0){
+                                    segmentNo += 1;
+                                    document.getElementById('faqContent').innerHTML += `
+                                    <div class="ui segment" id="faqSegment${segmentNo}" style="display:none;min-height:140vh;">
+                                    </div>
+                                    `
+                                }
+                            }
+                        }    
+                    })
+                    .then(function(){
+                        // Total segments
+                        var segments = document.getElementById('faqContent').children;
+                        
+                        // Adding page nav at bottom
+                        document.getElementById('faqPageNavContainer').innerHTML += `
+                            <div class="ui horizontal list" id="faqPageNav" ></div>
+                        `;
+                        
+                        // Adding prev button
+                        document.getElementById('faqPageNav').innerHTML +=`
+                            <a class="item" onclick="faqNavPageBtn(${segments.length},'prev')" style="font-size:18px;"><i class="angle double left icon"></i></a>
                         `
-                        faqCounter += 1;
-                        if( faqCounter%25 == 0){
-                            segmentNo += 1;
-                            document.getElementById('faqContent').innerHTML += `
-                            <div class="ui segment" id="faqSegment${segmentNo}" style="display:none;min-height:140vh;">
-                            </div>
+        
+                        // Adding items in page nav 
+                        for(var j=1;j<=segments.length;j++){
+                            document.getElementById('faqPageNav').innerHTML +=`
+                            <a class="item" id="segmentPageTab${j}" onclick="displayFaqSegment(${j},${segments.length})" style="font-size:18px;width:30px;height:30px;padding:5.5px;">${j}</a>
                             `
                         }
-                    }
-                }    
-            })
-            .then(function(){
-                // Total segments
-                var segments = document.getElementById('faqContent').children;
-                
-                // Adding page nav at bottom
-                document.getElementById('faqPageNavContainer').innerHTML += `
-                    <div class="ui horizontal list" id="faqPageNav" ></div>
-                `;
-                
-                // Adding prev button
-                document.getElementById('faqPageNav').innerHTML +=`
-                    <a class="item" onclick="faqNavPageBtn(${segments.length},'prev')" style="font-size:18px;"><i class="angle double left icon"></i></a>
-                `
-
-                // Adding items in page nav 
-                for(var j=1;j<=segments.length;j++){
-                    document.getElementById('faqPageNav').innerHTML +=`
-                    <a class="item" id="segmentPageTab${j}" onclick="displayFaqSegment(${j},${segments.length})" style="font-size:18px;width:30px;height:30px;padding:5.5px;">${j}</a>
-                    `
-                }
-
-                // Adding next button
-                document.getElementById('faqPageNav').innerHTML +=`
-                    <a class="item" onclick="faqNavPageBtn(${segments.length},'next')" style="font-size:18px;"><i class="angle double right icon"></i></a>
-                `
-
-                // Displaying first Page initially
-                displayFaqSegment(activeSegment,segments.length);
-
+        
+                        // Adding next button
+                        document.getElementById('faqPageNav').innerHTML +=`
+                            <a class="item" onclick="faqNavPageBtn(${segments.length},'next')" style="font-size:18px;"><i class="angle double right icon"></i></a>
+                        `
+        
+                        // Displaying first Page initially
+                        displayFaqSegment(activeSegment,segments.length);
+                    })
+                    .catch(error => console.log('error', error));
             })
             .catch(error => console.log('error', error));
     })
