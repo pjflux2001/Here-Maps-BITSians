@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://github.com/pjflux2001/CareQuest/blob/master/public/Logo.png" width = "25%" height = "25%"></p>
 
-[![License](https://img.shields.io/badge/License-Apache2-red.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Website](https://img.shields.io/badge/View-Website-blue)](https://maps-bitsian.herokuapp.com/))
+[![License](https://img.shields.io/badge/License-Apache2-red.svg)](https://www.apache.org/licenses/LICENSE-2.0) [![Website](https://img.shields.io/badge/View-Website-blue)](https://maps-bitsian.herokuapp.com/)
 
 <strong>A load balancing platform for medical services aimed at bringing order to the chaos caused by COVID-19</strong>
 
@@ -38,7 +38,7 @@ CareQuest aims to bring order to the chaos caused by COVID-19. To do so, CareQue
 
 ## Demo video
 
-[![Watch the video](https://github.com/pjflux2001/CareQuest/blob/master/public/Logo%20+%20play.png?raw=true)](https://www.youtube.com/watch?v=ccuXdGwbqF0)
+[![Watch the video](https://github.com/pjflux2001/CareQuest/blob/master/public/Logo%20+%20play.png?raw=true)](https://youtu.be/hcojoTFrkz4)
 
 ## The architecture
 
