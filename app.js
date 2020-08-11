@@ -221,7 +221,7 @@ app.get("/faq",(req,res)=> {
 
 //=============ADMIN API===========//
 
-app.get("/admin/findemail",function(req,res){
+app.get("/admin/findEmail",function(req,res){
 	var id = req.query._id;
 	var results = [];
 	hospital.on("value",function(snapshot){
@@ -242,6 +242,16 @@ app.get("/admin/getUser",function(req,res){
 		.catch(function(e){
 			res.send(e);
 		});
+})
+app.get("/admin/role",function(req,res){
+	var uid = req.query.uid;
+	hospital.on("value",function(snapshot){
+		snapshot.forEach(function(childsnapshot){
+			if(childsnapshot.val().user_id == uid){
+				res.send(childsnapshot.val());
+			}
+		})
+	});
 })
 app.get("/admin/createUser",function(req,res){
 	var email = req.query.email;
