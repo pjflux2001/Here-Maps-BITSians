@@ -275,17 +275,13 @@ app.get("/admin/updateUser",function(req,res){
 	var email = req.query.email;
 	var phoneNumber = req.query.phoneNumber;
 	var emailVerified = req.query.emailVerified;
-	var password = req.query.password;
 	var displayName = req.query.displayName;
-	var photoURL = req.query.photoURL;
 	var disabled = req.query.disabled;
 	admin.auth().updateUser(uid, {
 		email: email,
 		phoneNumber: phoneNumber,
 		emailVerified: emailVerified,
-		password: password,
 		displayName: displayName,
-		photoURL: phoneURL,
 		disabled: disabled
 	  })
 		.then(function(userRecord) {
@@ -307,7 +303,16 @@ app.get("/admin/deleteUser",(req,res)=>{
 	});
 });
 
-
+app.post("/admin/userEdit",(req,res)=>{
+	var email = req.body.email;
+	admin.auth().getUserByEmail(email)
+	.then(function(userRecord){
+		res.render("userEdit.pug",{user:userRecord});
+	})
+	.catch(function(e){
+		res.redirect("/profile");
+	});
+})
 
 
 

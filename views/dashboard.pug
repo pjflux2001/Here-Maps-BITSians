@@ -72,9 +72,10 @@ html
                 .description Use this manage the users using user Email Accounts!.
                 hr
                 .extra.content
-                  .ui.input.fluid
-                    input(type="text", placeholder="Email Address ...")
-                    .ui.primary.button.right.floated Manage
+                  form(action="/admin/userEdit" , method="POST")
+                    .ui.input.fluid
+                      input#email(name="email",type="text", placeholder="Email Address ...")
+                      button.ui.primary.button.right.floated Manage
             
 
         div.ui.segment#hospitalResult(style={'display':'none'})
