@@ -243,6 +243,16 @@ app.get("/admin/getUser",function(req,res){
 			res.send(e);
 		});
 })
+app.get("/admin/role",function(req,res){
+	var uid = req.query.uid;
+	hospital.on("value",function(snapshot){
+		snapshot.forEach(function(childsnapshot){
+			if(childsnapshot.val().user_id == uid){
+				res.send(childsnapshot.val());
+			}
+		})
+	})
+})
 app.get("/admin/createUser",function(req,res){
 	var email = req.query.email;
 	var password = req.query.password;
