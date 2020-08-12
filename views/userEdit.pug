@@ -58,9 +58,9 @@ html
               input#disabled(type="text",name="disabled" , value = `${user.disabled}` readonly)
           .ui.button.green Submit
           .ui.button.red Cancel
-      .ui.segment
+      .ui.segment.loading#seg-2
         .ui.form
-          .ui.dividing.header Hospital Details
+          .ui.dividing.header Additional User Details
           .meta
             span.right.floated.ui.button.blue.tiny Edit
           .fields
@@ -75,37 +75,26 @@ html
               input#time(type="text",name="time" readonly)
           .ui.button.green Submit
           .ui.button.red Cancel
-      .ui.button.green Get More Info on Hospital
-      .ui.segment
-
-      
-
-
-
-
+      .ui.segment.loading#seg-3
+        .ui.form
+          .ui.dividing.header Hospital Details
+          .meta
+            span.right.floated.ui.button.blue.tiny Edit
+          .fields
+            .field
+              label Name
+              input#mh-hname(type="text",name="HOSPITAL_NAME")
+            .field
+              label Address
+              input#mh-hq-add(type="text", name="HOSPITAL_ADDRESS")
+            .field
+              label FID
+              input#mh-fid(type="text",name="FID")
+          .ui.button.green Submit
+          .ui.button.red Cancel
+    
   script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js")
   script(src="/design.js")
   script(src="/js/ajax_helper.js")
-  script.
-      $(document).ready(function(){
-      var search_query = {
-        uid : $("#uid").text()
-      }
-      $.ajax({
-        type : "GET",
-        contentType: "application/json",
-        url : "/admin/role",
-        data : search_query,
-        dataType:"json",
-        success: function(result){
-          $('#id_verif').val(result.id_verif);
-          $('#object_id').val(result.object_id);
-          $('#time').val(result.time);
-          console.log("Success: ", result);
-        },
-        error : function(e) {
-          console.log("ERROR: ", e);
-        }
-      });
-      });
-    
+  script
+      

@@ -303,7 +303,7 @@ app.get("/admin/deleteUser",(req,res)=>{
 	});
 });
 
-app.post("/admin/userEdit",(req,res)=>{
+app.post("/admin/userEdit",loginRequired,(req,res)=>{
 	var email = req.body.email;
 	admin.auth().getUserByEmail(email)
 	.then(function(userRecord){
@@ -311,6 +311,17 @@ app.post("/admin/userEdit",(req,res)=>{
 	})
 	.catch(function(e){
 		res.redirect("/profile");
+	});
+})
+
+app.get("/admin/hEdit",loginRequired,(req,res)=>{
+    var _id = req.query._id;
+	Esri.findById(_id,function(err,data){
+		if(err){
+			res.render("404.ejs",{reason:err});
+		} else {
+			res.render("hEdit.ejs",{hospital:data});
+		}
 	});
 })
 

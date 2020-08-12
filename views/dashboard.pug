@@ -55,7 +55,7 @@ html
                 .extra.content
                   .ui.input.fluid
                     input#hospital(type="text", placeholder="Name of Hospital ...")
-                    .ui.primary.button.right.floated(onclick="fuzzynameGet();") Search
+                    .ui.primary.button.right.floated(href="#hospitalResult",onclick="fuzzynameGet();") Search
             .card
               .content
                 h4.ui.header Connected Accounts
@@ -78,7 +78,7 @@ html
                       button.ui.primary.button.right.floated Manage
             
 
-        div.ui.segment#hospitalResult(style={'display':'none'})
+        div.ui.segment.loading#hospitalResult(style={'display':'none'})
           h2.header Search Results!
             i.close.icon.red#hclose-icon
           #result1
@@ -89,6 +89,10 @@ html
             i.close.icon.red#eclose-icon
           #result2
             ul.list-group
+        .ui.segment(style={'display':'none'})
+          form#eHospital(action="/admin/hEdit", method="GET")
+            label Hospital Id
+            input#hospital_id(type="text",name="_id")
           
           
   script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js")
