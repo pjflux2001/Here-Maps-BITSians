@@ -12,8 +12,8 @@ var x = document.getElementById("demo");
 })();
 
 function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude +
-  "<br>Longitude: " + position.coords.longitude;
+  x.innerHTML = "<b>Latitude: </b>" + position.coords.latitude +
+  "<br><b>Longitude: </b>" + position.coords.longitude;
   user_lat = position.coords.latitude;
   user_lng = position.coords.longitude;
 }
