@@ -33,12 +33,12 @@ html
         span.hamburger-bun
     .ui.container
       h3.header Note you're currently editing User : #{(user.displayName)?user.displayName:user.email}
-      .ui.segment
+      .ui.segment#seg-1
         .ui.form
           .ui.dividing.header Basic Authentication Info
           .meta User UID:
             span#uid #{user.uid}
-            span.right.floated.ui.button.blue.tiny Edit
+            span.right.floated.ui.button.blue.tiny#basicAuthBtn Edit
           br
           .fields
             .field
@@ -56,13 +56,14 @@ html
             .field
               label Disable Status
               input#disabled(type="text",name="disabled" , value = `${user.disabled}` readonly)
-          .ui.button.green Submit
-          .ui.button.red Cancel
+          .ui.buttongroup#grp-1(style ={'display':'none'})
+            .ui.button.green#authSubmit Submit
+            .ui.button.red#authCancel Cancel
       .ui.segment.loading#seg-2
         .ui.form
           .ui.dividing.header Additional User Details
           .meta
-            span.right.floated.ui.button.blue.tiny Edit
+            span.right.floated.ui.button.blue.tiny#addUserBtn Edit
           .fields
             .field
               label OCR Status
@@ -73,13 +74,14 @@ html
             .field
               label Creation Time
               input#time(type="text",name="time" readonly)
-          .ui.button.green Submit
-          .ui.button.red Cancel
+          .ui.buttongroup#grp-2
+            .ui.button.green#userSubmit Submit
+            .ui.button.red#userCancel Cancel
       .ui.segment.loading#seg-3
         .ui.form
           .ui.dividing.header Hospital Details
           .meta
-            span.right.floated.ui.button.blue.tiny Edit
+            span.right.floated.ui.button.blue.tiny#hospitalEdit Edit
           .fields
             .field
               label Name
@@ -90,11 +92,47 @@ html
             .field
               label FID
               input#mh-fid(type="text",name="FID")
-          .ui.button.green Submit
-          .ui.button.red Cancel
     
   script(src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js")
   script(src="/design.js")
   script(src="/js/ajax_helper.js")
-  script
+  script.
+    $(document).ready(function(){
+      $("#grp-1 ").hide();
+      $("#grp-2 ").hide();
+      $("#basicAuthBtn").click(function(){
+        $('#seg-1 :input').attr('readonly',false);
+        $("#grp-1 ").show();
+        $("#basicAuthBtn").hide();
+      });
+      $("#addUserBtn").click(function(){
+        $('#seg-2 :input').attr('readonly',false);
+        $("#grp-2 ").show();
+        $("#addUserBtn").hide();
+      });
+      $("#authSubmit").click(function(){
+        //updater auth
+        $('#seg-1 :input').attr('readonly',true);
+        $("#basicAuthBtn").show();
+        $("#grp-1 ").hide();
+      })
+      $("#authCancel").click(function(){
+        //retriever auth
+        $('#seg-1 :input').attr('readonly',true);
+        $("#basicAuthBtn").show();
+        $("#grp-1 ").hide();
+      })
+      $("#userSubmit").click(function(){
+        //updater user
+        $('#seg-2 :input').attr('readonly',true);
+        $("#addUserBtn").show();
+        $("#grp-2 ").hide();
+      })
+      $("#userCancel").click(function(){
+        //retriever user
+        $('#seg-2 :input').attr('readonly',true);
+        $("#addUserBtn").show();
+        $("#grp-2 ").hide();
+      })
+    })
       

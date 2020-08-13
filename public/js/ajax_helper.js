@@ -94,7 +94,6 @@
       url : "/api/",
       data : {_id:id},
       dataType:"json",
-      async:false,
       success: function(result){
       //first empty dashboard========>
       console.log(result);
